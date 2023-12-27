@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            scp -r .next username@server:/home/jeongrae/Next/POL_Front
+            scp -r .next ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/jeongrae/Next/POL_Front
             cd /home/jeongrae/Next/POL_Front
             git pull origin main
             npm ci
