@@ -24,6 +24,8 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/pol-front:latest
+        cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/pol-front:cache
+        cache-to: type=inline
         
   deploy:
       needs: build
