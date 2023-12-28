@@ -2,13 +2,14 @@ import React from "react";
 
 
 
-const ProblemPage = () => {
+const Problem = () => {
+    
     return (
         <div>
-            ProblemPage
+            Problem
         </div>
     )
 }
 
 
-export default ProblemPage;
+export default Problem;
