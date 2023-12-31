@@ -1,9 +1,14 @@
-
-
+import HeaderLoginBtn from "./HeaderLoginBtn";
+import HeaderSignUpBtn from "./HeaderSignUpBtn"
+import HeaderHomeBtn from "./HeaderHomeBtn";
 
 const Header = () => {
     return (
-        <header>header</header>
+        <header>
+            <HeaderHomeBtn/>
+            <HeaderLoginBtn/>
+            <HeaderSignUpBtn/>
+        </header>
     )
 }
 
