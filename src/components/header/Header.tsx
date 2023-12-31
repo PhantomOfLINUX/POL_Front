@@ -1,12 +1,14 @@
-import HeaderBtn from "./HeaderBtn";
+import HeaderLoginBtn from "./HeaderLoginBtn";
+import HeaderSignUpBtn from "./HeaderSignUpBtn"
+import HeaderHomeBtn from "./HeaderHomeBtn";
 
 
 const Header = () => {
     return (
         <header>
-            <span>Phantom of  Linux</span>
-            <HeaderBtn name={"로그인"}/>
-            <HeaderBtn name={"회원가입"}/>
+            <HeaderHomeBtn/>
+            <HeaderLoginBtn/>
+            <HeaderSignUpBtn/>
         </header>
     )
 }
