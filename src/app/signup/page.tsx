@@ -1,12 +1,12 @@
 import React from "react";
 
-
+import SignUp from "@/components/signup/SignUp";
 
 const Signup = () => {
     
     return (
         <div>
-            Signup
+            <SignUp/>
         </div>
     )
 }
