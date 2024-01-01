@@ -1,7 +1,12 @@
+import LoginForm from "./LoginForm";
+
+
 
 const LoginModal = () => {
     return(
-        <div></div>
+        <div>
+            <LoginForm/>
+        </div>
     )
 }
 
