@@ -4,5 +4,6 @@ export type signType = {
     label: string;
     placeholder: string;
     type:string;
-    onChange:(newValue: React.ChangeEvent<HTMLInputElement>) => void
+    onChange:(newValue: string) => void;
+    abled:boolean
 }
