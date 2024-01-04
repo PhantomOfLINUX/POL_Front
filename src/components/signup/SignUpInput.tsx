@@ -1,12 +1,14 @@
-// EmailInput.js
+'use client'
+
 import React from 'react';
 import { signType } from '@/types/signUptypes';
-const EmailInput = ({ label, placeholder, onChange }:signType) => {
+
+const SignUpInput = ({ label, type, placeholder, onChange }:signType) => {
   return (
     <div>
       <label>{label}</label>
       <input
-        type="email"
+        type={type}
         placeholder={placeholder}
         onChange={onChange}
       />
@@ -14,4 +16,4 @@ const EmailInput = ({ label, placeholder, onChange }:signType) => {
   );
 };
 
-export default EmailInput;
+export default SignUpInput;
