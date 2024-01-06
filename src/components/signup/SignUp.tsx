@@ -4,7 +4,8 @@ import React,{useState} from "react"
 
 import SignUpInput from "./SignUpInput"
 
-import { SendAuthentication } from "@/utils/SignUpUtils/SignUpUtil"
+import { SendAuthentication, CheckAuthentication } from "@/utils/SignUpUtils/SignUpUtil"
+
 const SignUp = () => {
     const [email,setEmail] = useState<string>("")
     const [emailCertification,setEmailCertification] = useState<string>("")
@@ -15,16 +16,13 @@ const SignUp = () => {
     const onChange = (e:string) => {
         
     }
-    const onClick = (e:React.MouseEvent<HTMLElement>) => {
-        e.preventDefault()
-    }
     return (
         <form onSubmit={onSubmit}>
             <SignUpInput label="이메일" placeholder="name@mail.com" type="email" onChange={setEmail} abled={false}/>
             <button onClick={(e)=>SendAuthentication(e,email,setcertificationBoolean)}>인증번호 발송</button>
 
             <SignUpInput label="인증번호" placeholder="인증번호" type="text" onChange={setEmailCertification} abled={certificationBoolean}/>
-            <button onClick={onClick}>인증번호 제출</button>
+            <button onClick={(e)=>CheckAuthentication(email,emailCertification)}>인증번호 제출</button>
             
             <SignUpInput label="닉네임" placeholder="닉네임" type="text" onChange={onChange} abled={false}/>
             <SignUpInput label="비밀번호" placeholder="****" type="password" onChange={onChange} abled={false}/>
