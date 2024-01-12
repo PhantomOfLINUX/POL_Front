@@ -2,9 +2,7 @@ const url = process.env.NEXT_PUBLIC_BASE_API
 
 export const checkEmail = (e:string) => {
     const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;//유효성 체크
-    if(exptext.test(e))
-        return false
-    else return true
+    return e!==""&&!exptext.test(e)
 }
 
 export const SendAuthentication = (e:React.MouseEvent<HTMLElement>,email:string) => {
@@ -29,8 +27,9 @@ export const CheckAuthentication = async (email:string,emailAuth:string) => {
 export const CheckName = (name:string) => name===""
 
 export const CheckPassword = (password:string) => {
-    const exptext = /^[A-Za-z0-9_\.\-]/;//유효성 체크
-    return !(exptext.test(password))
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+//유효성 체크
+    return password!==""&&!(passwordRegex.test(password))
 }
 
-export const CheckPasswordCheck = (password:string, passwordCheck:string) => password!==passwordCheck;
+export const CheckPasswordCheck = (password:string, passwordCheck:string) => passwordCheck!==""&&password!==passwordCheck;
