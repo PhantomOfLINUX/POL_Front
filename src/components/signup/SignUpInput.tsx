@@ -3,7 +3,7 @@
 import React from 'react';
 import { signType } from '@/types/signUptypes';
 
-const SignUpInput = ({ label, type, placeholder, onChange, abled }:signType) => {
+const SignUpInput = ({ label, type, placeholder, onChange, isVaild, errorMsg }:signType) => {
   return (
     <div>
       <label>{label}</label>
@@ -11,8 +11,8 @@ const SignUpInput = ({ label, type, placeholder, onChange, abled }:signType) => 
         type={type}
         placeholder={placeholder}
         onChange={(e)=>onChange(e.target.value)}
-        disabled={abled}
       />
+      {isVaild&&<span>{errorMsg}</span>}
     </div>
   );
 };
