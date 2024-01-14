@@ -57,8 +57,6 @@ export const CheckPassword = (password:string) => {
 
 export const CheckPasswordCheck = (password:string, passwordCheck:string) => passwordCheck!==""&&password!==passwordCheck;
 
-
-
 export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,emailCertification:string,name:string,password:string,passwordCheck:string) => {
     e.preventDefault();
     const postData = {
