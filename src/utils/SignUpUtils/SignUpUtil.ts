@@ -1,3 +1,5 @@
+import React from "react";
+
 const url = process.env.NEXT_PUBLIC_BASE_API
 
 export const checkEmail = (e:string) => {
@@ -5,31 +7,79 @@ export const checkEmail = (e:string) => {
     return e!==""&&!exptext.test(e)
 }
 
-export const SendAuthentication = (e:React.MouseEvent<HTMLElement>,email:string) => {
+export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
     e.preventDefault()
-    FetchAuthentication(email)
+    const emailCheck = await checkExistingEmail(email);
+    if(emailCheck)
+        submitEmail(email)
 }//email 인증번호 보내는 코드
 
-const FetchAuthentication = async (email:string) => {
-    console.log("인증번호 발송")
-    await fetch((`${url}/api/sign-up/mail/${email}`)).catch(e=>{
-        console.log(e)
-    });//응답값이 없다. 추후에 promise로 감쌀필요 있음
-}//인증번호 체크 -> 길이가 짧을 경우 합쳐도 좋을 듯?
+const checkExistingEmail = async (email: string): Promise<boolean> => {
+    try {
+      const response = await fetch(`${url}/api/sign-up/email/${email}`);
+      if (response.status === 200) {
+        return true; // 이메일이 존재함
+      } else if (response.status === 400) {
+        alert("가입된 아이디가 있습니다.");
+        return false; // 이메일이 존재하지 않음
+      } else {
+        throw new Error(`Unexpected status code: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Check existing email error:', error);
+      return false;
+    }
+  };
 
+const submitEmail = async (email:string) => {
+    await fetch((`${url}/api/sign-up/email/${email}/verify`))
+    alert("인증번호가 이메일에 전송되었습니다.")
+}
 
-export const CheckAuthentication = async (email:string,emailAuth:string) => {
-    const check = await fetch((`${url}/api/sign-up/mail/${email}/code/${emailAuth}`));//응답값이 없다. 추후에 promise로 감쌀필요 있음
-    console.log(check)//email onChange -> email 잘못됐다고 하기
+export const CheckAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string,emailAuth:string) => {
+    e.preventDefault()
+    const authenticationCheck = await fetch((`${url}/api/sign-up/email/${email}/code/${emailAuth}`))
+    if(authenticationCheck){
+        alert("인증번호가 맞습니다.")
+    }
+    else{
+        alert("이메일 인증코드가 불일치합니다.")
+    }
 }
 
 
 export const CheckName = (name:string) => name===""
 
 export const CheckPassword = (password:string) => {
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-//유효성 체크
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;//유효성 체크
     return password!==""&&!(passwordRegex.test(password))
 }
 
 export const CheckPasswordCheck = (password:string, passwordCheck:string) => passwordCheck!==""&&password!==passwordCheck;
+
+export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,emailCertification:string,name:string,password:string,passwordCheck:string) => {
+    e.preventDefault();
+    const postData = {
+        "code": emailCertification,
+        "name": name,
+        "email": email,
+        "password": password
+    }
+    if((name!==""&&/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)&&password===passwordCheck)){
+        let SignUpcheck = await fetch((`${url}/api/sign-up/pol`),{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData)
+        })
+        if(SignUpcheck.ok)
+            alert("회원가입에 성공하셨습니다.")
+        else{
+            console.log(SignUpcheck)
+        }
+    }
+    else{
+        console.log("형식이 맞지 않습니다.",!CheckName(name),CheckPassword(password),CheckPasswordCheck(password,passwordCheck))
+    }
+}
