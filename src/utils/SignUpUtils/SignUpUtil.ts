@@ -5,22 +5,36 @@ export const checkEmail = (e:string) => {
     return e!==""&&!exptext.test(e)
 }
 
-export const SendAuthentication = (e:React.MouseEvent<HTMLElement>,email:string) => {
+export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
     e.preventDefault()
-    FetchAuthentication(email)
+    const check = await checkExistingEmail(email);
+    if(check)
+        submitEmail(email)
 }//email 인증번호 보내는 코드
 
-const FetchAuthentication = async (email:string) => {
-    console.log("인증번호 발송")
-    await fetch((`${url}/api/sign-up/mail/${email}`)).catch(e=>{
-        console.log(e)
-    });//응답값이 없다. 추후에 promise로 감쌀필요 있음
-}//인증번호 체크 -> 길이가 짧을 경우 합쳐도 좋을 듯?
+const checkExistingEmail = async (email: string): Promise<boolean> => {
+    try {
+      const response = await fetch(`${url}/api/sign-up/email/${email}`);
+      if (response.status === 200) {
+        return true; // 이메일이 존재함
+      } else if (response.status === 400) {
+        alert("가입된 아이디가 있습니다.");
+        return false; // 이메일이 존재하지 않음
+      } else {
+        throw new Error(`Unexpected status code: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Check existing email error:', error);
+      return false;
+    }
+  };
 
+const submitEmail = async (email:string) => {
+    await fetch((`${url}/api/sign-up/email/${email}/verify`)) 
+}
 
 export const CheckAuthentication = async (email:string,emailAuth:string) => {
-    const check = await fetch((`${url}/api/sign-up/mail/${email}/code/${emailAuth}`));//응답값이 없다. 추후에 promise로 감쌀필요 있음
-    console.log(check)//email onChange -> email 잘못됐다고 하기
+    const check = await fetch((`${url}/api/sign-up/mail/${email}/code/${emailAuth}`)).then(res=>res).catch(e=>console.log(e))
 }
 
 
