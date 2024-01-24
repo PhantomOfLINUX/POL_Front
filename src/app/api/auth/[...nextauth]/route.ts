@@ -18,5 +18,5 @@ export async function GET(request: NextRequest) {
     password:""
   })});
   console.log(ob)
-  redirect('http://localhost:3000/')//배포시 바꿔야함
+  redirect('http://www.pol.or.kr:3000/')//배포시 바꿔야함
 }
