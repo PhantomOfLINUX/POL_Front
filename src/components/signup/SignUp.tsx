@@ -3,7 +3,7 @@
 import React,{useState} from "react"
 
 import SignUpInput from "./SignUpInput"
-import GoogleOauth from "../oauth/GoogleOauth"
+import GoogleOauth from "../oauth/GoogleOauthButton"
 
 import { SendAuthentication, CheckAuthentication, checkEmail, CheckName, CheckPassword, CheckPasswordCheck, submitSignUp} from "@/utils/SignUpUtils/SignUpUtil"
 
