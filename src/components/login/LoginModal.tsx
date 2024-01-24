@@ -9,5 +9,5 @@ const LoginModal = () => {
         </div>
     )
 }
-
+//HOC 해야함
 export default LoginModal;
