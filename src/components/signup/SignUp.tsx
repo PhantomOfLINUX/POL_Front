@@ -28,7 +28,6 @@ const SignUp = () => {
             <SignUpInput label="비밀번호확인" placeholder="****" type="password" isVaild={CheckPasswordCheck(password, passwordCheck)} onChange={setPasswordCheck} errorMsg="비밀번호와 다릅니다"/>
 
             <button onClick={(e=>submitSignUp(e,email,emailCertification,name,password,passwordCheck))}>회원가입하기</button>
-
             <GoogleOauth />
         </main>
     )
