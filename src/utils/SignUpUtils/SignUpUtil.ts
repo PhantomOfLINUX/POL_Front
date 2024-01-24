@@ -75,9 +75,8 @@ export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,
         })
         if(SignUpcheck.ok)
             alert("회원가입에 성공하셨습니다.")
-        else{
+        else
             console.log(SignUpcheck)
-        }
     }
     else{
         console.log("형식이 맞지 않습니다.",!CheckName(name),CheckPassword(password),CheckPasswordCheck(password,passwordCheck))
