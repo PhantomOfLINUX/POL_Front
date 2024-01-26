@@ -1,7 +1,16 @@
 const url =  process.env.NEXT_PUBLIC_BASE_API;
 
-
-export const getGoogleUri = async () => {
-    const googleLoginUri = await fetch(`${url}/api/oauth2/google-url`)
-    return googleLoginUri;
+export const signInLocally = async (e:React.FormEvent<HTMLFormElement>,id:string,password:string) => {
+    e.preventDefault();
+    console.log(id,password);
+    const AccessToken = await fetch(`${url}/api/sign-in/pol`,{method:'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },body: JSON.stringify({
+        code:"",
+        name:"",
+        eamil:id,
+        password:password
+    })});
+    console.log(AccessToken);
 }
