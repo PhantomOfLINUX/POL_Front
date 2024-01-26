@@ -18,5 +18,5 @@ export async function GET(request: NextRequest) {
     password:""
   })});
   console.log(ob)
-  redirect('http://localhost:3000/')
+  redirect('https://www.pol.or.kr/')
 }
