@@ -5,7 +5,7 @@ const url = process.env.NEXT_PUBLIC_BASE_API
 export const checkEmail = (e:string) => {
     const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;//유효성 체크
     return e!==""&&!exptext.test(e)
-}
+}//email check
 
 export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
     e.preventDefault()
@@ -16,17 +16,17 @@ export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:s
 
 const checkExistingEmail = async (email: string): Promise<boolean> => {
     try {
-      const response = await fetch(`${url}/api/sign-up/email/${email}`);
-      if (response.status === 200) {
-        return true; // 이메일이 존재함
-      } else if (response.status === 400) {
-        alert("가입된 아이디가 있습니다.");
-        return false; // 이메일이 존재하지 않음
-      } else {
-        throw new Error(`Unexpected status code: ${response.status}`);
-      }
+        const response = await fetch(`${url}/api/sign-up/email/${email}`);
+        if (response.status === 200) {
+            return true; // 이메일이 존재함
+        } else if (response.status === 400) {
+            alert("가입된 아이디가 있습니다.");
+            return false; // 이메일이 존재하지 않음
+        } else {
+            throw new Error(`Unexpected status code: ${response.status}`);
+        }
     } catch (error) {
-      console.error('Check existing email error:', error);
+      console.error('error:', error);
       return false;
     }
   };

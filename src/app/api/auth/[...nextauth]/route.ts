@@ -14,9 +14,9 @@ export async function GET(request: NextRequest) {
   body: JSON.stringify({
     code:code,
     name:"",
-    eamil:"",
+    email:"",
     password:""
   })});
   console.log(ob)
-  redirect('https://www.pol.or.kr/')
+  redirect('http://www.localhost:3000/')
 }
