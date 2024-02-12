@@ -1,4 +1,5 @@
 import React from "react";
+import LoginModal from "@/components/login/LoginModal";
 
 
 
@@ -6,7 +7,7 @@ const Problem = () => {
     
     return (
         <div>
-            로그인
+            <LoginModal/>
         </div>
     )
 }

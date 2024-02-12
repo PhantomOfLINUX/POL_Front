@@ -1,9 +1,11 @@
 'use client'
+import Link from "next/link"
+
 
 const HeaderLoginBtn = () => {
     return (
         <button type="button">
-            로그인
+            <Link href="/login">로그인</Link>
         </button>
     )
 }
