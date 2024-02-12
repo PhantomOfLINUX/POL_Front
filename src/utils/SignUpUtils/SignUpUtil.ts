@@ -1,3 +1,4 @@
+import { redirect } from "next/dist/server/api-utils";
 import React from "react";
 
 const url = process.env.NEXT_PUBLIC_BASE_API
@@ -16,7 +17,7 @@ export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:s
 
 const checkExistingEmail = async (email: string): Promise<boolean> => {
     try {
-        const response = await fetch(`${url}/api/sign-up/email/${email}`);
+        const response = await fetch(`${url}/api/signup/email/${email}`);
         if (response.status === 200) {
             return true; // 이메일이 존재함
         } else if (response.status === 400) {
@@ -26,13 +27,13 @@ const checkExistingEmail = async (email: string): Promise<boolean> => {
             throw new Error(`Unexpected status code: ${response.status}`);
         }
     } catch (error) {
-      console.error('error:', error);
+      console.error('무슨에러일까요?:', error);
       return false;
     }
   };
 
 const submitEmail = async (email:string) => {
-    await fetch((`${url}/api/sign-up/email/${email}/verify`))
+    await fetch((`${url}/api/signup/email/${email}/verify`))
     alert("인증번호가 이메일에 전송되었습니다.")
 }
 
@@ -57,24 +58,19 @@ export const CheckPassword = (password:string) => {
 
 export const CheckPasswordCheck = (password:string, passwordCheck:string) => passwordCheck!==""&&password!==passwordCheck;
 
-export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,emailCertification:string,name:string,password:string,passwordCheck:string) => {
+export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,code:string,name:string,password:string,passwordCheck:string) => {
     e.preventDefault();
-    const postData = {
-        "code": emailCertification,
-        "name": name,
-        "email": email,
-        "password": password
-    }
     if((name!==""&&/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)&&password===passwordCheck)){
-        let SignUpcheck = await fetch((`${url}/api/sign-up/pol`),{
+        let SignUpcheck = await fetch((`${url}/api/signup/pol`),{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(postData)
+            body: JSON.stringify({code,name,email,password})
         })
-        if(SignUpcheck.ok)
+        if(SignUpcheck.ok){
             alert("회원가입에 성공하셨습니다.")
+        }
         else
             console.log(SignUpcheck)
     }

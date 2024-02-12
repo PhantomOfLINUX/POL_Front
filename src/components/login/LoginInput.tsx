@@ -1,18 +1,15 @@
 'use client'
-
 import React from 'react';
-import { signType } from '@/types/signUptypes';
 
 type loginType = {
     label:string,
     type:string,
     placeholder:string,
-    name:string,
     onChange: React.Dispatch<React.SetStateAction<string>>
 }
 
 
-const LoginInput = ({ label, type, placeholder,onChange}:loginType) => {
+const LoginInput:React.FC<loginType> = ({ label, type, placeholder,onChange}) => {
   return (
     <div>
       <label>{label}</label>
