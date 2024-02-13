@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 
+
 type loginType = {
     label:string,
     type:string,

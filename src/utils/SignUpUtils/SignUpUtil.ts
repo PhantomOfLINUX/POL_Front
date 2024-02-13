@@ -1,4 +1,3 @@
-import { redirect } from "next/dist/server/api-utils";
 import React from "react";
 
 const url = process.env.NEXT_PUBLIC_BASE_API
@@ -70,6 +69,7 @@ export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,
         })
         if(SignUpcheck.ok){
             alert("회원가입에 성공하셨습니다.")
+            window.location.replace("/login")
         }
         else
             console.log(SignUpcheck)

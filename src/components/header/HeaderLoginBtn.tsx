@@ -10,5 +10,4 @@ const HeaderLoginBtn = () => {
     )
 }
 
-//모달창 생성
 export default HeaderLoginBtn

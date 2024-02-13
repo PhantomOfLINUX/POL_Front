@@ -1,8 +1,6 @@
-import { NextComponentType } from "next";
 
-function withAuth(Component: NextComponentType) {
+function withAuth(Component: any) {
   const Auth = (props: any) => {
-    console.log(props);
     return <Component {...props} />;
   };
 

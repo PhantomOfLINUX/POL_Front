@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation'
 import { type NextRequest } from 'next/server'
 const url = process.env.NEXT_PUBLIC_BASE_API
 
@@ -17,6 +16,5 @@ export async function GET(request: NextRequest) {
     email:"",
     password:""
   })});
-  console.log(ob)
-  redirect('http://www.localhost:3000/')
+  window.location.replace
 }
