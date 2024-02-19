@@ -1,5 +1,5 @@
 import React from "react";
-
+import Xterm from "@/components/xterm/Xterm";
 
 
 const Problem = () => {
@@ -7,6 +7,7 @@ const Problem = () => {
     return (
         <div>
             Problem
+            <Xterm/>
         </div>
     )
 }
