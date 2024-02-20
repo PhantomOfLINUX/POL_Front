@@ -8,7 +8,6 @@ import 'xterm/css/xterm.css';
 const Xterm: React.FC= () => {
   const xtermRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    console.log("asdasd")
     const terminal = new Terminal({
       cursorBlink: true,
       scrollSensitivity: 2,
