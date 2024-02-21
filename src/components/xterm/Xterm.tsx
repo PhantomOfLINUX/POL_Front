@@ -1,43 +1,41 @@
 'use client'
 
-import React, { useEffect,useRef } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Terminal } from 'xterm';
+import "./Xterm.css"
 import 'xterm/css/xterm.css';
 
 
 const Xterm: React.FC= () => {
-  const xtermRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    const terminal = new Terminal({
-      cursorBlink: true,
-      scrollSensitivity: 2,
-      allowProposedApi: true,
-    });
-    let curr_line = "";
-    terminal.open(xtermRef.current as HTMLDivElement);
-    terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
-    terminal.onKey((e) => {
-      let {key} = e;
-      if(key==="\r"){
-        if(curr_line){
-          terminal.write("\r\n")
+      if(document.querySelector(".xterm")?.children.length===0){
+      const newTerminal = new Terminal();
+      let curr_line = "";
+      newTerminal.write('Hello from \x1B[1;3;31mPOL\x1B[0m $ ');
+      newTerminal.onKey((e) => {
+        let {key} = e;
+        if(key==="\r"){
+          if(curr_line){
+            newTerminal.write("\r\n")
+            newTerminal.write('Hello from \x1B[1;3;31mPOL\x1B[0m $ ');
+          }
         }
-      }
-      else if(key==="\x7F"){
-        if(curr_line){
-          curr_line = curr_line.slice(0,curr_line.length-1);//socket연결
-          terminal.write("\b \b")
+        else if(key==="\x7F"){
+          if(curr_line.length>0){
+            curr_line = curr_line.slice(0,curr_line.length-1);//socket연결
+           newTerminal.write("\b \b")
+          }
         }
-      }
-      else{
-        curr_line +=key;
-        terminal.write(key);
-      }
-    });
+        else{
+          curr_line +=key;
+          newTerminal.write(key);
+        }
+      }); 
+      newTerminal.open(document.querySelector(".xterm") as HTMLDivElement);}
   }, []);
 
   return (
-      <div ref={xtermRef}/>
+      <div className='xterm'/>
   );
 };
 
