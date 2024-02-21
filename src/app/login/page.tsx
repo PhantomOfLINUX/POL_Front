@@ -1,12 +1,13 @@
 import React from "react";
-import Xterm from "@/components/xterm/Xterm";
+import LoginModal from "@/components/login/LoginModal";
+
+
 
 const Problem = () => {
     
     return (
         <div>
-            Problem
-            <Xterm/>
+            <LoginModal/>
         </div>
     )
 }
