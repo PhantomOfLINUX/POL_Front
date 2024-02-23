@@ -5,7 +5,6 @@ const Problem = () => {
     
     return (
         <div>
-            Problem
             <Xterm/>
         </div>
     )
