@@ -42,4 +42,3 @@ const Xterm: React.FC= () => {
 };
 
 export default Xterm;
-
