@@ -16,7 +16,7 @@ export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:s
 
 const checkExistingEmail = async (email: string): Promise<boolean> => {
     try {
-        const response = await fetch(`${url}/api/signup/email/${email}`);
+        const response = await fetch(`${url}/api/auth/email/${email}`);
         if (response.status === 200) {
             return true; // 이메일이 존재함
         } else if (response.status === 400) {
@@ -32,13 +32,13 @@ const checkExistingEmail = async (email: string): Promise<boolean> => {
   };
 
 const submitEmail = async (email:string) => {
-    await fetch((`${url}/api/signup/email/${email}/verify`))
+    await fetch((`${url}/api/auth/email/${email}/verify`))
     alert("인증번호가 이메일에 전송되었습니다.")
 }
 
 export const CheckAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string,emailAuth:string) => {
     e.preventDefault()
-    const authenticationCheck = await fetch((`${url}/api/sign-up/email/${email}/code/${emailAuth}`))
+    const authenticationCheck = await fetch((`${url}/api/auth/email/${email}/code/${emailAuth}`))
     if(authenticationCheck){
         alert("인증번호가 맞습니다.")
     }
@@ -60,7 +60,7 @@ export const CheckPasswordCheck = (password:string, passwordCheck:string) => pas
 export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,code:string,name:string,password:string,passwordCheck:string) => {
     e.preventDefault();
     if((name!==""&&/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)&&password===passwordCheck)){
-        let SignUpcheck = await fetch((`${url}/api/signup/pol`),{
+        let SignUpcheck = await fetch((`${url}/api/auth/signup`),{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json',

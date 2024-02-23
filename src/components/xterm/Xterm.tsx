@@ -2,41 +2,42 @@
 
 import React, { useEffect } from 'react';
 import { Terminal } from 'xterm';
+import {AttachAddon} from "xterm-addon-attach"
+
 import 'xterm/css/xterm.css';
 
+const socketUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
 
 const Xterm: React.FC= () => {
   useEffect(() => {
-    const terminal = new Terminal({
-      cursorBlink: true,
-      scrollSensitivity: 2,
-      allowProposedApi: true,
-    });
+    const websocket = new WebSocket(socketUrl?socketUrl:"");//수정 필요
+    const newTerminal = new Terminal();
+    const attachAddon = new AttachAddon(websocket);
+    newTerminal.loadAddon(attachAddon);
     let curr_line = "";
-    terminal.open(document.getElementById('terminal') as HTMLElement);
-    terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
-    terminal.onKey((e) => {
+    newTerminal.onKey((e) => {
       let {key} = e;
-      if(key==="\r"){
+      console.log(curr_line)
+      if(key==="\r"){//enter
         if(curr_line){
-          terminal.write("\r\n")
+          newTerminal.write("\r\n")
         }
       }
-      else if(key==="\x7F"){
-        if(curr_line){
-          curr_line = curr_line.slice(0,curr_line.length-1);//socket연결
-          terminal.write("\b \b")
+      else if(key==="\x7F"){//backspace
+        if(curr_line.length>0){
+          curr_line = curr_line.slice(0,curr_line.length-1);
         }
       }
-      else{
+      else{//추가
         curr_line +=key;
-        terminal.write(key);
       }
-    });
+    }); 
+    if(document.querySelector(".xterm")?.children.length===0)
+      newTerminal.open(document.querySelector(".xterm") as HTMLDivElement);
   }, []);
 
   return (
-      <div id="terminal"/>
+      <div className='xterm'/>
   );
 };
 
