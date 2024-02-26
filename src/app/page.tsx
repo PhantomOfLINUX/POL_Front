@@ -4,7 +4,7 @@ import GoButton from "@/components/GoButton/GoButton";
 const Introduction = () => {
     return (
         <div>
-            Introduction
+            Introduction test
             <GoButton />
         </div>
     )
