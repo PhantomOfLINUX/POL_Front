@@ -6,7 +6,7 @@ type loginType = {
     label:string,
     type:string,
     placeholder:string,
-    onChange: React.Dispatch<React.SetStateAction<string>>
+    onChange:React.Dispatch<React.SetStateAction<string>>
 }
 
 
