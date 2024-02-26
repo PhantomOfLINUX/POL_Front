@@ -18,10 +18,14 @@ body{
       @apply ;
     }
     .loginSignUpBtn {
-      @apply w-80 h-12 bg-my-blue text-white rounded;
+      @apply w-80 h-12 bg-thema-color text-white rounded;
+    }
+    .loginSignUpInputContainer {
+        @apply flex w-80 h-12 bg-white rounded border-solid border-2 border-inputBorder-color;
     }
   }
 
 
-/* 입력 박스 */
-
+/*
+border: 1px solid #90929E;
+*/

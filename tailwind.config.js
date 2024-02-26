@@ -9,8 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundColor: {
-        "my-blue": "#2D347F",
+      colors: {
+        "thema-color": "#2D347F",
+        "inputBorder-color": "#90929E",
       },
     },
   },
