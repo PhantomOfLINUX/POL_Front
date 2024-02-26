@@ -13,6 +13,7 @@ const LoginInput:React.FC<loginType> = ({type, placeholder,onChange}) => {
   return (
     <div className='loginSignUpInputContainer'>
       <input
+        className='loginSignUpInput'
         type={type}
         placeholder={placeholder}
         onChange={(e)=>onChange(e.target.value)}

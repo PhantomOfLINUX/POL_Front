@@ -23,6 +23,9 @@ body{
     .loginSignUpInputContainer {
         @apply flex w-80 h-12 bg-white rounded border-solid border-2 border-inputBorder-color;
     }
+    .loginSignUpInput{
+        @apply w-full
+    }
   }
 
 

@@ -7,11 +7,14 @@ const SignUpInput = ({ label, type, placeholder, onChange, isVaild, errorMsg }:s
   return (
     <div>
       <label>{label}</label>
+      <div className='loginSignUpInputContainer'>
       <input
+      className='loginSignUpInput'
         type={type}
         placeholder={placeholder}
         onChange={(e)=>onChange(e.target.value)}
       />
+      </div>
       {isVaild&&<span>{errorMsg}</span>}
     </div>
   );
