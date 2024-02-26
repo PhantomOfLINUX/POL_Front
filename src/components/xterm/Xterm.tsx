@@ -17,7 +17,6 @@ const Xterm: React.FC= () => {
     let curr_line = "";
     newTerminal.onKey((e) => {
       let {key} = e;
-      console.log(curr_line)
       if(key==="\r"){//enter
         if(curr_line){
           newTerminal.write("\r\n")
