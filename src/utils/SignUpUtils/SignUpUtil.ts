@@ -1,3 +1,4 @@
+import { off } from "process";
 import React from "react";
 
 const url = process.env.NEXT_PUBLIC_BASE_API
@@ -9,32 +10,22 @@ export const checkEmail = (e:string) => {
 
 export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
     e.preventDefault()
-    const emailCheck = await checkExistingEmail(email);
-    if(emailCheck)
-        submitEmail(email)
-}//email 인증번호 보내는 코드
-
-const checkExistingEmail = async (email: string): Promise<boolean> => {
-    try {
-        const response = await fetch(`${url}/api/auth/email/${email}`);
-        if (response.status === 200) {
-            return true; // 이메일이 존재함
-        } else if (response.status === 400) {
-            alert("가입된 아이디가 있습니다.");
-            return false; // 이메일이 존재하지 않음
-        } else {
-            throw new Error(`Unexpected status code: ${response.status}`);
-        }
-    } catch (error) {
-      console.error('무슨에러일까요?:', error);
-      return false;
+    try{
+    const emailCheck = await fetch((`${url}/api/auth/email/${email}/verification`));
+    if(emailCheck.ok){
+        alert("이메일이 전송되었습니다.")
     }
-  };
-
-const submitEmail = async (email:string) => {
-    await fetch((`${url}/api/auth/email/${email}/verify`))
-    alert("인증번호가 이메일에 전송되었습니다.")
-}
+    else if(emailCheck.status===400){
+        alert("이미 존재한 이메일입니다.")
+    }
+    else{
+        throw new Error(`Unexpected status code: ${emailCheck.status}`);
+    }
+    }catch (error) {
+        console.error('무슨에러일까요?:', error);
+        return false;
+    }
+}//email 인증
 
 export const CheckAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string,emailAuth:string) => {
     e.preventDefault()
