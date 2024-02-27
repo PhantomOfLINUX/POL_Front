@@ -48,7 +48,7 @@ export const CheckPassword = (password:string) => {
 
 export const CheckPasswordCheck = (password:string, passwordCheck:string) => passwordCheck!==""&&password!==passwordCheck;
 
-export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,code:string,name:string,password:string,passwordCheck:string) => {
+export const SubmitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,name:string,password:string,passwordCheck:string) => {
     e.preventDefault();
     if((name!==""&&/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)&&password===passwordCheck)){
         let SignUpcheck = await fetch((`${url}/api/auth/signup`),{
@@ -56,7 +56,7 @@ export const submitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({code,name,email,password})
+            body: JSON.stringify({name,email,password})
         })
         if(SignUpcheck.ok){
             alert("회원가입에 성공하셨습니다.")
