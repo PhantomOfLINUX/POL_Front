@@ -11,7 +11,7 @@ type loginType = {
 
 const LoginInput:React.FC<loginType> = ({type, placeholder,onChange}) => {
   return (
-    <div className='loginSignUpInputContainer'>
+    <div className='loginSignUpInputContainer my-3'>
       <input
         className='loginSignUpInput'
         type={type}

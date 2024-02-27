@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         "thema-color": "#2D347F",
         "inputBorder-color": "#90929E",
+        "vaild-color": "#E7322D",
       },
       minHeight: {
         "min-height": "800px",

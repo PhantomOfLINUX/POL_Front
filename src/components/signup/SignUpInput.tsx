@@ -5,7 +5,7 @@ import { signType } from '@/types/signUptypes';
 
 const SignUpInput = ({ label, type, placeholder, onChange, isVaild, errorMsg }:signType) => {
   return (
-    <div>
+    <div className='min-h-24'>
       <label>{label}</label>
       <div className='loginSignUpInputContainer'>
       <input
@@ -15,7 +15,7 @@ const SignUpInput = ({ label, type, placeholder, onChange, isVaild, errorMsg }:s
         onChange={(e)=>onChange(e.target.value)}
       />
       </div>
-      {isVaild&&<span>{errorMsg}</span>}
+      {isVaild&&<span className='text-xs text-vaild-color'>*{errorMsg}</span>}
     </div>
   );
 };

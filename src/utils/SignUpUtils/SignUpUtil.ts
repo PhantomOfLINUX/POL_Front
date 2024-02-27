@@ -27,20 +27,6 @@ export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:s
     }
 }//email 인증
 
-export const CheckAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string,emailAuth:string) => {
-    e.preventDefault()
-    const authenticationCheck = await fetch((`${url}/api/auth/email/${email}/code/${emailAuth}`))
-    if(authenticationCheck){
-        alert("인증번호가 맞습니다.")
-    }
-    else{
-        alert("이메일 인증코드가 불일치합니다.")
-    }
-}
-
-
-export const CheckName = (name:string) => name===""
-
 export const CheckPassword = (password:string) => {
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;//유효성 체크
     return password!==""&&!(passwordRegex.test(password))
@@ -66,6 +52,6 @@ export const SubmitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,
             console.log(SignUpcheck)
     }
     else{
-        console.log("형식이 맞지 않습니다.",!CheckName(name),CheckPassword(password),CheckPasswordCheck(password,passwordCheck))
+        console.log("형식이 맞지 않습니다.",!(name===""),CheckPassword(password),CheckPasswordCheck(password,passwordCheck))
     }
 }
