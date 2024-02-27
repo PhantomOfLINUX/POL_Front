@@ -12,9 +12,10 @@ module.exports = {
         "thema-color": "#2D347F",
         "inputBorder-color": "#90929E",
         "vaild-color": "#E7322D",
+        "description-color": "#21214C",
       },
       minHeight: {
-        "min-height": "800px",
+        "min-height": "400px",
       },
     },
   },
