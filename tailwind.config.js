@@ -4,7 +4,6 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -12,6 +11,9 @@ module.exports = {
       colors: {
         "thema-color": "#2D347F",
         "inputBorder-color": "#90929E",
+      },
+      minHeight: {
+        "min-height": "800px",
       },
     },
   },

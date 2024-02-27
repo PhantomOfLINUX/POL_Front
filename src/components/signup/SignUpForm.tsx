@@ -8,7 +8,7 @@ import GoogleOauth from "../oauth/GoogleOauthButton"
 import { SendAuthentication, CheckAuthentication, checkEmail, CheckName, CheckPassword, CheckPasswordCheck, submitSignUp} from "@/utils/signUpUtils/SignUpUtil"
 
 
-const SignUp = () => {
+const SignUpForm = () => {
     const [email,setEmail] = useState<string>("")
     const [emailCertification,setEmailCertification] = useState<string>("")
     const [name,setName] = useState<string>("");
@@ -16,7 +16,7 @@ const SignUp = () => {
     const [passwordCheck,setPasswordCheck] = useState<string>("");
 
     return (
-        <main>
+        <main className="loginSignUp">
             <SignUpInput label="이메일" placeholder="name@mail.com" type="email" onChange={setEmail} isVaild={checkEmail(email)} errorMsg="이메일 형식이 아닙니다."/>
             <button className="loginSignUpBtn" onClick={(e)=>SendAuthentication(e,email)}>인증번호 발송</button>
 
@@ -33,4 +33,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp;
+export default SignUpForm;

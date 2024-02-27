@@ -1,5 +1,5 @@
 import React from "react";
-import LoginModal from "@/components/login/LoginModal";
+import LoginForm from "@/components/login/LoginForm";
 
 
 
@@ -7,7 +7,7 @@ const Problem = () => {
     
     return (
         <div>
-            <LoginModal/>
+            <LoginForm/>
         </div>
     )
 }
