@@ -1,13 +1,15 @@
 import React from "react";
-import LoginModal from "@/components/login/LoginModal";
 
+import LoginForm from "@/components/login/LoginForm";
+import LoginSignupDescription from "@/components/description/LoginSignupDescription"
 
 
 const Problem = () => {
     
     return (
         <div>
-            <LoginModal/>
+            <LoginSignupDescription/>
+            <LoginForm/>
         </div>
     )
 }

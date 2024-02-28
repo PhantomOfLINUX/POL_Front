@@ -2,12 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    font-family: S-CoreDream-3Light;
+body {
+  font-family: S-CoreDream-3Light;
 }
 @font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "S-CoreDream-3Light";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
+
+@layer components {
+  .loginSignUp {
+    @apply min-h-min-height w-screen flex flex-col justify-start items-center;
+  }
+  .loginSignUpBtn {
+    @apply w-80 h-12 bg-thema-color text-white rounded my-3;
+  }
+  .loginSignUpInputContainer {
+    @apply flex w-80 h-12 bg-white rounded border-solid border-2 border-inputBorder-color;
+  }
+  .loginSignUpInput {
+    @apply w-full;
+  }
+}
+
+/*
+border: 1px solid #90929E;
+*/

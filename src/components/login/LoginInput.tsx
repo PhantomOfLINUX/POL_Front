@@ -3,18 +3,17 @@ import React from 'react';
 
 
 type loginType = {
-    label:string,
     type:string,
     placeholder:string,
     onChange:React.Dispatch<React.SetStateAction<string>>
 }
 
 
-const LoginInput:React.FC<loginType> = ({ label, type, placeholder,onChange}) => {
+const LoginInput:React.FC<loginType> = ({type, placeholder,onChange}) => {
   return (
-    <div>
-      <label>{label}</label>
+    <div className='loginSignUpInputContainer my-3'>
       <input
+        className='loginSignUpInput'
         type={type}
         placeholder={placeholder}
         onChange={(e)=>onChange(e.target.value)}
