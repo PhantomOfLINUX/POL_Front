@@ -6,10 +6,10 @@ const Header = () => {
     return (
         <header className="flex w-full px-40 min-h-28 justify-between items-center">
             <HeaderHomeBtn />
-            <div className="flex">
+            <nav className="flex">
                 <HeaderLoginBtn />
                 <HeaderSignUpBtn />
-            </div>
+            </nav>
         </header>
     )
 }
