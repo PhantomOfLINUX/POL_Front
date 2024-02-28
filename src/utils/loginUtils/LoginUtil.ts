@@ -16,10 +16,9 @@ export const signInLocally = async (e:React.FormEvent<HTMLFormElement>,id:string
         }),
     });
     const loginInfo = await loggedIn.json();
-    console.log(loginInfo)//전역상태관리로 처리해야함
     if(loggedIn.ok){
         alert("로그인에 성공하였습니다.")
-        //window.location.replace("/")
+        window.location.replace("/")
     }
     else{
         alert("아이디 또는 비밀번호가 맞지 않습니다.")
