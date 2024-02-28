@@ -4,10 +4,12 @@ import HeaderHomeBtn from "./HeaderHomeBtn";
 
 const Header = () => {
     return (
-        <header>
-            <HeaderHomeBtn/>
-            <HeaderLoginBtn/>
-            <HeaderSignUpBtn/>
+        <header className="flex w-full justify-between">
+            <HeaderHomeBtn />
+            <div className="flex">
+                <HeaderLoginBtn />
+                <HeaderSignUpBtn />
+            </div>
         </header>
     )
 }
