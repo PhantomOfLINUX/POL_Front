@@ -1,43 +1,44 @@
 "use client"
 import React, { useEffect, useRef } from 'react';
 import { Terminal } from 'xterm';
+import { AttachAddon } from 'xterm-addon-attach';
 import 'xterm/css/xterm.css';
 
+const socketUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
 
 const Xterm: React.FC = () => {
   const terminalRef = useRef<Terminal | null>(null);
   const xtermContainerRef = useRef<HTMLDivElement | null>(null); // 터미널이 로드될 div의 ref
+
   useEffect(() => {
-    const terminal = new Terminal({
-      cursorBlink: true,
-      scrollSensitivity: 2,
-      allowProposedApi: true,
-    });
-    let curr_line = "";
-    terminal.open(document.getElementById('terminal') as HTMLElement);
-    terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
-    terminal.onKey((e) => {
-      let {key} = e;
-      if(key==="\r"){
-        if(curr_line){
-          terminal.write("\r\n")
+    if (!terminalRef.current && xtermContainerRef.current) {
+      const websocket = new WebSocket(socketUrl ? socketUrl : "");
+      const newTerminal = new Terminal();
+      const attachAddon = new AttachAddon(websocket);
+      newTerminal.loadAddon(attachAddon);
+      terminalRef.current = newTerminal;
+
+      let curr_line = "";
+      newTerminal.onKey((e) => {
+        let { key } = e;
+        if (key === "\r") {
+          if (curr_line) {
+            newTerminal.write("\r\n");
+          }
+        } else if (key === "\x7F") {
+          if (curr_line.length > 0) {
+            curr_line = curr_line.slice(0, curr_line.length - 1);
+          }
+        } else {
+          curr_line += key;
         }
-      }
-      else if(key==="\x7F"){
-        if(curr_line){
-          curr_line = curr_line.slice(0,curr_line.length-1);//socket연결
-          terminal.write("\b \b")
-        }
-      }
-      else{
-        curr_line +=key;
-        terminal.write(key);
-      }
-    });
+      });
+      newTerminal.open(xtermContainerRef.current);
+    }
   }, []);
 
   return (
-      <div id="terminal"/>
+    <div ref={xtermContainerRef} className='xterm' />
   );
 };
 
