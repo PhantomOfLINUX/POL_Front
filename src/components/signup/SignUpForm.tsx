@@ -10,7 +10,6 @@ import { SendAuthentication, checkEmail, CheckPassword, CheckPasswordCheck, Subm
 
 const SignUpForm = () => {
     const [email,setEmail] = useState<string>("")
-    const [emailCertification,setEmailCertification] = useState<string>("")
     const [name,setName] = useState<string>("");
     const [password,setPassword] = useState<string>("");
     const [passwordCheck,setPasswordCheck] = useState<string>("");
