@@ -31,16 +31,16 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-node-
 
+            - name: Make env file
+              run: |
+                  echo "${{ secrets.ENV_PROPERTIES }}" > ".env"
+                  cat .env
+
             - name: Install dependencies
               run: npm ci
 
             - name: Build
               run: npm run build
-
-            - name: Make env file
-              run: |
-                  echo "${{ secrets.ENV_PROPERTIES }}" > ".env"
-                  cat .env
 
             - name: Login to DockerHub
               uses: docker/login-action@v3
