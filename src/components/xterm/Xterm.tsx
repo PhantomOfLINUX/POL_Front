@@ -1,11 +1,13 @@
-'use client'
-
-import React, { useEffect } from 'react';
+"use client"
+import React, { useEffect, useRef } from 'react';
 import { Terminal } from 'xterm';
 import 'xterm/css/xterm.css';
 
 
-const Xterm: React.FC= () => {
+const Xterm: React.FC = () => {
+  const terminalRef = useRef<Terminal | null>(null);
+  const xtermContainerRef = useRef<HTMLDivElement | null>(null); // 터미널이 로드될 div의 ref
+
   useEffect(() => {
     const terminal = new Terminal({
       cursorBlink: true,
