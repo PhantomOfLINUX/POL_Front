@@ -21,23 +21,15 @@ body {
     @apply w-80 h-12 bg-thema-color text-white rounded my-3;
   }
   .loginSignUpInputContainer {
-    @apply flex w-80 h-12 bg-white rounded border-solid border-2 border-inputBorder-color flex-col;
+    @apply flex w-80 h-12 bg-white rounded border-solid border-2 border-inputBorder-color;
   }
   .loginSignUpInput {
     @apply w-full;
   }
-
-  .headerhomebtn{
-    @apply text-thema-color font-[1000] text-4xl ;
-  }
-  .headerloginbtn{
-    @apply w-24 h-12 bg-thema-color text-white rounded;
-  }
-  .headersignupbtn{
-    @apply w-24 h-12 bg-thema-color text-white rounded ;
+  .headerBtn {
+    @apply w-24 h-12 bg-thema-color text-white rounded ml-8;
   }
 }
-
 
 /*
 border: 1px solid #90929E;
