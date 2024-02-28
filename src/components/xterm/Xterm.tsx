@@ -28,9 +28,8 @@ const Xterm: React.FC = () => {
           if (curr_line.length > 0) {
             curr_line = curr_line.slice(0, curr_line.length - 1);
           }
-        } else {
+        } else 
           curr_line += key;
-        }
       });
       newTerminal.open(xtermContainerRef.current);
     }
