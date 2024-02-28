@@ -1,5 +1,7 @@
 import React from "react";
-import Xterm from "@/components/xterm/Xterm";
+import dynamic from "next/dynamic";
+
+const Xterm = dynamic(()=>import("@/components/xterm/Xterm"))
 
 const Problem = () => {
     
