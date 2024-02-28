@@ -1,42 +1,44 @@
-'use client'
-
-import React, { useEffect } from 'react';
+"use client"
+import React, { useEffect, useRef } from 'react';
 import { Terminal } from 'xterm';
-import {AttachAddon} from "xterm-addon-attach"
-
+import { AttachAddon } from 'xterm-addon-attach';
 import 'xterm/css/xterm.css';
 
 const socketUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
 
-const Xterm: React.FC= () => {
+const Xterm: React.FC = () => {
+  const terminalRef = useRef<Terminal | null>(null);
+  const xtermContainerRef = useRef<HTMLDivElement | null>(null); // 터미널이 로드될 div의 ref
+
   useEffect(() => {
-    const websocket = new WebSocket(socketUrl?socketUrl:"");//수정 필요
-    const newTerminal = new Terminal();
-    const attachAddon = new AttachAddon(websocket);
-    newTerminal.loadAddon(attachAddon);
-    let curr_line = "";
-    newTerminal.onKey((e) => {
-      let {key} = e;
-      if(key==="\r"){//enter
-        if(curr_line){
-          newTerminal.write("\r\n")
+    if (!terminalRef.current && xtermContainerRef.current) {
+      const websocket = new WebSocket(socketUrl ? socketUrl : "");
+      const newTerminal = new Terminal();
+      const attachAddon = new AttachAddon(websocket);
+      newTerminal.loadAddon(attachAddon);
+      terminalRef.current = newTerminal;
+
+      let curr_line = "";
+      newTerminal.onKey((e) => {
+        let { key } = e;
+        if (key === "\r") {
+          if (curr_line) {
+            newTerminal.write("\r\n");
+          }
+        } else if (key === "\x7F") {
+          if (curr_line.length > 0) {
+            curr_line = curr_line.slice(0, curr_line.length - 1);
+          }
+        } else {
+          curr_line += key;
         }
-      }
-      else if(key==="\x7F"){//backspace
-        if(curr_line.length>0){
-          curr_line = curr_line.slice(0,curr_line.length-1);
-        }
-      }
-      else{//추가
-        curr_line +=key;
-      }
-    }); 
-    if(document.querySelector(".xterm")?.children.length===0)
-      newTerminal.open(document.querySelector(".xterm") as HTMLDivElement);
+      });
+      newTerminal.open(xtermContainerRef.current);
+    }
   }, []);
 
   return (
-      <div className='xterm'/>
+    <div ref={xtermContainerRef} className='xterm' />
   );
 };
 
