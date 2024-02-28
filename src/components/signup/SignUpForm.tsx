@@ -5,12 +5,11 @@ import React, { useState } from "react"
 import SignUpInput from "./SignUpInput"
 import GoogleOauth from "../oauth/GoogleOauthButton"
 
-import { SendAuthentication, checkEmail, CheckPassword, CheckPasswordCheck, SubmitSignUp } from "@/utils/test/SignUpUtil"
+import { SendAuthentication, checkEmail, CheckPassword, CheckPasswordCheck, SubmitSignUp } from "@/utils/signUpUtils/SignUpUtil"
 
 
 const SignUpForm = () => {
     const [email, setEmail] = useState<string>("")
-    const [emailCertification, setEmailCertification] = useState<string>("")
     const [name, setName] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [passwordCheck, setPasswordCheck] = useState<string>("");
