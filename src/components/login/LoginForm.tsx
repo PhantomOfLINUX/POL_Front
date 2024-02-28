@@ -4,14 +4,15 @@ import Link from "next/link";
 
 import LoginInput from "./LoginInput";
 import { signInLocally } from "@/utils/loginUtils/LoginUtil";
-
+import useAuthStore from "@/store/authStore"
 
 const LoginForm = () => {
     const [id,setId] = useState<string>("")
     const [password,setPassword] = useState<string>("")
+    const {setToken} = useAuthStore();
     return (
         <main className="loginSignUp">
-        <form onSubmit={e=>signInLocally(e,id,password)}>
+        <form onSubmit={e=>signInLocally(e,id,password,setToken)}>
             <LoginInput type="text" placeholder="이메일" onChange={setId}/>
             <LoginInput type="password" placeholder="비밀번호"  onChange={setPassword}/>
             <div className="flex justify-center">

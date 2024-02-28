@@ -8,4 +8,3 @@ export type signType = {
     isVaild?:boolean;
     errorMsg:string;
   }
-  

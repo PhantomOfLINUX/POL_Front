@@ -13,7 +13,6 @@ const SignUpForm = () => {
     const [name,setName] = useState<string>("");
     const [password,setPassword] = useState<string>("");
     const [passwordCheck,setPasswordCheck] = useState<string>("");
-
     return (
         <main className="loginSignUp">
             <SignUpInput label="이메일" placeholder="name@mail.com" type="email" onChange={setEmail} isVaild={checkEmail(email)} errorMsg="이메일 형식이 아닙니다."/>

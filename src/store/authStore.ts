@@ -1,9 +1,9 @@
 import create from 'zustand'
 
-
-interface AuthState {
+export type TokenSetter = (token: string) => void;
+export interface AuthState {
   userToken: string | null;
-  setToken:(token:string)=>void;
+  setToken:TokenSetter;
 }
 
 const useAuthStore = create<AuthState>(set => ({
