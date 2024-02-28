@@ -1,15 +1,11 @@
-FROM node:20-alpine
+FROM node:20-alpine as release
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+COPY ./.next/ ./
+COPY ./public ./
 
 RUN npm ci
-
-COPY .env /app/.env
-
-COPY ./ ./
-
-RUN npm run build
 
 CMD ["npm", "start"]
