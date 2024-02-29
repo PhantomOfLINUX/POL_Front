@@ -1,7 +1,9 @@
 import {TokenSetter} from "@/store/authStore"
+import {CustomRouter} from "@/types/routertypes"
 const url =  process.env.NEXT_PUBLIC_BASE_API;
 
-export const signInLocally = async (e:React.FormEvent<HTMLFormElement>,id:string,password:string,setToken:TokenSetter) => {
+
+export const signInLocally = async (e:React.FormEvent<HTMLFormElement>,id:string,password:string,setToken:TokenSetter,router:CustomRouter) => {
     e.preventDefault();
     try{
     const loggedIn = await fetch(`${url}/api/auth/login`,{
@@ -20,10 +22,10 @@ export const signInLocally = async (e:React.FormEvent<HTMLFormElement>,id:string
     if(loggedIn.ok){
         alert("로그인에 성공하였습니다.")
         const {token:{accessToken,refreshToken}} = loginInfo;
+        console.log("asd")
         setToken(accessToken);
-        
-        //window.location.replace("/")
-        //kr.or.pol@gmail.com
+        localStorage.setItem('refreshToken', refreshToken);
+        router.replace("/")
     }
     else{
         alert("아이디 또는 비밀번호가 맞지 않습니다.")
