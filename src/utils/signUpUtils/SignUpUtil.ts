@@ -10,7 +10,11 @@ export const checkEmail = (e:string) => {
 export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
     e.preventDefault()
     try{
-    const emailCheck = await fetch((`${url}/api/auth/email/${email}/verification`));
+    const emailCheck = await fetch((`${url}/api/auth/email/verification`),{ method:'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({email,type: "REGISTRATION"})});
     if(emailCheck.ok){
         alert("이메일이 전송되었습니다.")
     }

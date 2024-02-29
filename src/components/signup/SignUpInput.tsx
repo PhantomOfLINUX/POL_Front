@@ -9,7 +9,7 @@ const SignUpInput = ({ label, type, placeholder, onChange, isVaild, errorMsg }:s
       <label>{label}</label>
       <div className='loginSignUpInputContainer'>
       <input
-      className='loginSignUpInput'
+        className='loginSignUpInput'
         type={type}
         placeholder={placeholder}
         onChange={(e)=>onChange(e.target.value)}
