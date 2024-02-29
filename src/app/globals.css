@@ -18,13 +18,13 @@ body {
     @apply min-h-min-height w-screen flex flex-col justify-start items-center;
   }
   .loginSignUpBtn {
-    @apply w-80 h-12 bg-thema-color text-white rounded my-3;
+    @apply w-80 h-12 bg-thema-color text-white rounded;
   }
   .loginSignUpInputContainer {
-    @apply flex w-80 h-12 bg-white rounded border-solid border-2 border-inputBorder-color;
+    @apply flex w-80 h-12 mb-6 bg-white rounded border-solid border-2 border-inputBorder-color;
   }
   .loginSignUpInput {
-    @apply w-full;
+    @apply w-full px-3;
   }
   .headerBtn {
     @apply w-24 h-12 bg-thema-color text-white rounded ml-8;
