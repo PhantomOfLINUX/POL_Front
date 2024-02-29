@@ -3,7 +3,7 @@ import {CustomRouter} from "@/types/routertypes"
 const url =  process.env.NEXT_PUBLIC_BASE_API;
 
 
-export const signInLocally = async (e:React.FormEvent<HTMLFormElement>,id:string,password:string,setToken:TokenSetter,router:CustomRouter) => {
+export const LoginInLocally = async (e:React.FormEvent<HTMLFormElement>,id:string,password:string,setToken:TokenSetter,router:CustomRouter) => {
     e.preventDefault();
     try{
     const loggedIn = await fetch(`${url}/api/auth/login`,{
