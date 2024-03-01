@@ -1,4 +1,4 @@
-import create from 'zustand'
+import {create} from 'zustand'
 
 export type TokenSetter = (token: string|null) => void;
 export interface AuthState {
