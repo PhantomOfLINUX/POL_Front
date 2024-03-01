@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import LoginInput from "./LoginInput";
+import SocialLogin from "../socialLogin/SocialLogin";
+
 import { LoginInLocally } from "@/utils/loginUtils/LoginUtil";
+
 import useAuthStore from "@/store/authStore"
 
 const LoginForm = () => {
@@ -23,6 +26,7 @@ const LoginForm = () => {
                     <Link href="/signup" className="px-4">회원가입하기</Link>
                 </div>
                 <button className="loginSignUpBtn mt-8">로그인</button>
+                <SocialLogin/>
             </form>
         </main>
     )
