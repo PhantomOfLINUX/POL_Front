@@ -1,0 +1,7 @@
+.border-text::before {
+  content: "간편 로그인";
+  position: absolute;
+  top: -0.8rem;
+  background: white;
+  padding: 0 5px;
+}

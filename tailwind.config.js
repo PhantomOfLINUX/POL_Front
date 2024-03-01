@@ -13,9 +13,13 @@ module.exports = {
         "inputBorder-color": "#90929E",
         "vaild-color": "#E7322D",
         "description-color": "#21214C",
+        "socialBorder-color": "#4E5968",
       },
       minHeight: {
         "min-height": "400px",
+      },
+      height: {
+        "social-height": "98px",
       },
     },
   },
