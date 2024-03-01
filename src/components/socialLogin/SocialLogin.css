@@ -1,9 +1,7 @@
 .border-text::before {
-  content: "간편 로그인"; /* 삽입할 텍스트 */
+  content: "간편 로그인";
   position: absolute;
-  top: -1rem; /* 위치 조정 */
-  left: 50%;
-  transform: translateX(-50%); /* 중앙 정렬 */
-  background: white; /* 배경색 */
-  padding: 0 5px; /* 패딩 */
+  top: -0.8rem;
+  background: white;
+  padding: 0 5px;
 }

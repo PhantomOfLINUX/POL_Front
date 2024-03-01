@@ -3,7 +3,7 @@
 import React,{useState} from "react"
 
 import SignUpInput from "./SignUpInput"
-import GoogleOauth from "../oauth/GoogleOauthButton"
+import SocialLogin from "../socialLogin/SocialLogin"
 
 import { SendAuthentication, checkEmail, CheckPassword, CheckPasswordCheck, SubmitSignUp} from "@/utils/signUpUtils/SignUpUtil"
 
@@ -25,7 +25,7 @@ const SignUpForm = () => {
             </div>
             <SignUpInput name="signUpName" id="signUpName" label="이름" placeholder="닉네임" type="text" onChange={setName} errorMsg="닉네임을 써주세요"/>
             <button className="loginSignUpBtn mt-8" onClick={(e=>SubmitSignUp(e,email,name,password,passwordCheck))}>함께하기</button>
-            <GoogleOauth />
+            <SocialLogin/>
         </main>
     )
 }
