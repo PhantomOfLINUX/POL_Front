@@ -23,7 +23,6 @@ export const LoginInLocally = async (e:React.FormEvent<HTMLFormElement>,id:strin
         alert("로그인에 성공하였습니다.")
         const {token:{accessToken,refreshToken}} = loginInfo;
         setToken(accessToken);
-        console.log(loginInfo)
         localStorage.setItem('refreshToken', refreshToken);
         router.replace("/")
     }
