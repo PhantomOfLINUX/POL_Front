@@ -12,7 +12,7 @@ export const logoutLocally = (accessToken:string) => {
         credentials: 'include'
     }).then(response => {
         if (response.ok) {
-
+            alert("로그아웃 되었습니다.")
         }
         else{
             throw new Error(`뭔가 이상합니다.. ${response.status}`);
