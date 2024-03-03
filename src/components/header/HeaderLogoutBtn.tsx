@@ -1,12 +1,17 @@
-'use client'
-import Link from "next/link"
-import {loginLocally} from "@/utils/logoutUtils/LogoutUtils"
-import useAuthStore from "@/store/authStore"
+"use client"
 
-const HeaderLogoutBtn = () => {
-    const {userToken,setToken} = useAuthStore()
+import Link from "next/link"
+import {logoutLocally} from "@/utils/logoutUtils/LogoutUtils"
+import React from "react"
+
+type logoutType = {
+    accessToken:string
+}
+
+const HeaderLogoutBtn:React.FC<logoutType> = ({accessToken}) => {
+
     return (
-        <button onClick={()=>{loginLocally(userToken,setToken)}} type="button" className="headerBtn">
+        <button onClick={()=>{logoutLocally(accessToken)}} type="button" className="headerBtn">
             <Link href="/">로그아웃</Link>
         </button>
 
