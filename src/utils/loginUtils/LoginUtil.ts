@@ -18,11 +18,8 @@ export const LoginInLocally = async (e:React.FormEvent<HTMLFormElement>,id:strin
             password
         }),
     });
-    const loginInfo = await loggedIn.json();//이부분에서 token활용
     if(loggedIn.ok){
         alert("로그인에 성공하였습니다.")
-        const {token:{accessToken}} = loginInfo;
-        setToken(accessToken);
         router.replace("/")
     }
     else{

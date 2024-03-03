@@ -7,7 +7,6 @@ import LoginInput from "./LoginInput";
 import SocialLogin from "../socialLogin/SocialLogin";
 
 import { LoginInLocally } from "@/utils/loginUtils/LoginUtil";
-
 import useAuthStore from "@/store/authStore"
 
 const LoginForm = () => {
