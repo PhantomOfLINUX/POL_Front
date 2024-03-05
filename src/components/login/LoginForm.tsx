@@ -21,7 +21,7 @@ const LoginForm = () => {
                     <Link href="/signup" className="px-4">회원가입하기</Link>
                 </div>
                 <button className="loginSignUpBtn mt-8">로그인</button>
-                <SocialLogin/>
+                <SocialLogin />
             </form>
         </main>
     )
