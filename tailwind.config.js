@@ -14,6 +14,7 @@ module.exports = {
         "vaild-color": "#E7322D",
         "description-color": "#21214C",
         "socialBorder-color": "#4E5968",
+        "gray": "#90929E"
       },
       minHeight: {
         "min-height": "400px",
