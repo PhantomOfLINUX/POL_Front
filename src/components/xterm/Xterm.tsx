@@ -14,8 +14,8 @@ const Xterm: React.FC = () => {
     if (!terminalRef.current && xtermContainerRef.current) {
       const websocket = new WebSocket(socketUrl ? socketUrl : "");
       const newTerminal = new Terminal();
-      //const attachAddon = new AttachAddon(websocket);
-      //newTerminal.loadAddon(attachAddon);
+      const attachAddon = new AttachAddon(websocket);
+      newTerminal.loadAddon(attachAddon);
       terminalRef.current = newTerminal;
 
       let curr_line = "";
