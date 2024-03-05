@@ -10,24 +10,26 @@ export const checkEmail = (e:string) => {
 export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
     e.preventDefault()
     try{
-    const emailCheck = await fetch((`${url}/api/auth/email/verification`),{ method:'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({email,type: "REGISTRATION"})});
-    if(emailCheck.ok){
-        alert("이메일이 전송되었습니다.")
+    const emailCheck = await fetch((`${url}/api/auth/email/verification`),{ 
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email,type: "REGISTRATION"})});
+        if(emailCheck.ok){
+            alert("이메일이 전송되었습니다.")
+        }
+        else if(emailCheck.status===400){
+            alert("이미 존재한 이메일입니다.")
+        }
+        else{
+            throw new Error(`Unexpected status code: ${emailCheck.status}`);
+        }
     }
-    else if(emailCheck.status===400){
-        alert("이미 존재한 이메일입니다.")
-    }
-    else{
-        throw new Error(`Unexpected status code: ${emailCheck.status}`);
-    }
-    }catch (error) {
-        console.error('무슨에러일까요?:', error);
-        return false;
-    }
+        catch (error) {
+            console.error('무슨에러일까요?:', error);
+            return false;
+        }
 }//email 인증
 
 export const CheckPassword = (password:string) => {

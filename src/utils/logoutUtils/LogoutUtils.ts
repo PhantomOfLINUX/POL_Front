@@ -13,6 +13,7 @@ export const logoutLocally = (accessToken:string) => {
     }).then(response => {
         if (response.ok) {
             alert("로그아웃 되었습니다.")
+            window.location.replace("/")
         }
         else{
             throw new Error(`뭔가 이상합니다.. ${response.status}`);
