@@ -18,7 +18,7 @@ export const LoginInLocally = async (e:React.FormEvent<HTMLFormElement>,id:strin
     });
     if(loggedIn.ok){
         alert("로그인에 성공하였습니다.")
-        window.location.replace("/")
+        //window.location.replace("/")
     }
     else{
         alert("아이디 또는 비밀번호가 맞지 않습니다.")
