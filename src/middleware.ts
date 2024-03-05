@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+
+
 export function middleware(request: NextRequest) {
-  
-  return NextResponse.redirect(new URL('/home', request.url))
+  const { nextUrl, cookies } = request;
+  const { origin, pathname } = nextUrl;
+  const accessToken = cookies.get("POL_ACCESS_TOKEN");
+
+  //return NextResponse.redirect(new URL('/', request.url))
 }
 
 export const config = {
