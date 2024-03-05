@@ -8,8 +8,7 @@ const socketUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
 
 const Xterm: React.FC = () => {
   const terminalRef = useRef<Terminal | null>(null);
-  const xtermContainerRef = useRef<HTMLDivElement | null>(null); // 터미널이 로드될 div의 ref
-
+  const xtermContainerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (!terminalRef.current && xtermContainerRef.current) {
       const websocket = new WebSocket(socketUrl ? socketUrl : "");
