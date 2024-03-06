@@ -13,10 +13,6 @@ const ResetPasswordForm = () => {
 
     const [tempToken, setTempToken] = useState<string | null>(null);
 
-    // const settingTempToken = async () => {
-    //     setTempToken(userToken)
-    // }
-
     return (
         <main className="loginSignUp">
             <form action="#">
