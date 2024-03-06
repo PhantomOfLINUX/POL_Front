@@ -37,7 +37,13 @@ export async function middleware(request: NextRequest) {
     if(!accessToken){
       const token = await ReAccessToken(refreshToken.value)
       const response = NextResponse.redirect(request.url);
-      response.cookies.set("POL_ACCESS_TOKEN", token);
+      response.cookies.set({
+        name:"POL_ACCESS_TOKEN",
+        value:token,
+        httpOnly: true,
+        path:'/',
+        expires:1000*60*60
+      });
       applySetCookie(request, response);
       return response;
     }
