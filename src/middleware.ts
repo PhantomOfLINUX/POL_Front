@@ -21,7 +21,7 @@ const ReAccessToken = async (refreshToken:string) => {
     if(newAccessTokenOk.ok){
       return newAccessToken.accessToken
     }
-    else return ""
+    else return undefined
   }catch(error) {
     console.error(error)
   }
@@ -36,10 +36,18 @@ export async function middleware(request: NextRequest) {
   if(accessToken===undefined&&refreshToken!==undefined){
     if(!accessToken){
       const token = await ReAccessToken(refreshToken.value)
-      const response = NextResponse.redirect(request.url);
-      response.cookies.set("POL_ACCESS_TOKEN", token);
-      applySetCookie(request, response);
-      return response;
+      if(token){
+        const now = new Date();
+        const time = now.getTime();
+        const response = NextResponse.redirect(request.url);
+        response.cookies.set({
+          name:"POL_ACCESS_TOKEN",
+          value:token,
+          expires:time+1000*60*60
+        });
+        applySetCookie(request, response);
+        return response;
+      }
     }
   } 
   if(pathname.startsWith("/problem")&&accessToken===undefined)
