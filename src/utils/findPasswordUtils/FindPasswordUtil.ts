@@ -43,7 +43,6 @@ export const GetTempAccessToken = async (e: React.MouseEvent<HTMLElement>, email
             method: 'GET',
         }).then((response) => response.json())
             .then((response) => setToken(response.accessToken))
-
         // if (emailCheck.ok) {
         //     alert("이메일이 전송되었습니다.")
         // }

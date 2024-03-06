@@ -19,25 +19,27 @@ export const CheckPassword = (password: string) => {
 
 export const CheckPasswordCheck = (password: string, passwordCheck: string) => passwordCheck !== "" && password !== passwordCheck;
 
-// export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPassword: string, newPasswordCheck: string, tempToken: string) => {
+// export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPassword: string, newPasswordCheck: string, userToken: string | null) => {
 //     e.preventDefault()
-//     console.log("비밀번호가 변경되었습니다")
-//     console.log("test", tempToken, "test")
+//     console.log("비밀번호 변경 테스트")
+//     console.log("test", userToken, "test")
+
 // }
 
-export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPassword: string, newPasswordCheck: string, tempToken: string) => {
+export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPassword: string, newPasswordCheck: string, userToken: string | null) => {
     e.preventDefault()
     try {
-        const emailCheck = await fetch((`${url}/api/players/password`), {
+        await fetch((`${url}/api/players/password`), {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': tempToken,
+                Authorization: `Bearer ${userToken}`
             },
             body: JSON.stringify({
-                newPassword
+                password: newPassword
             }),
         });
+        console.log(userToken)
         // if (emailCheck.ok) {
         //     //console.log({ userToken });
         //     alert("비밀번호가 변경되었습니다.")
