@@ -16,7 +16,6 @@ const Xterm: React.FC = () => {
       const attachAddon = new AttachAddon(websocket);
       newTerminal.loadAddon(attachAddon);
       terminalRef.current = newTerminal;
-
       let curr_line = "";
       newTerminal.onKey((e) => {
         let { key } = e;
