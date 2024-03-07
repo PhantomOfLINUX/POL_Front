@@ -3,6 +3,7 @@
 import React from "react";
 import Image from 'next/image'
 
+import {getSocialLoginUrl} from "@/utils/socialLogin/SocialLoginUtils"
 
 type SocialLoginSVGType = {
     name:string
@@ -13,13 +14,15 @@ const SocialLoginSVG:React.FC<SocialLoginSVGType> = ({name}) => {
     const ImageUrl = `./socialSVG/${name}.svg`
     return (
         <button onClick={(e)=>{
-            e.preventDefault()  
+            e.preventDefault() 
+            getSocialLoginUrl(name)
         }}>
             <Image 
                 src={ImageUrl}
-                alt={`${name}`} // 이미지 설명
-                width={50} // 이미지 너비
-                height={50} // 이미지 높이
+                alt={`${name}`}
+                width={50}
+                height={50}
+                style={{ width: 'auto', height: 'auto' }}
             />
         </button>
     )
