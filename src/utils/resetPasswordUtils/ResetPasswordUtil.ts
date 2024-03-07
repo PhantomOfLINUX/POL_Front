@@ -29,7 +29,7 @@ export const CheckPasswordCheck = (password: string, passwordCheck: string) => p
 export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPassword: string, newPasswordCheck: string, userToken: string | null) => {
     e.preventDefault()
     try {
-        await fetch((`${url}/api/players/password`), {
+        const emailCheck = await fetch((`${url}/api/players/password`), {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,10 +40,11 @@ export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPasswor
             }),
         });
         console.log(userToken)
-        // if (emailCheck.ok) {
-        //     //console.log({ userToken });
-        //     alert("비밀번호가 변경되었습니다.")
-        // }
+        if (emailCheck.ok) {
+            //console.log({ userToken });
+            alert("비밀번호가 변경되었습니다.")
+            window.location.replace("/")
+        }
         // else if (emailCheck.status === 400) {
         //     alert("이미 존재한 이메일입니다.")
         // }
