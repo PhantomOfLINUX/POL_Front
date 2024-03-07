@@ -4,15 +4,15 @@ import LoginForm from "@/components/login/LoginForm";
 import LoginSignupDescription from "@/components/description/LoginSignupDescription"
 
 
-const Problem = () => {
-    
+const login = () => {
+
     return (
         <div>
-            <LoginSignupDescription/>
-            <LoginForm/>
+            <LoginSignupDescription />
+            <LoginForm />
         </div>
     )
 }
 
 
-export default Problem;
+export default login;
