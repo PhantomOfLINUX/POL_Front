@@ -2,6 +2,7 @@ import HeaderLoginBtn from "./HeaderLoginBtn";
 import HeaderSignUpBtn from "./HeaderSignUpBtn"
 import HeaderHomeBtn from "./HeaderHomeBtn";
 import HeaderLogoutBtn from "./HeaderLogoutBtn";
+import HeaderMyPageBtn from "./HeaderMyPageBtn";
 import { cookies } from 'next/headers'
 
 const Header = () => {
@@ -11,12 +12,15 @@ const Header = () => {
         <header className="flex w-full px-40 min-h-28 justify-between items-center">
             <HeaderHomeBtn />
             <nav className="flex">
-                {POL_ACCESS_TOKEN===undefined?
-                <>
-                <HeaderLoginBtn />
-                <HeaderSignUpBtn />
-                </>
-                :<HeaderLogoutBtn accessToken={POL_ACCESS_TOKEN.value}/>}
+                {POL_ACCESS_TOKEN === undefined ?
+                    <>
+                        <HeaderLoginBtn />
+                        <HeaderSignUpBtn />
+                    </>
+                    : <>
+                        <HeaderLogoutBtn accessToken={POL_ACCESS_TOKEN.value} />
+                        <HeaderMyPageBtn accessToken={POL_ACCESS_TOKEN.value} />
+                    </>}
             </nav>
         </header>
     )

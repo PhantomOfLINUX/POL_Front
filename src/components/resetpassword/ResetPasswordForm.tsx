@@ -11,8 +11,6 @@ const ResetPasswordForm = () => {
     const [newPassword, setNewPassword] = useState<string>("")
     const [newPasswordCheck, setNewPasswordCheck] = useState<string>("")
 
-    const [tempToken, setTempToken] = useState<string | null>(null);
-
     return (
         <main className="loginSignUp">
             <form action="#">
