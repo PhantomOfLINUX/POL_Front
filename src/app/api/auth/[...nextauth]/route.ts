@@ -16,6 +16,6 @@ export async function GET(request: NextRequest) {
   const nextUrl = request.nextUrl;
   const { pathname } = nextUrl;
   const code = nextUrl.searchParams.get("code")
-  getSocialLoginToken(pathname.split('/').at(-1),code)
+  await getSocialLoginToken(pathname.split('/').at(-1),code)
   return NextResponse.redirect(new URL('/', request.url))
 }
