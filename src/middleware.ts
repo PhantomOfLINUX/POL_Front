@@ -30,7 +30,7 @@ const ReAccessToken = async (refreshToken:string) => {
 
 export async function middleware(request: NextRequest) {
   const { nextUrl, cookies } = request;
-  const { pathname,hostname } = nextUrl;
+  const { pathname } = nextUrl;
   const accessToken = cookies.get("POL_ACCESS_TOKEN");
   const refreshToken = cookies.get("POL_REFRESH_TOKEN")
   if(accessToken===undefined&&refreshToken!==undefined){
@@ -40,11 +40,9 @@ export async function middleware(request: NextRequest) {
         const now = new Date();
         const time = now.getTime();
         const response = NextResponse.redirect(request.url);
-        const domain = ".pol.or.kr"
         response.cookies.set({
           name:"POL_ACCESS_TOKEN",
           value:token,
-          domain:hostname==="localhost"?hostname:domain,
           expires:time+1000*60*60
         });
         applySetCookie(request, response);
