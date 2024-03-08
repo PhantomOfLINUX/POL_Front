@@ -30,7 +30,7 @@ const ReAccessToken = async (refreshToken:string) => {
 
 export async function middleware(request: NextRequest) {
   const { nextUrl, cookies } = request;
-  const { pathname, hostname } = nextUrl;
+  const { pathname } = nextUrl;
   const accessToken = cookies.get("POL_ACCESS_TOKEN");
   const refreshToken = cookies.get("POL_REFRESH_TOKEN")
   if(accessToken===undefined&&refreshToken!==undefined){
