@@ -5,7 +5,7 @@ import {logoutLocally} from "@/utils/logoutUtils/LogoutUtils"
 import React from "react"
 
 type logoutType = {
-    accessToken:string
+    accessToken:string,
 }
 
 const HeaderLogoutBtn:React.FC<logoutType> = ({accessToken}) => {
