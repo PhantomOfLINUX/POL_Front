@@ -40,10 +40,11 @@ export async function middleware(request: NextRequest) {
         const now = new Date();
         const time = now.getTime();
         const response = NextResponse.redirect(request.url);
+        const domain = ".pol.or.kr"
         response.cookies.set({
           name:"POL_ACCESS_TOKEN",
           value:token,
-          domain:`.${hostname}`,
+          domain:hostname==="localhost"?hostname:domain,
           expires:time+1000*60*60
         });
         applySetCookie(request, response);
