@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
       if(token){
         const now = new Date();
         const time = now.getTime();
-        const response = NextResponse.redirect(request.url);
+        const response = NextResponse.redirect(nextUrl);
         response.cookies.set({
           name:"POL_ACCESS_TOKEN",
           value:token,
@@ -51,7 +51,7 @@ export async function middleware(request: NextRequest) {
     }
   } 
   if(pathname.startsWith("/problem")&&accessToken===undefined)
-    return NextResponse.redirect(new URL('/login', request.url))
+    return NextResponse.redirect(new URL('/login', nextUrl))
 }
 
 export const config = {
