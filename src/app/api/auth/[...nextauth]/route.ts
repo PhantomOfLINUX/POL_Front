@@ -12,7 +12,6 @@ const getSocialLoginToken = async (name:string|undefined,code:string|null) => {
       },
       body: JSON.stringify({code})
     }).then(res=>res.json());
-    console.log(ob)
   }catch(err){
     console.error(err)
   }
@@ -23,6 +22,6 @@ export async function GET(request: NextRequest) {
   const { pathname } = nextUrl;
   const code = nextUrl.searchParams.get("code")
   await getSocialLoginToken(pathname.split('/').at(-1),code)
-
-  return NextResponse.redirect(new URL('/login', request.url))
+  window.location.href="https://www.pol.or.kr/"
+  //return NextResponse.redirect(new URL('/', request.url))
 }
