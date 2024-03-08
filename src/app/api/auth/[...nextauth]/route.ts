@@ -22,6 +22,5 @@ export async function GET(request: NextRequest) {
   const { pathname } = nextUrl;
   const code = nextUrl.searchParams.get("code")
   await getSocialLoginToken(pathname.split('/').at(-1),code)
-  window.location.href="https://www.pol.or.kr/"
-  //return NextResponse.redirect(new URL('/', request.url))
+  return NextResponse.redirect(new URL('/', "https://www.pol.or.kr/"))
 }
