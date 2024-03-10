@@ -43,6 +43,7 @@ export async function middleware(request: NextRequest) {
         response.cookies.set({
           name:"POL_ACCESS_TOKEN",
           value:token,
+          domain:".pol.or.kr",
           expires:time+1000*60*60
         });
         applySetCookie(request, response);
