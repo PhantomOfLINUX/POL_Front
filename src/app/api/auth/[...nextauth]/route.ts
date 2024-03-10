@@ -18,7 +18,7 @@ const getSocialLoginToken = async (name:string|undefined,code:string|null) => {
     })
     const getToken = await getTokenOK.json();
     if(getTokenOK.ok){
-      return getToken.refreshToken
+      return getToken.token.refreshToken
     }
     else return undefined
   }catch(err){
