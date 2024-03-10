@@ -1,12 +1,12 @@
 import React from "react";
-
+import Link from "next/link"
 
 const mypage = () => {
 
     return (
-        <div>
-            마이페이지가 들어갈 자리 입니다
-        </div>
+        <button type="button">
+            <Link href="/changepassword">비밀번호 변경</Link>
+        </button>
     )
 }
 
