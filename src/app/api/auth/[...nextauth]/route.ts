@@ -50,17 +50,17 @@ export async function GET(request: NextRequest) {
   const nextUrl = request.nextUrl;
   const { pathname } = nextUrl;
   const code = nextUrl.searchParams.get("code")
+  const response = NextResponse.redirect(request.url);
   const token = await getSocialLoginToken(pathname.split('/').at(-1),code);
     if(token){
       const now = new Date();
       const time = now.getTime();
-      const response = NextResponse.redirect(request.url);
       response.cookies.set({
         name:"POL_REFRESH_TOKEN",
         value:token,
         expires:time+1000*60*60
       });
     applySetCookie(request,response)
-    return response
   }
+  return response
 }
