@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
   const nextUrl = request.nextUrl;
   const { pathname } = nextUrl;
   const code = nextUrl.searchParams.get("code")
-  const response = NextResponse.redirect(request.url);
+  const response = NextResponse.redirect(new URL("/","https://www.pol.or.kr/"));
   const token = await getSocialLoginToken(pathname.split('/').at(-1),code);
     if(token){
       const now = new Date();
