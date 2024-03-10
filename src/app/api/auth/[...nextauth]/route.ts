@@ -18,7 +18,7 @@ const getSocialLoginToken = async (name:string|undefined,code:string|null) => {
     })
     const getToken = await getTokenOK.json();
     if(getTokenOK.ok){
-      return getToken.token.refreshToken
+      return getToken.token
     }
     else return undefined
   }catch(err){
@@ -53,11 +53,18 @@ export async function GET(request: NextRequest) {
   const response = NextResponse.redirect(new URL("/","https://www.pol.or.kr/"));
   const token = await getSocialLoginToken(pathname.split('/').at(-1),code);
     if(token){
+      const {refreshToken,accessToken} = token;
       const now = new Date();
       const time = now.getTime();
       response.cookies.set({
         name:"POL_REFRESH_TOKEN",
-        value:token,
+        value:refreshToken,
+        domain:".pol.or.kr",
+        expires:time+1000*60*60
+      });
+      response.cookies.set({
+        name:"POL_ACCESS_TOKEN",
+        value:accessToken,
         domain:".pol.or.kr",
         expires:time+1000*60*60
       });
