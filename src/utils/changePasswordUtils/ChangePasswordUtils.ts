@@ -2,6 +2,7 @@ import React from "react";
 import { TokenSetter } from "@/store/authStore"
 import { getToken } from "next-auth/jwt";
 import { useState } from "react";
+import { access } from "fs";
 
 
 const url = process.env.NEXT_PUBLIC_BASE_API
@@ -27,15 +28,22 @@ export const CheckPasswordCheck = (password: string, passwordCheck: string) => p
 
 // }
 
-export const ChangePassword = async (e: React.MouseEvent<HTMLElement>, userPassword: string, newPassword: string, userToken: string | null) => {
-    e.preventDefault()
+export const ChangePassword = async (e: React.MouseEvent<HTMLElement>, userPassword: string, newPassword: string, accessToken: string) => {
+    e.preventDefault();
+    // userPassword.trim();
+    // newPassword.trim();
+    // accessToken.trim();
+    // console.log(accessToken, "accessToken =", accessToken)
+    // console.log(userPassword, "userPassword =", userPassword)
+    // console.log(newPassword, "newPassword =", newPassword)
+    // console.log(userPassword, newPassword)
 
     try {
         const emailCheck = await fetch((`${url}/api/players/password`), {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${userToken}`
+                Authorization: `Bearer ${accessToken}`
             },
             body: JSON.stringify({
                 rawpassword: userPassword,

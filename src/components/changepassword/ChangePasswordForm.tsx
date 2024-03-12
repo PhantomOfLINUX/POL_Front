@@ -2,18 +2,21 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import ChangePasswordInput from "./ChangePasswordInput";
+import ChangePasswordInput, { changeType } from "./ChangePasswordInput";
 import { ChangePassword, CheckPassword, CheckPasswordCheck } from "@/utils/changePasswordUtils/ChangePasswordUtils"
 import useAuthStore from "@/store/authStore"
 
+interface Props {
+    accessToken: string;
+}
 
-const ChangePasswordForm = () => {
+const ChangePasswordForm: React.FC<Props> = ({ accessToken }) => {
     const { userToken } = useAuthStore();
     const [userPassword, setUserPassword] = useState<string>("")
     const [newPassword, setNewPassword] = useState<string>("")
     const [newPasswordCheck, setNewPasswordCheck] = useState<string>("")
-
     return (
+
         <main className="loginSignUp">
             <div>
                 <form action="#">
