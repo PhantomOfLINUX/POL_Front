@@ -1,8 +1,5 @@
 import React from "react";
-import { TokenSetter } from "@/store/authStore"
-import { getToken } from "next-auth/jwt";
-import { useState } from "react";
-import { access } from "fs";
+import { logoutLocally } from "@/utils/logoutUtils/LogoutUtils"
 
 
 const url = process.env.NEXT_PUBLIC_BASE_API
@@ -30,13 +27,10 @@ export const CheckPasswordCheck = (password: string, passwordCheck: string) => p
 
 export const ChangePassword = async (e: React.MouseEvent<HTMLElement>, userPassword: string, newPassword: string, accessToken: string) => {
     e.preventDefault();
-    // userPassword.trim();
-    // newPassword.trim();
-    // accessToken.trim();
-    // console.log(accessToken, "accessToken =", accessToken)
-    // console.log(userPassword, "userPassword =", userPassword)
-    // console.log(newPassword, "newPassword =", newPassword)
-    // console.log(userPassword, newPassword)
+    console.log(accessToken, "accessToken =", accessToken)
+    console.log(userPassword, "userPassword =", userPassword)
+    console.log(newPassword, "newPassword =", newPassword)
+    console.log(userPassword, newPassword)
 
     try {
         const emailCheck = await fetch((`${url}/api/players/password`), {
@@ -46,15 +40,17 @@ export const ChangePassword = async (e: React.MouseEvent<HTMLElement>, userPassw
                 Authorization: `Bearer ${accessToken}`
             },
             body: JSON.stringify({
-                rawpassword: userPassword,
+                rawPassword: userPassword,
                 password: newPassword,
             }),
         });
 
         if (emailCheck.ok) {
             //console.log({ userToken });
-            alert("비밀번호가 변경되었습니다.")
+            alert("비밀번호가 변경되었습니다.\n변경된 비밀번호로 다시 로그인 해주세요")
+
             window.location.replace("/")
+            logoutLocally(accessToken);
         }
         // else if (emailCheck.status === 400) {
         //     alert("이미 존재한 이메일입니다.")
