@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
         name:"POL_REFRESH_TOKEN",
         value:refreshToken,
         domain:".pol.or.kr",
-        expires:time+1000*60*60
+        expires:time+1000*60*60*24*7
       });
       response.cookies.set({
         name:"POL_ACCESS_TOKEN",
