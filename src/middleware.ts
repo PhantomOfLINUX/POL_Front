@@ -5,24 +5,24 @@ import {
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const url =  process.env.NEXT_PUBLIC_BASE_API;
+const url = process.env.NEXT_PUBLIC_BASE_API;
 
-const ReAccessToken = async (refreshToken:string) => {
-  try{
-    const newAccessTokenOk = await fetch(`${url}/api/auth/refresh`,{
+const ReAccessToken = async (refreshToken: string) => {
+  try {
+    const newAccessTokenOk = await fetch(`${url}/api/auth/refresh`, {
       credentials: 'include',
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({refreshToken}),
+      body: JSON.stringify({ refreshToken }),
     })
     const newAccessToken = await newAccessTokenOk.json();
-    if(newAccessTokenOk.ok){
+    if (newAccessTokenOk.ok) {
       return newAccessToken.accessToken
     }
     else return undefined
-  }catch(error) {
+  } catch (error) {
     console.error(error)
   }
 }
@@ -33,10 +33,10 @@ export async function middleware(request: NextRequest) {
   const { pathname,hostname } = nextUrl;
   const accessToken = cookies.get("POL_ACCESS_TOKEN");
   const refreshToken = cookies.get("POL_REFRESH_TOKEN")
-  if(accessToken===undefined&&refreshToken!==undefined){
-    if(!accessToken){
+  if (accessToken === undefined && refreshToken !== undefined) {
+    if (!accessToken) {
       const token = await ReAccessToken(refreshToken.value)
-      if(token){
+      if (token) {
         const now = new Date();
         const time = now.getTime();
         const response = NextResponse.redirect(request.url);
@@ -50,8 +50,8 @@ export async function middleware(request: NextRequest) {
         return response;
       }
     }
-  } 
-  if(pathname.startsWith("/problem")&&accessToken===undefined)
+  }
+  if (pathname.startsWith("/problem") && accessToken === undefined)
     return NextResponse.redirect(new URL('/login', request.url))
 }
 
