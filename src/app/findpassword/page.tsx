@@ -1,13 +1,13 @@
 import React from "react";
 import FindPasswordForm from "@/components/findpassword/FindPasswordForm";
-import LoginSignupDescription from "@/components/description/LoginSignupDescription"
+import ResetPasswordDescription from "@/components/description/ResetPasswordDescription"
 
 
 const FindPassword = () => {
 
     return (
         <div>
-            <LoginSignupDescription />
+            <ResetPasswordDescription />
             <FindPasswordForm />
         </div>
     )
