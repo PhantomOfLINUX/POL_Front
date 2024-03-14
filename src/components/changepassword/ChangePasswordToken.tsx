@@ -7,7 +7,6 @@ const ChangePasswordToken = () => {
 
 
     if (POL_ACCESS_TOKEN !== undefined) {
-        console.log("asdf")
         return (
             <div>
                 <ChangePasswordForm accessToken={POL_ACCESS_TOKEN.value} />

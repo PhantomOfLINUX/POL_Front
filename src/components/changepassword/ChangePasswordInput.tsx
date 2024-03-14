@@ -25,6 +25,7 @@ const ChangePasswordInput = ({ label, type, placeholder, onChange, isVaild, erro
                 />
             </div>
             {isVaild && <span className='text-xs text-vaild-color'>*{errorMsg}</span>}
+
         </div>
     );
 };
