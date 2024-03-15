@@ -10,7 +10,6 @@ const Introduction = () => {
                 Introduction
                 <GoButton />
             </div>
-            <Footer />
         </div>
 
     )

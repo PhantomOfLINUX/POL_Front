@@ -1,5 +1,4 @@
 "use client"
-
 import Link from "next/link"
 import {logoutLocally} from "@/utils/logoutUtils/LogoutUtils"
 import React from "react"

@@ -35,6 +35,6 @@ body {
     @apply w-full px-3;
   }
   .headerBtn {
-    @apply w-24 h-12 bg-thema-color text-white rounded ml-8;
+    @apply flex justify-center items-center w-24 h-12 bg-thema-color text-white rounded ml-8;
   }
 }
