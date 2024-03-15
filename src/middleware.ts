@@ -32,7 +32,7 @@ export async function middleware(request: NextRequest) {
   const { nextUrl, cookies } = request;
   const { pathname, host } = nextUrl;
   const accessToken = cookies.get("POL_ACCESS_TOKEN");
-  const refreshToken = cookies.get("POL_REFRESH_TOKEN")
+  const refreshToken = cookies.get("POL_REFRESH_TOKEN");
   if (accessToken === undefined && refreshToken !== undefined) {
     if (!accessToken) {
       const token = await ReAccessToken(refreshToken.value)
@@ -43,7 +43,7 @@ export async function middleware(request: NextRequest) {
         response.cookies.set({
           name:"POL_ACCESS_TOKEN",
           value:token,
-          domain:host==="localhost:3000"?".pol.or.kr":"localhost",
+          domain:".pol.or.kr",
           expires:time+1000*60*60
         });
         applySetCookie(request, response);
@@ -51,7 +51,7 @@ export async function middleware(request: NextRequest) {
       }
     }
   }
-  if (pathname.startsWith("/problem") && accessToken === undefined)
+  if ((pathname.startsWith("/problem") && pathname.startsWith("/challengelist")) && accessToken === undefined)
     return NextResponse.redirect(new URL('/login', request.url))
 }
 
