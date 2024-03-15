@@ -21,7 +21,7 @@ const Xterm: React.FC = () => {
         let { key } = e;
         if (key === "\r") {
           if (curr_line) {
-            newTerminal.write("\r\n");
+            
           }
         } else if (key === "\x7F") {
           if (curr_line.length > 0) {
