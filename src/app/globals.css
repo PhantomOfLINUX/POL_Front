@@ -4,6 +4,14 @@
 
 body {
   font-family: S-CoreDream-3Light;
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .content-wrap {
+    flex: 1;
+  }
 }
 @font-face {
   font-family: "S-CoreDream-3Light";
