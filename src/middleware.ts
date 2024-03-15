@@ -32,7 +32,7 @@ export async function middleware(request: NextRequest) {
   const { nextUrl, cookies } = request;
   const { pathname, host } = nextUrl;
   const accessToken = cookies.get("POL_ACCESS_TOKEN");
-  const refreshToken = cookies.get("POL_REFRESH_TOKEN")
+  const refreshToken = cookies.get("POL_REFRESH_TOKEN");
   if (accessToken === undefined && refreshToken !== undefined) {
     if (!accessToken) {
       const token = await ReAccessToken(refreshToken.value)
@@ -51,7 +51,7 @@ export async function middleware(request: NextRequest) {
       }
     }
   }
-  if (pathname.startsWith("/problem") && accessToken === undefined)
+  if ((pathname.startsWith("/problem") && pathname.startsWith("/challengelist")) && accessToken === undefined)
     return NextResponse.redirect(new URL('/login', request.url))
 }
 
