@@ -1,4 +1,4 @@
-name: Next.js CI/CD Pipeline
+name: Next.js CI/CD Develop Pipeline
 
 on:
   push:
@@ -63,4 +63,4 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
             docker stop pol-front || true
             docker rm pol-front || true
-            docker run -d --name pol-front -p 11111:3000 ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
+            docker run -d --name pol-front-develop -p 11111:3000 ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
