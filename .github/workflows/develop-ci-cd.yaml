@@ -61,6 +61,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             docker pull ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
-            docker stop pol-front || true
-            docker rm pol-front || true
+            docker stop pol-front-develop || true
+            docker rm pol-front-develop || true
             docker run -d --name pol-front-develop -p 11111:3000 ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
