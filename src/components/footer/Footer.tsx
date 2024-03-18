@@ -39,7 +39,7 @@ const Footer = () => {
                             <p>im ironman</p>
                         </a>
                         <a href="/">
-                            <p>엄준식 코딩학원</p>
+                            <p>김정래 코딩학원</p>
                         </a>
                     </div>
                     <div className="sb_footer-links_div">
@@ -56,12 +56,12 @@ const Footer = () => {
                     </div>
                     <div className="sb_footer-links_div">
                         <h4>comming soon</h4>
-                        <div className="socialmedia">
+                        {/* <div className="socialmedia">
                             <p><img src="{fb}" alt="" /></p>
                             <p><img src="{twitter}" alt="" /></p>
                             <p><img src="{linkedin}" alt="" /></p>
                             <p><img src="{insta}" alt="" /></p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <hr></hr>
