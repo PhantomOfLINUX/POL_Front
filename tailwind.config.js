@@ -16,7 +16,7 @@ module.exports = {
         "socialBorder-color": "#4E5968",
         gray: "#90929E",
         red: "#D1180B",
-        "problemStageSelectBorder-color": "#90929E",
+        "SelectBorder-color": "#90929E",
       },
       minHeight: {
         "min-height": "400px",
