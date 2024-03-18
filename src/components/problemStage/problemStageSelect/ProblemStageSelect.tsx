@@ -1,8 +1,23 @@
 import React from "react";
 
-const ProblemStageSelect = () => {
+
+interface ProblemStageSelect {
+    name:string,
+    //onClick:()=>void
+}
+
+const ProblemStageSelect:React.FC<ProblemStageSelect> = ({name}) => {
 
     return (
-        <input></input>
+        <button className="w-28 h-9 border-solid border-problemStageSelectBorder-color">
+            {name}
+        </button>
     )
 }
+
+export default ProblemStageSelect
+
+/*
+width: 112px;
+height: 36px;
+*/
