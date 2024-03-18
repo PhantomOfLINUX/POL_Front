@@ -1,0 +1,66 @@
+name: Next.js CI/CD Develop Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    if: github.repository == 'PhantomOfLINUX/POL_Front'
+    steps:
+      - name: git code checkout
+        uses: actions/checkout@v3
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Make env file
+        run: |
+          echo "${{ secrets.ENV_PROPERTIES }}" > ".env"
+          cat .env
+
+      - name: docker setup
+        uses: docker/setup-buildx-action@v3
+
+      - name: docker login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:cache
+          cache-to: type=inline
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-20.04
+    if: github.repository == 'PhantomOfLINUX/POL_Front'
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
+            docker stop pol-front || true
+            docker rm pol-front || true
+            docker run -d --name pol-front-develop -p 11111:3000 ${{ secrets.DOCKERHUB_ORGNIZATIONS }}/pol-front-develop:latest
