@@ -51,7 +51,7 @@ export async function middleware(request: NextRequest) {
       }
     }
   }
-  if ((pathname.startsWith("/problem") && pathname.startsWith("/challengelist")) && accessToken === undefined)
+  if ((pathname.startsWith("/problem") || pathname.startsWith("/challengelist")) && accessToken === undefined)
     return NextResponse.redirect(new URL('/login', request.url))
 }
 
