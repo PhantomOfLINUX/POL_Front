@@ -39,7 +39,7 @@ const Footer = () => {
                             <p>im ironman</p>
                         </a>
                         <a href="/">
-                            <p>엄준식 코딩학원</p>
+                            <p>김정래 코딩학원</p>
                         </a>
                     </div>
                     <div className="sb_footer-links_div">
