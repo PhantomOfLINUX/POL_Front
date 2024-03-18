@@ -31,13 +31,13 @@
   color: rgb(175,175,179);
   text-decoration : none;
 }
-.socialmedia{
+/* .socialmedia{
   display : flex;
   flex-direction:row;
 }
 .socialmedia img{
   width : 80px;
-}
+} */
 .sb_footer-links_div h4{
   font-size: 14px;
   line-height : 17px;
