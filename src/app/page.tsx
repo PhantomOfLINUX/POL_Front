@@ -7,7 +7,6 @@ const Introduction = () => {
     return (
         <div className="page-container">
             <div className="content-wrap">
-                Introduction
                 <GoButton />
             </div>
         </div>
