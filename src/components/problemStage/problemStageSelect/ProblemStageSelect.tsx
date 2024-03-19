@@ -1,24 +1,22 @@
-import React from "react";
-import Image from 'next/image'
+"use client"
 
-interface ProblemStageSelect {
-    name:string,
-    //onClick:()=>void
+import useProblemStore from "@/store/problemStageStore";
+
+import ProblemStageSelectBtn from "./ProblemStageSelectBtn"
+import ProblemStageSelectUl from "./ProblemStageSelectUl";
+
+export interface problemStageSelectType {
+    name:"solution" | "practice" | "level",
 }
 
-const ProblemStageSelect:React.FC<ProblemStageSelect> = ({name}) => {
-
+const ProblemStageSelect:React.FC<problemStageSelectType> = ({name}) => {
+    const {problemList} = useProblemStore();
+    const {problemListKoName, problemListUl} = problemList[name];
     return (
-        <button className="w-28 h-9 flex items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color">
-            {name}
-            <Image 
-                src={"./problemStage/problemSelect.svg"} 
-                alt="down"
-                width={50}
-                height={50}
-                style={{ width: 'auto', height: 'auto' }}
-            />
-        </button>
+        <div>
+            <ProblemStageSelectBtn value={problemListKoName} name={name}/>
+            <ProblemStageSelectUl list={problemListUl}/>
+        </div>
     )
 }
 

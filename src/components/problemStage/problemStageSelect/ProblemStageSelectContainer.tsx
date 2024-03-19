@@ -1,15 +1,17 @@
 import React from "react";
 
 import ProblemStageSelect from "./ProblemStageSelect";
-
+import ProblemStageSelectedBox from "./ProblemStageSelectedBox";
 
 const ProblemStageSelectContainer = () => {
     return (
         <div>
-            <ProblemStageSelect name={"풀이상태"}/>
-            <ProblemStageSelect name={"실습구분"}/>
-            <ProblemStageSelect name={"종합 난이도"}/>
-            <ProblemStageSelect name={"종합 난이도"}/>
+            <div className="flex ">
+                <ProblemStageSelect name={"solution"}/>
+                <ProblemStageSelect name={"practice"}/>
+                <ProblemStageSelect name={"level"}/>
+            </div>
+            <ProblemStageSelectedBox/>
         </div>
     )
 }
