@@ -1,17 +1,22 @@
-import React from "react";
+"use client"
 
-import type {problemListItem} from "@/store/problemStageStore"
+import React from "react";
+import useProblemStore from "@/store/problemStageStore";
 
 import ProblemStageSelectLi from "./ProblemStageSelectLi";
 
+import type {problemListItem} from "@/store/problemStageStore"
 
 interface ProblemStageSelectUlType {
-    list:problemListItem[]
+    list:problemListItem[],
+    name:"solution" | "practice" | "level",
 }
 
-const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list}) => {
+const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list,name}) => {
+    const problemList = useProblemStore();
+    const problemListBoolean = problemList[name]?.problemListCheck
     return (
-        <ul className="w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color">
+        <ul className={`${problemListBoolean?"block" : "hidden"} relative top-1 w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color`}>
             {list.map(li=>{
                 return <ProblemStageSelectLi key={li.problemItemName} value={li.problemItemName} check={li.problemItemCheck}/>
 }            )}

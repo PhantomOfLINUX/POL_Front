@@ -4,7 +4,7 @@ import React from "react";
 
 const ProblemStageSelectedBox = () => {
     return (
-        <div>
+        <div className="">
             
         </div>
     )

@@ -9,7 +9,7 @@ const ProblemStageSelectLi:React.FC<ProblemStageSelectLiType> = ({value,check}) 
     
     return (
         <li className="flex">
-            <input type="checkbox" checked={check}/>
+            <input type="checkbox" defaultChecked={check}/>
             {value}
         </li>
     )

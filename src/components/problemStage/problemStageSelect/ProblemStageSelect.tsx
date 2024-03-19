@@ -10,12 +10,12 @@ export interface problemStageSelectType {
 }
 
 const ProblemStageSelect:React.FC<problemStageSelectType> = ({name}) => {
-    const {problemList} = useProblemStore();
+    const problemList = useProblemStore();
     const {problemListKoName, problemListUl} = problemList[name];
     return (
-        <div>
+        <div className="h-9">
             <ProblemStageSelectBtn value={problemListKoName} name={name}/>
-            <ProblemStageSelectUl list={problemListUl}/>
+            <ProblemStageSelectUl list={problemListUl} name={name}/>
         </div>
     )
 }

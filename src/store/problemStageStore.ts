@@ -12,16 +12,14 @@ interface problemListStatus {
 }
 
 interface stageListType {
-    problemList:{
-        solution:problemListStatus,
-        practice:problemListStatus,
-        level:problemListStatus,
-    }
+    solution:problemListStatus,
+    practice:problemListStatus,
+    level:problemListStatus,
+    setProblemListCheck:(name:"solution"|"practice"|"level") => void
 }
 
 
 const useProblemStore = create<stageListType>(set => ({
-    problemList:{
         solution:{
             problemListKoName:"풀이상태",
             problemListCheck:false,
@@ -50,18 +48,15 @@ const useProblemStore = create<stageListType>(set => ({
                 {problemItemName:"L4", problemItemCheck:false},
                 {problemItemName:"L5", problemItemCheck:false}
             ]
-        }
-    }
-
+        },
+    setProblemListCheck:(name) => set((state)=>({
+        ...state,
+        [name]: {
+          ...state[name],
+          problemListCheck: !state[name].problemListCheck,
+        },
+    }))
+    
 }));
 
 export default useProblemStore;
-
-
-/*
-    문제 선택 list checking
-    probelmListName:["풀이상태","실습구분","종합 난이도"],
-    probelmListCheck:[false,false,false]
-    
-*/
-
