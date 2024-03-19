@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import useProblemStore from "@/store/problemStageStore";
 import ProblemStageSelected from "./ProblemStageSelected";

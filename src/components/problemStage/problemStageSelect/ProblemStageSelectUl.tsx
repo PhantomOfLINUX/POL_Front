@@ -26,6 +26,3 @@ const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list,name}) =>
 
 
 export default ProblemStageSelectUl
-
-
-//동적으로 리스트를 보여줘야 함
