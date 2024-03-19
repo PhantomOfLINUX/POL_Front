@@ -12,8 +12,9 @@ interface problemStageSelectBtnType {
 
 const ProblemStageSelect:React.FC<problemStageSelectBtnType> = ({value,name}) => {
     const {setProblemListCheck} = useProblemStore();
+    const problemList = useProblemStore();
     return (
-        <button onClick={()=>setProblemListCheck(name)} className="w-28 h-9 flex items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color">
+        <button onClick={()=>{setProblemListCheck(name,!(problemList[name].problemListCheck))}} className="w-28 h-9 flex items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color">
             {value}
             <Image 
                 src={"./problemStage/problemSelect.svg"} 

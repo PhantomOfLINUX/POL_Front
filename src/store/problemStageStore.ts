@@ -15,7 +15,7 @@ interface stageListType {
     solution:problemListStatus,
     practice:problemListStatus,
     level:problemListStatus,
-    setProblemListCheck:(name:"solution"|"practice"|"level") => void
+    setProblemListCheck:(name:"solution"|"practice"|"level",checked:boolean) => void
     setProblemItemCheck:(name:"solution"|"practice"|"level",value:string,checked:boolean) => void
 }
 
@@ -50,11 +50,11 @@ const useProblemStore = create<stageListType>(set => ({
                 {problemItemName:"L5", problemItemCheck:false}
             ]
         },
-    setProblemListCheck:(name) => set((state)=>({
+    setProblemListCheck:(name,checked) => set((state)=>({
         ...state,
         [name]: {
           ...state[name],
-          problemListCheck: !state[name].problemListCheck,
+          problemListCheck: checked,
         },
     })),
     setProblemItemCheck:(name,value,checked) => {
