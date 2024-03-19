@@ -5,7 +5,6 @@ import Link from "next/link";
 const MyPageSidebarForm = () => {
 
     return (
-
         <div className="w-60 text-white p-3 bg-thema-color rounded-lg mr-36 h-1/2">
             < div className="flex items-center p-2 space-x-4" >
                 {/* <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500"> */}
