@@ -6,7 +6,7 @@ import ProblemStageContainer from "./ProblemStageContainer"
 
 const ProblemStage = () => {
     return (
-        <main>
+        <main className="w-screen flex justify-center">
             <ProblemStageSelectContainer/>
             <ProblemStageContainer/>
         </main>
@@ -15,10 +15,3 @@ const ProblemStage = () => {
 
 
 export default ProblemStage
-
-
-/*
-문제 select부분
-stage
-
-*/
