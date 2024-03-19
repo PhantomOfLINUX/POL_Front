@@ -10,10 +10,7 @@ const mypage = () => {
                 <div className="pl-36 pt-16">
                     <nav className="px-0 flex">
                         <MyPageSidebarForm />
-
                         <MyPageInfoForm />
-
-
                     </nav>
                 </div>
             </div>
