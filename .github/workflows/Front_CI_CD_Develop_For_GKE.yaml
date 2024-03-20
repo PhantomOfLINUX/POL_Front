@@ -63,7 +63,7 @@ jobs:
       uses: google-github-actions/setup-gcloud@v2
     
     - name: Configure Docker for GKE
-      run: cloud auth configure-docker --quiet
+      run: gcloud auth configure-docker --quiet
       
     - name: Get GKE credentials
       run: |
