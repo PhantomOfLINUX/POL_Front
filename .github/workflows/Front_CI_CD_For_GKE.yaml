@@ -1,4 +1,4 @@
-name: Front_CI_CD_Develop_For_GKE
+name: Front_CI_CD_For_GKE
 
 on:
   push:
@@ -54,14 +54,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Setup Cloud SDK
-      uses: google-github-actions/setup-gcloud@master
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
       with:
-        service_account_key: ${{ secrets.GKE_SA_KEY }}
-        project_id: ${{ secrets.GKE_PROJECT }}
-        
+        credentials_json: ${{ secrets.GKE_SA_KEY }}
+
+    - name: Setup Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Install gke-gcloud-auth-plugin
+      run: gcloud components install gke-gcloud-auth-plugin
+
     - name: Configure Docker for GKE
-      run: gcloud auth configure-docker
+      run: gcloud auth configure-docker --quiet
       
     - name: Get GKE credentials
       run: |
@@ -69,4 +74,4 @@ jobs:
     
     - name: Deploy to GKE
       run: |
-        kubectl set image deployment/pol-front pol-front=polhub/pol-front:${{ github.sha }} --record
+        kubectl set image deployment/pol-front pol-front=polhub/pol-front:${{ github.sha }}
