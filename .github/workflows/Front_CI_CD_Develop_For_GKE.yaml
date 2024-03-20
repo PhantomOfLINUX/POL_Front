@@ -53,15 +53,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    
     - name: Authenticate to Google Cloud
-      id: auth
       uses: google-github-actions/auth@v2
       with:
         credentials_json: ${{ secrets.GKE_SA_KEY }}
 
     - name: Setup Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
-    
+
+    - name: Install gke-gcloud-auth-plugin
+      run: gcloud components install gke-gcloud-auth-plugin
+
     - name: Configure Docker for GKE
       run: gcloud auth configure-docker --quiet
       
@@ -71,4 +74,4 @@ jobs:
     
     - name: Deploy to GKE
       run: |
-        kubectl set image deployment/pol-front-develop pol-front-develop=polhub/pol-front-develop:${{ github.sha }} --record
+        kubectl set image deployment/pol-front-develop pol-front-develop=polhub/pol-front-develop:${{ github.sha }}
