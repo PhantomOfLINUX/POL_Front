@@ -3,7 +3,6 @@
 import Link from "next/link"
 import React from "react"
 import { CgProfile } from "react-icons/cg";
-import { MdAddCircle } from "react-icons/md";
 
 type mypageType = {
     accessToken: string
