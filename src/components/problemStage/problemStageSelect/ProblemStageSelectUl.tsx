@@ -20,7 +20,7 @@ const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list,name}) =>
     useOutsideClick(ulRef,setProblemListCheck,name,problemList[name].problemListCheck)
     const problemListBoolean = problemList[name]?.problemListCheck;
     return (
-        <ul ref={ulRef} className={`${problemListBoolean?"block" : "hidden"} bg-white relative top-1 w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color`}>
+        <ul ref={ulRef} className={`${problemListBoolean?"block" : "hidden"} bg-white relative top-2 w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color`}>
             {list.map(li=>{
                 return <ProblemStageSelectLi name={name} key={li.problemItemName} value={li.problemItemName} check={li.problemItemCheck}/>
 }            )}

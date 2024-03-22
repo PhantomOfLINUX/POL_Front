@@ -6,7 +6,7 @@ import ProblemStageContainer from "./ProblemStageContainer"
 
 const ProblemStage = () => {
     return (
-        <main className="w-screen flex justify-center">
+        <main className="w-screen flex flex-col items-center justify-center">
             <ProblemStageSelectContainer/>
             <ProblemStageContainer/>
         </main>
