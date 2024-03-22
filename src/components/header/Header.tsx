@@ -9,12 +9,12 @@ const Header = () => {
     const POL_ACCESS_TOKEN = cookiesStore.get("POL_ACCESS_TOKEN")
     return (
         <header className="flex w-full px-40 min-h-28 justify-between items-center">
-            <HeaderBtn href="/" value="Phantom of  Linux" className="text-thema-color font-[1000] text-4xl"/>
+            <HeaderBtn href="/" value="Phantom of  Linux" className="text-thema-color font-[1000] text-4xl" />
             <nav className="flex">
                 {POL_ACCESS_TOKEN === undefined ?
                     <>
-                        <HeaderBtn href="/login" value="로그인" className="headerBtn"/>
-                        <HeaderBtn href="/signup" value="회원가입" className="headerBtn"/>
+                        <HeaderBtn href="/login" value="로그인" className="headerBtn" />
+                        <HeaderBtn href="/signup" value="회원가입" className="headerBtn" />
                     </>
                     : <>
                         <HeaderLogoutBtn accessToken={POL_ACCESS_TOKEN.value} />

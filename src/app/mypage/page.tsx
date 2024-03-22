@@ -1,12 +1,21 @@
 import React from "react";
 import Link from "next/link"
+import MyPageSidebarForm from "@/components/mypagesidebar/MyPageSidebarForm";
+import MyPageInfoForm from "@/components/mypageinfo/MyPageInfo";
 
 const mypage = () => {
 
     return (
-        <button type="button">
-            <Link href="/changepassword">비밀번호 변경</Link>
-        </button>
+        <div className="page-container">
+            <div className="content-wrap">
+                <div className="pl-36 pt-16">
+                    <nav className="px-0 flex">
+                        <MyPageSidebarForm />
+                        <MyPageInfoForm />
+                    </nav>
+                </div>
+            </div>
+        </div>
     )
 }
 
