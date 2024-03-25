@@ -3,7 +3,6 @@ const url = process.env.NEXT_PUBLIC_BASE_API;
 
 export const LoginInLocally = async (e: React.FormEvent<HTMLFormElement>, id: string, password: string) => {
     e.preventDefault();
-    console.log("ASD")
     try {
         const loggedIn = await fetch(`${url}/api/auth/login`, {
             credentials: 'include',

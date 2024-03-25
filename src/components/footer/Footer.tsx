@@ -56,9 +56,12 @@ const Footer = () => {
                     </div>
                     <div className="sb_footer-links_div">
                         <h4>comming soon</h4>
-                        <div className="socialmedia">
-
-                        </div>
+                        {/* <div className="socialmedia">
+                            <p><img src="{fb}" alt="" /></p>
+                            <p><img src="{twitter}" alt="" /></p>
+                            <p><img src="{linkedin}" alt="" /></p>
+                            <p><img src="{insta}" alt="" /></p>
+                        </div> */}
                     </div>
                 </div>
                 <hr></hr>
@@ -79,8 +82,3 @@ const Footer = () => {
 }
 
 export default Footer
-
-                            /*<p><img src="{fb}" alt="" /></p>
-                            <p><img src="{twitter}" alt="" /></p>
-                            <p><img src="{linkedin}" alt="" /></p>
-                            <p><img src="{insta}" alt="" /></p>*/
