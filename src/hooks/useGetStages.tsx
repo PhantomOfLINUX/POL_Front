@@ -26,7 +26,7 @@ function useGetStages(
                 const params = {
                     page_index:"1",
                     page_size:"1",
-                    isCompleted:isCompleted?isCompleted.toString():"true",
+                    isCompleted:isCompleted?isCompleted.toString():"",
                 };
                 const queryString = new URLSearchParams(params)
                 difficultyLevels?.forEach(ele=>{queryString.append("difficultyLevels",ele)})

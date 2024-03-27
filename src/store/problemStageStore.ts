@@ -1,3 +1,4 @@
+import { get } from 'http'
 import {create} from 'zustand'
 
 export interface problemListItem {
@@ -12,16 +13,23 @@ interface problemListStatus {
     problemListUl: problemListItem[]
 }
 
+interface getProblemItems {
+    solutionItem:problemListItem[],
+    practiceItem:problemListItem[],
+    levelItem:problemListItem[],
+}
+
 interface stageListType {
     solution:problemListStatus,
     practice:problemListStatus,
     level:problemListStatus,
     setProblemListCheck:(name:"solution"|"practice"|"level",checked:boolean) => void
     setProblemItemCheck:(name:"solution"|"practice"|"level",value:string,checked:boolean) => void
+    getProblemItem:()=>getProblemItems
 }
 
 
-const useProblemStore = create<stageListType>(set => ({
+const useProblemStore = create<stageListType>((set,get) => ({
         solution:{
             problemListKoName:"풀이상태",
             problemListCheck:false,
@@ -35,20 +43,20 @@ const useProblemStore = create<stageListType>(set => ({
             problemListKoName:"실습 구분",
             problemListCheck:false,
             problemListUl:[
-                {problemItemName:"",problemItemKoName:"입문", problemItemCheck:false},
-                {problemItemName:"",problemItemKoName:"심화", problemItemCheck:false},
-                {problemItemName:"",problemItemKoName:"모의 테스트", problemItemCheck:false}
+                {problemItemName:"BASIC_PROBLEMS",problemItemKoName:"입문", problemItemCheck:false},
+                {problemItemName:"ADVANCED_PROBLEMS",problemItemKoName:"심화", problemItemCheck:false},
+                {problemItemName:"MOCK_TESTS",problemItemKoName:"모의 테스트", problemItemCheck:false}
             ]
         },
         level:{
             problemListKoName:"종합 난이도",
             problemListCheck:false,
             problemListUl:[
-                {problemItemName:"",problemItemKoName:"L1", problemItemCheck:false},
-                {problemItemName:"",problemItemKoName:"L2", problemItemCheck:false},
-                {problemItemName:"",problemItemKoName:"L3", problemItemCheck:false},
-                {problemItemName:"",problemItemKoName:"L4", problemItemCheck:false},
-                {problemItemName:"",problemItemKoName:"L5", problemItemCheck:false}
+                {problemItemName:"L1",problemItemKoName:"L1", problemItemCheck:false},
+                {problemItemName:"L2",problemItemKoName:"L2", problemItemCheck:false},
+                {problemItemName:"L3",problemItemKoName:"L3", problemItemCheck:false},
+                {problemItemName:"L4",problemItemKoName:"L4", problemItemCheck:false},
+                {problemItemName:"L5",problemItemKoName:"L5", problemItemCheck:false}
             ]
         },
     setProblemListCheck:(name,checked) => set((state)=>({
@@ -70,6 +78,12 @@ const useProblemStore = create<stageListType>(set => ({
             }),
             },
         }))
+    },
+    getProblemItem:() => {
+       const solutionItem = get().solution.problemListUl.filter(ele=>ele.problemItemCheck);
+       const practiceItem = get().practice.problemListUl.filter(ele=>ele.problemItemCheck);
+       const levelItem = get().level.problemListUl.filter(ele=>ele.problemItemCheck);
+       return {solutionItem,practiceItem,levelItem}
     }
 }));
 
