@@ -13,8 +13,8 @@ function useCheckAccess(
     useEffect(()=> {
         const checkAccessToken = async () => {
             try{
-                const CheckedAccessToken = (await fetch(`${url}/api/auth/validate/${accessToken}`)).status
-                if(CheckedAccessToken===400){
+                const CheckedAccessToken = await fetch(`${url}/api/auth/validate?token=${accessToken}`).then(res=>res)
+                if(CheckedAccessToken.status!==200){
                     const submitedAccessToken = await fetch(`${url}/api/auth/refresh`,{
                         method:"POST",
                         headers: {

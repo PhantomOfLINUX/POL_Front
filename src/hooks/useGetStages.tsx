@@ -3,15 +3,6 @@ import useCheckAccess from "./useCheckAccess";
 
 const url = process.env.NEXT_PUBLIC_BASE_API
 
-interface stages{
-    id: number,
-    title: string,
-    description: "string",
-    stageGroupType: string,
-    difficultyLevelType: string,
-    questionCount: number
-}
-
 function useGetStages(
     accessToken:string|undefined,
     refreshToken:string|undefined,
@@ -28,9 +19,10 @@ function useGetStages(
                     page_size:"1",
                 };
                 const queryString = new URLSearchParams(params)
-                difficultyLevels?.forEach(ele=>{queryString.append("difficultyLevels",ele)})
-                stageGroupTypes?.forEach(ele=>{queryString.append("stageGroupTypes",ele)})
-                isCompleted?.forEach(ele=>{queryString.append("isCompleted",ele)})
+                difficultyLevels?.forEach(level=>{queryString.append("difficultyLevels",level)})
+                stageGroupTypes?.forEach(groupType=>{queryString.append("stageGroupTypes",groupType)})
+                isCompleted?.forEach(com=>{queryString.append("isCompleted",com)})
+                console.log(queryString)
                 queryString.toString()
                 const newStage = await fetch(`${url}/api/stages?${queryString}`,{
                     method:"GET",
@@ -39,7 +31,6 @@ function useGetStages(
                         Authorization:`Bearer ${validAccessToken}`
                     },
                 }).then(res=>res.json())
-                console.log(newStage)
             }catch(error){
                 console.error(error)
             }
