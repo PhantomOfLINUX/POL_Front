@@ -1,4 +1,5 @@
 "use client"
+import React,{useState} from "react";
 
 import useProblemStore from "@/store/problemStageStore";
 
@@ -11,11 +12,12 @@ export interface problemStageSelectType {
 
 const ProblemStageSelect:React.FC<problemStageSelectType> = ({name}) => {
     const problemList = useProblemStore();
+    const [ulToggle,setUlToggle] = useState<boolean>(false);
     const {problemListKoName, problemListUl} = problemList[name];
     return (
         <div className="h-9">
-            <ProblemStageSelectBtn value={problemListKoName} name={name}/>
-            <ProblemStageSelectUl list={problemListUl} name={name}/>
+            <ProblemStageSelectBtn value={problemListKoName} isOpenToggle={setUlToggle}/>
+            <ProblemStageSelectUl list={problemListUl} name={name} isOpen={ulToggle} isOpenToggle={setUlToggle}/>
         </div>
     )
 }

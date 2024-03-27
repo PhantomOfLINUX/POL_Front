@@ -1,5 +1,3 @@
-//accessToken이 없거나 유효하지 않을경우 accessToken return
-
 import React,{useEffect,useState} from "react";
 
 const url = process.env.NEXT_PUBLIC_BASE_API
@@ -13,7 +11,7 @@ function useCheckAccess(
     useEffect(()=> {
         const checkAccessToken = async () => {
             try{
-                const CheckedAccessToken = await fetch(`${url}/api/auth/validate?token=${accessToken}`).then(res=>res)
+                const CheckedAccessToken = await fetch(`${url}/api/auth/validate?token=${accessToken}`)
                 if(CheckedAccessToken.status!==200){
                     const submitedAccessToken = await fetch(`${url}/api/auth/refresh`,{
                         method:"POST",

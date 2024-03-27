@@ -35,7 +35,6 @@ const useProblemStore = create<stageListType>((set,get) => ({
             problemListCheck:false,
             problemListUl:[
                 {problemItemName:"true", problemItemKoName:"풀이완료", problemItemCheck:false},
-                {problemItemName:"challenge", problemItemKoName:"도전 진행 중", problemItemCheck:false},
                 {problemItemName:"false", problemItemKoName:"시도 안 함", problemItemCheck:false}
             ]
         },
@@ -97,3 +96,5 @@ const useProblemStore = create<stageListType>((set,get) => ({
 }));
 
 export default useProblemStore;
+
+// {problemItemName:"challenge", problemItemKoName:"도전 진행 중", problemItemCheck:false},
