@@ -14,9 +14,9 @@ interface problemListStatus {
 }
 
 interface getProblemItems {
-    solutionItem:problemListItem[],
-    practiceItem:problemListItem[],
-    levelItem:problemListItem[],
+    isCompleted:string[],
+    difficultyLevels:string[],
+    stageGroupTypes:string[],
 }
 
 interface stageListType {
@@ -35,7 +35,7 @@ const useProblemStore = create<stageListType>((set,get) => ({
             problemListCheck:false,
             problemListUl:[
                 {problemItemName:"true", problemItemKoName:"풀이완료", problemItemCheck:false},
-                {problemItemName:"true", problemItemKoName:"도전 진행 중", problemItemCheck:false},
+                {problemItemName:"challenge", problemItemKoName:"도전 진행 중", problemItemCheck:false},
                 {problemItemName:"false", problemItemKoName:"시도 안 함", problemItemCheck:false}
             ]
         },
@@ -72,7 +72,7 @@ const useProblemStore = create<stageListType>((set,get) => ({
             [name]: {
             ...state[name],
             problemListUl: state[name].problemListUl.map(ele=>{
-                if(ele.problemItemKoName===value)
+                if(ele.problemItemName===value)
                     ele.problemItemCheck = checked
                 return ele
             }),
@@ -80,10 +80,19 @@ const useProblemStore = create<stageListType>((set,get) => ({
         }))
     },
     getProblemItem:() => {
-       const solutionItem = get().solution.problemListUl.filter(ele=>ele.problemItemCheck);
-       const practiceItem = get().practice.problemListUl.filter(ele=>ele.problemItemCheck);
-       const levelItem = get().level.problemListUl.filter(ele=>ele.problemItemCheck);
-       return {solutionItem,practiceItem,levelItem}
+       const isCompleted = get().solution.problemListUl.reduce((acc:string[], ele) => {
+        if (ele.problemItemCheck) acc.push(ele.problemItemName);
+        return acc;
+      }, []);
+       const stageGroupTypes = get().practice.problemListUl.reduce((acc:string[], ele) => {
+        if (ele.problemItemCheck) acc.push(ele.problemItemName);
+        return acc;
+      }, []);
+       const difficultyLevels = get().level.problemListUl.reduce((acc:string[], ele) => {
+        if (ele.problemItemCheck) acc.push(ele.problemItemName);
+        return acc;
+      }, []);
+       return {isCompleted,stageGroupTypes,difficultyLevels}
     }
 }));
 

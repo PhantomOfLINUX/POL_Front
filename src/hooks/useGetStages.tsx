@@ -13,9 +13,9 @@ interface stages{
 }
 
 function useGetStages(
-    accessToken:string,
-    refreshToken:string,
-    isCompleted?:boolean,
+    accessToken:string|undefined,
+    refreshToken:string|undefined,
+    isCompleted?:string[],
     difficultyLevels?:string[],
     stageGroupTypes?:string[]
 ):void {
@@ -26,23 +26,24 @@ function useGetStages(
                 const params = {
                     page_index:"1",
                     page_size:"1",
-                    isCompleted:isCompleted?isCompleted.toString():"",
                 };
                 const queryString = new URLSearchParams(params)
                 difficultyLevels?.forEach(ele=>{queryString.append("difficultyLevels",ele)})
                 stageGroupTypes?.forEach(ele=>{queryString.append("stageGroupTypes",ele)})
+                isCompleted?.forEach(ele=>{queryString.append("isCompleted",ele)})
                 queryString.toString()
-                console.log(queryString)
-                const newStage = await fetch(`${url}/api/stages`,{
+                const newStage = await fetch(`${url}/api/stages?${queryString}`,{
                     method:"GET",
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization:`Bearer ${validAccessToken}`
                     },
-                })
+                }).then(res=>res.json())
+                console.log(newStage)
             }catch(error){
                 console.error(error)
             }
+
         }
         getStage()
     },[validAccessToken,isCompleted,difficultyLevels,stageGroupTypes])

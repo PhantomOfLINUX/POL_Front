@@ -17,7 +17,7 @@ const ProblemStageSelectedBox = () => {
                 problemList[listName].problemListUl
                     .filter((item: problemListItem) => item.problemItemCheck)
                     .map((item: problemListItem) => (
-                        <ProblemStageSelected key={item.problemItemName} listName={listName} value={item.problemItemName}/>
+                        <ProblemStageSelected key={item.problemItemName} listName={listName} value={item.problemItemKoName} name={item.problemItemName}/>
                     ))
             ))}
         </div>
