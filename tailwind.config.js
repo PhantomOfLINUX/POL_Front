@@ -25,6 +25,12 @@ module.exports = {
         "social-height": "98px",
         "problemStage-height": "1020px",
       },
+      width: {
+        "problemStage-width": "92px",
+      },
+      borderRadius: {
+        "problemStage-selected-radius": "2px",
+      },
     },
   },
   plugins: [],

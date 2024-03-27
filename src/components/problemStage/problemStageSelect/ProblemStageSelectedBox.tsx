@@ -12,7 +12,7 @@ const ProblemStageSelectedBox = () => {
     const problemKeys: problemKey[] = ['solution', 'practice', 'level'];
 
     return (
-        <div className="flex flex-wrap w-full h-20 p-1 border-solid border rounded-md border-SelectBorder-color">
+        <div className="flex flex-wrap my-2 w-full h-20 p-1 border-solid border rounded-md border-SelectBorder-color">
             {problemKeys.map((listName) => (
                 problemList[listName].problemListUl
                     .filter((item: problemListItem) => item.problemItemCheck)

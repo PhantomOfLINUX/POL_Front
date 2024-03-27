@@ -16,8 +16,8 @@ const ProblemStageSelected:React.FC<ProblemStageSelectedType> = ({listName,value
         setProblemItemCheck(listName,name,false)
     }
     return (
-        <div className="flex items-center justify-evenly w-20 h-5 rounded-md bg-thema-color text-white text-xs">
-            #{value}<button onClick={clickProblemStageSelected}>x</button>
+        <div className="flex items-center justify-between mr-2 px-2 h-5 rounded-problemStage-selected-radius bg-thema-color text-white text-xs">
+            <span className="mr-1">#{value}</span><button onClick={clickProblemStageSelected}>x</button>
         </div>
     )
 }
