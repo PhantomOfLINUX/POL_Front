@@ -31,7 +31,7 @@ function useCheckAccess(
             }
         }
         checkAccessToken();
-    },[])
+    },[accessToken,refreshToken])
     return conditionAccessToken
 }
 

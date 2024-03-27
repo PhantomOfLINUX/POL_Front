@@ -2,6 +2,9 @@
 
 import React from "react";
 
+import useGetStages from "@/hooks/useGetStages";
+import useProblemStore from "@/store/problemStageStore"
+
 import ProblemStages from "./ProblemStagesLi";
 
 interface ProblemStageContainerType {
@@ -11,9 +14,10 @@ interface ProblemStageContainerType {
 
 
 const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,refreshToken}) => {
+    const {} = useProblemStore();
     
     return (
-        <div className="w-5/6 h-screen px-1 border-solid border rounded-md border-SelectBorder-color">
+        <div className="w-5/6 h-problemStage-height px-1 border-solid border rounded-md border-SelectBorder-color">
             
         </div>
     )

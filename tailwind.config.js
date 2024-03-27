@@ -23,6 +23,7 @@ module.exports = {
       },
       height: {
         "social-height": "98px",
+        "problemStage-height": "1020px",
       },
     },
   },

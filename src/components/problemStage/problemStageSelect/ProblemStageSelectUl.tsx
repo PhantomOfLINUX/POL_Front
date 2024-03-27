@@ -22,7 +22,7 @@ const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list,name}) =>
     return (
         <ul ref={ulRef} className={`${problemListBoolean?"block" : "hidden"} bg-white relative top-2 w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color`}>
             {list.map(li=>{
-                return <ProblemStageSelectLi name={name} key={li.problemItemName} value={li.problemItemName} check={li.problemItemCheck}/>
+                return <ProblemStageSelectLi name={name} key={li.problemItemName} value={li.problemItemKoName} check={li.problemItemCheck}/>
 }            )}
         </ul>
     )
