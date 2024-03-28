@@ -1,13 +1,18 @@
 "use client"
 
 import React from "react";
+
+import { useSearchParams } from 'next/navigation'
+
 import useProblemStore from "@/store/problemStageStore";
 import ProblemStageSelected from "./ProblemStageSelected";
+
 import type { problemListItem } from "@/store/problemStageStore";
 
 type problemKey = "solution" | "practice" | "level";
 
 const ProblemStageSelectedBox = () => {
+    const searchParam = useSearchParams();
     const problemList = useProblemStore();
     const problemKeys: problemKey[] = ['solution', 'practice', 'level'];
 

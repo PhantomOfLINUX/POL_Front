@@ -14,8 +14,8 @@ const ProblemStageSelect:React.FC<{selectName:problemStageSelectType}> = ({selec
     const {problemListKoName, problemListUl} = ProblemStageData[selectName];
     return (
         <div className="h-9">
-            <ProblemStageSelectBtn value={problemListKoName} isOpenToggle={setUlToggle}/>
-            <ProblemStageSelectUl list={problemListUl} selectName={selectName} isOpen={ulToggle} isOpenToggle={setUlToggle}/>
+            <ProblemStageSelectBtn value={problemListKoName} setUlToggle={setUlToggle}/>
+            <ProblemStageSelectUl list={problemListUl} selectName={selectName} ulToggle={ulToggle} setUlToggle={setUlToggle}/>
         </div>
     )
 }
