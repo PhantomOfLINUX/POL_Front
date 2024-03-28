@@ -33,6 +33,7 @@ function useGetStages(
 ):problemStage|undefined {
     const validAccessToken = useCheckAccess(accessToken, refreshToken);
     const [problemStages,setProblemStages] = useState<problemStage|undefined>()
+
     useEffect(()=>{
         const getStage = async () => {
             try{
@@ -54,7 +55,7 @@ function useGetStages(
                     },
                 })
                 const newStageData = await newStage.json();
-                if(newStage.ok&&JSON.stringify(newStageData)!==JSON.stringify(problemStages)){
+                if(newStage.ok&&JSON.stringify(problemStages)!==JSON.stringify(newStageData)){
                     setProblemStages(newStageData)
                 }
             }catch(error){
@@ -63,7 +64,7 @@ function useGetStages(
 
         }
         getStage()
-    },[validAccessToken,isCompleted,difficultyLevels,stageGroupTypes])
+    },[validAccessToken,isCompleted,difficultyLevels,stageGroupTypes,problemStages])
 
     return problemStages
 }
