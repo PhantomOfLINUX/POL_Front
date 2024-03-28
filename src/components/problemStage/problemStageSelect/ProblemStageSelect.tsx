@@ -1,23 +1,21 @@
 "use client"
 import React,{useState} from "react";
 
-import useProblemStore from "@/store/problemStageStore";
-
 import ProblemStageSelectBtn from "./ProblemStageSelectBtn"
 import ProblemStageSelectUl from "./ProblemStageSelectUl";
 
-export interface problemStageSelectType {
-    name:"solution" | "practice" | "level",
-}
+import ProblemStageData from "../ProblemStageData.json"
 
-const ProblemStageSelect:React.FC<problemStageSelectType> = ({name}) => {
-    const problemList = useProblemStore();
+import type { problemStageSelectType } from "@/types/problemStage";
+
+
+const ProblemStageSelect:React.FC<{selectName:problemStageSelectType}> = ({selectName}) => {
     const [ulToggle,setUlToggle] = useState<boolean>(false);
-    const {problemListKoName, problemListUl} = problemList[name];
+    const {problemListKoName, problemListUl} = ProblemStageData[selectName];
     return (
         <div className="h-9">
             <ProblemStageSelectBtn value={problemListKoName} isOpenToggle={setUlToggle}/>
-            <ProblemStageSelectUl list={problemListUl} name={name} isOpen={ulToggle} isOpenToggle={setUlToggle}/>
+            <ProblemStageSelectUl list={problemListUl} selectName={selectName} isOpen={ulToggle} isOpenToggle={setUlToggle}/>
         </div>
     )
 }

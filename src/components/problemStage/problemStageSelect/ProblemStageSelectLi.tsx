@@ -2,23 +2,23 @@
 
 import React from "react";
 
-import useProblemStore from "@/store/problemStageStore"
+import type { problemStageSelectType } from "@/types/problemStage";
+
 
 interface ProblemStageSelectLiType {
     value:string,
-    check:boolean,
-    name:"solution" | "practice" | "level",
+    selectName:problemStageSelectType,
     itemName:string
 }
 
-const ProblemStageSelectLi:React.FC<ProblemStageSelectLiType> = ({name,value,check,itemName}) => {
-    const {setProblemItemCheck} = useProblemStore();
+const ProblemStageSelectLi:React.FC<ProblemStageSelectLiType> = ({selectName,value,itemName}) => {
+
     const ChangeChecked = (event:React.ChangeEvent<HTMLInputElement>) => {
-        setProblemItemCheck(name,itemName,event.target.checked)
+       
     }
     return (
         <li className="flex">
-            <input type="checkbox" onChange={ChangeChecked} checked={check}/>
+            <input type="checkbox" onChange={ChangeChecked}/>
             {value}
         </li>
     )
