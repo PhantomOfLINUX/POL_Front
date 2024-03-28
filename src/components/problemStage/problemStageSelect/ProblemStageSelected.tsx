@@ -6,17 +6,18 @@ import useProblemStore from "@/store/problemStageStore";
 
 interface ProblemStageSelectedType {
     listName:"solution"|"practice"|"level",
-    value:string
+    value:string,
+    name:string
 }
 
-const ProblemStageSelected:React.FC<ProblemStageSelectedType> = ({listName,value}) => {
+const ProblemStageSelected:React.FC<ProblemStageSelectedType> = ({listName,value,name}) => {
     const {setProblemItemCheck} = useProblemStore();
     const clickProblemStageSelected = (event:React.MouseEvent<HTMLButtonElement>) =>{
-        setProblemItemCheck(listName,value,false)
+        setProblemItemCheck(listName,name,false)
     }
     return (
-        <div className="flex items-center justify-evenly w-20 h-5 rounded-md bg-thema-color text-white text-xs">
-            #{value}<button onClick={clickProblemStageSelected}>x</button>
+        <div className="flex items-center justify-between mr-2 px-2 h-5 rounded-problemStage-selected-radius bg-thema-color text-white text-xs">
+            <span className="mr-1">#{value}</span><button onClick={clickProblemStageSelected}>x</button>
         </div>
     )
 }
