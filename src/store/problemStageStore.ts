@@ -1,4 +1,3 @@
-import { get } from 'http'
 import {create} from 'zustand'
 
 export interface problemListItem {
@@ -18,7 +17,6 @@ interface getProblemItems {
     difficultyLevels:string[],
     stageGroupTypes:string[],
 }
-
 interface stageListType {
     solution:problemListStatus,
     practice:problemListStatus,
