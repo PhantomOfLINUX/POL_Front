@@ -1,6 +1,9 @@
 import React,{useEffect,useState} from "react";
 import useCheckAccess from "./useCheckAccess";
 
+import { useSearchParams } from 'next/navigation'
+
+
 const url = process.env.NEXT_PUBLIC_BASE_API
 
 interface pageParameters {
@@ -27,19 +30,20 @@ interface problemStage {
 function useGetStages(
     accessToken:string|undefined,
     refreshToken:string|undefined,
-    isCompleted?:string[],
-    difficultyLevels?:string[],
-    stageGroupTypes?:string[]
 ):problemStage|undefined {
     const validAccessToken = useCheckAccess(accessToken, refreshToken);
+    const searchParams = useSearchParams();
     const [problemStages,setProblemStages] = useState<problemStage|undefined>()
 
     useEffect(()=>{
         const getStage = async () => {
             try{
+                const isCompleted = searchParams.get("isCompleted")?.split(",")
+                const difficultyLevels = searchParams.get("difficultyLevels")?.split(",")
+                const stageGroupTypes = searchParams.get("stageGroupTypes")?.split(",")
                 const params = {
                     page_index:"1",
-                    page_size:"5",
+                    page_size:"10",
                 };
                 const queryString = new URLSearchParams(params)
                 difficultyLevels?.forEach(level=>{queryString.append("difficultyLevels",level)})
@@ -64,7 +68,7 @@ function useGetStages(
 
         }
         getStage()
-    },[validAccessToken,isCompleted,difficultyLevels,stageGroupTypes,problemStages])
+    },[validAccessToken,searchParams,problemStages])
 
     return problemStages
 }

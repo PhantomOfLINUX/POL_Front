@@ -17,6 +17,7 @@ module.exports = {
         gray: "#90929E",
         red: "#D1180B",
         "SelectBorder-color": "#90929E",
+        "problemStageLi-color": "#D1D5DB",
       },
       minHeight: {
         "min-height": "400px",
@@ -27,9 +28,15 @@ module.exports = {
       },
       width: {
         "problemStage-width": "92px",
+        "problemStage-isCompleted": "88px",
+        "problemStage-title": "188px",
+        "problemStage-info": "340px",
       },
       borderRadius: {
         "problemStage-selected-radius": "2px",
+      },
+      borderWidth: {
+        "problemStageLi-borderWidth": "1px",
       },
     },
   },

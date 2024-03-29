@@ -5,7 +5,7 @@ import ProblemStagePageNation from "./ProblemStagePageNation";
 const ProblemStagePageNationContainer = () => {
     return (
         <div>
-            <span>총 N개의 스테이즈를 찾았어요</span>
+            <span>총 N개의 스테이지를 찾았어요</span>
             <ProblemStagePageNation />
         </div>
     )
