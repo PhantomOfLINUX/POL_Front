@@ -1,27 +1,40 @@
 "use client"
 
 import React from "react";
-import useProblemStore from "@/store/problemStageStore";
-import ProblemStageSelected from "./ProblemStageSelected";
-import type { problemListItem } from "@/store/problemStageStore";
+import { useSearchParams } from 'next/navigation'
 
-type problemKey = "solution" | "practice" | "level";
+import ProblemStageSelected from "./ProblemStageSelected"
+
+import ProblemStageData from "../ProblemStageData.json"
+
+import type { problemStageSelectType } from "@/types/problemStage"
 
 const ProblemStageSelectedBox = () => {
-    const problemList = useProblemStore();
-    const problemKeys: problemKey[] = ['solution', 'practice', 'level'];
+    const searchParam = useSearchParams();
+    const problemStageDataKey:problemStageSelectType[] = ["isCompleted","stageGroupTypes","difficultyLevels"];
 
     return (
         <div className="flex flex-wrap my-2 w-full h-20 p-1 border-solid border rounded-md border-SelectBorder-color">
-            {problemKeys.map((listName) => (
-                problemList[listName].problemListUl
-                    .filter((item: problemListItem) => item.problemItemCheck)
-                    .map((item: problemListItem) => (
-                        <ProblemStageSelected key={item.problemItemName} listName={listName} value={item.problemItemKoName} name={item.problemItemName}/>
-                    ))
-            ))}
+            {
+                problemStageDataKey.map((dataKey)=>(
+                    ProblemStageData[dataKey]["problemListUl"]
+                    .filter(listul=>searchParam.get(dataKey)?.split(",").includes(listul.problemItemName))
+                    .map(item=>(
+                        <ProblemStageSelected key={item.problemItemName} selectName={dataKey} value={item.problemItemKoName} itemName={item.problemItemName}/>
+                    ))  
+                ))
+            }
         </div>
     );
 }
 
 export default ProblemStageSelectedBox;
+// <ProblemStageSelected key={item.problemItemName} listName={listName} value={item.problemItemKoName} name={item.problemItemName}/>
+/*
+                problemStageDataKey.map((dataKey:problemStageSelectType)=>{
+                    ProblemStageData[dataKey]["problemListUl"].map(ele=>(
+                        <div></div>
+                    ))
+                })
+
+*/

@@ -16,9 +16,9 @@ interface ProblemStageContainerType {
 const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,refreshToken}) => {
     const {getProblemItem} = useProblemStore();
     const {stageGroupTypes,isCompleted,difficultyLevels} = getProblemItem();
-    const result = useGetStages(accessToken, refreshToken, isCompleted, difficultyLevels, stageGroupTypes);
-    const pageParameters = result?.pageParameters ?? "";
-    const stages = result?.stages ?? [];
+    //const result = useGetStages(accessToken, refreshToken, isCompleted, difficultyLevels, stageGroupTypes);
+    //const pageParameters = result?.pageParameters ?? "";
+    //const stages = result?.stages ?? [];
     return (
         <>
         <span>총</span>
@@ -32,7 +32,6 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
                     level={ele.difficultyLevelType}
                 />
             ))}
-        </div>
         </>
     )
 }
@@ -40,9 +39,12 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
 export default ProblemStageContainer
 
 /*
-    title:string,
-    info:string,
-    level:string,
-    problems:string
-}
+{stages?.map(ele=>(
+                <ProblemStagesLi 
+                    key={ele.id} 
+                    title={ele.title} 
+                    info={ele.description} 
+                    level={ele.difficultyLevelType}
+                />
+            ))}
 */

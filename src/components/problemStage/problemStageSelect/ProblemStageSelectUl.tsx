@@ -4,22 +4,22 @@ import React,{useRef} from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import ProblemStageSelectLi from "./ProblemStageSelectLi";
 
-import type {problemListItem} from "@/store/problemStageStore"
+import type { problemListItem, problemStageSelectType } from "@/types/problemStage";
 
 interface ProblemStageSelectUlType {
     list:problemListItem[],
-    name:"solution" | "practice" | "level",
-    isOpen:boolean,
-    isOpenToggle:React.Dispatch<React.SetStateAction<boolean>>
+    selectName:problemStageSelectType,
+    ulToggle:boolean,
+    setUlToggle:React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list,name,isOpen,isOpenToggle}) => {
+const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list,selectName,ulToggle,setUlToggle}) => {
     const ulRef = useRef<HTMLUListElement>(null);
-    useOutsideClick(ulRef,isOpenToggle,isOpen)
+    useOutsideClick(ulRef,setUlToggle,ulToggle)
     return (
-        <ul ref={ulRef} className={`${isOpen?"block" : "hidden"} bg-white relative top-2 w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color`}>
+        <ul ref={ulRef} className={`${ulToggle?"block" : "hidden"} bg-white relative top-2 w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color`}>
             {list.map(li=>{
-                return <ProblemStageSelectLi name={name} key={li.problemItemName} value={li.problemItemKoName} itemName={li.problemItemName} check={li.problemItemCheck}/>
+                return <ProblemStageSelectLi selectName={selectName} key={li.problemItemName} value={li.problemItemKoName} itemName={li.problemItemName}/>
 }            )}
         </ul>
     )

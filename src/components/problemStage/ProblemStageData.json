@@ -1,0 +1,27 @@
+{
+    "isCompleted":{
+        "problemListKoName":"풀이상태",
+        "problemListUl":[
+            {"problemItemName":"true", "problemItemKoName":"풀이완료"},
+            {"problemItemName":"false", "problemItemKoName":"시도 안 함"}
+        ]
+    },
+    "stageGroupTypes" :{
+        "problemListKoName":"실습 구분",
+        "problemListUl":[
+            {"problemItemName":"BASIC_PROBLEMS","problemItemKoName":"입문"},
+            {"problemItemName":"ADVANCED_PROBLEMS","problemItemKoName":"심화"},
+            {"problemItemName":"MOCK_TESTS","problemItemKoName":"모의 테스트"}
+        ]
+    },
+    "difficultyLevels":{
+        "problemListKoName":"종합 난이도",
+        "problemListUl":[
+            {"problemItemName":"L1","problemItemKoName":"L1"},
+            {"problemItemName":"L2","problemItemKoName":"L2"},
+            {"problemItemName":"L3","problemItemKoName":"L3"},
+            {"problemItemName":"L4","problemItemKoName":"L4"},
+            {"problemItemName":"L5","problemItemKoName":"L5"}
+        ]
+    }
+}

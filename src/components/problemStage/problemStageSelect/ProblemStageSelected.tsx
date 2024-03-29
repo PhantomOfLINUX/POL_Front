@@ -2,18 +2,31 @@
 
 import React from "react";
 
-import useProblemStore from "@/store/problemStageStore";
+import { useSearchParams,useRouter,usePathname } from 'next/navigation'
+
+import type { problemStageSelectType } from "@/types/problemStage"
 
 interface ProblemStageSelectedType {
-    listName:"solution"|"practice"|"level",
+    selectName:problemStageSelectType,
     value:string,
-    name:string
+    itemName:string
 }
 
-const ProblemStageSelected:React.FC<ProblemStageSelectedType> = ({listName,value,name}) => {
-    const {setProblemItemCheck} = useProblemStore();
+const ProblemStageSelected:React.FC<ProblemStageSelectedType> = ({selectName,value,itemName}) => {
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const pathName = usePathname();
+    const params = new URLSearchParams(searchParams.toString());
+    const existingItems = params.get(selectName) ? params.get(selectName)!.split(',') : [];
     const clickProblemStageSelected = (event:React.MouseEvent<HTMLButtonElement>) =>{
-        setProblemItemCheck(listName,name,false)
+        const itemIndex = existingItems.indexOf(itemName);
+        existingItems.splice(itemIndex, 1);
+        if (existingItems.length > 0) {
+            params.set(selectName, existingItems.join(','));
+        } else {
+            params.delete(selectName);
+        }
+        router.push(pathName+"?"+params.toString());
     }
     return (
         <div className="flex items-center justify-between mr-2 px-2 h-5 rounded-problemStage-selected-radius bg-thema-color text-white text-xs">
