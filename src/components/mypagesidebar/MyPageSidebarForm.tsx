@@ -82,7 +82,6 @@ const MyPageSidebarForm = () => {
                     </li>
                 </ul>
             </div>
-
         </div >
     )
 }

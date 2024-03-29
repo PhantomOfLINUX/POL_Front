@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    if: github.repository == 'PhantomOfLINUX/POL_Front'
+    if: false
     steps:
       - name: git code checkout
         uses: actions/checkout@v3
@@ -51,7 +51,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-20.04
-    if: github.repository == 'PhantomOfLINUX/POL_Front'
+    if: false
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master

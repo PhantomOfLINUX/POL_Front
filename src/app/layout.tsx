@@ -1,4 +1,8 @@
+import { Suspense } from "react";
+
 import type { Metadata } from "next";
+
+import Loding from "./Loading";
 
 import PageLayout from "@/components/layout/PageLayout";
 import './globals.css'
@@ -17,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PageLayout>
+          <Suspense fallback={<Loding/>}>
           {children}
+          </Suspense>
         </PageLayout>
       </body>
     </html>

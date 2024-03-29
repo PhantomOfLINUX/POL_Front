@@ -4,17 +4,17 @@ import Link from "next/link"
 
 interface HeaderBtnType {
     href:string,
-    value:string,
+    children:string,
     className:string,
 }
 
-const HeaderBtn:React.FC<HeaderBtnType> = ({href,value,className}) => {
+const HeaderBtn:React.FC<HeaderBtnType> = ({href,children,className}) => {
     return(
         <Link 
             href={`${href}`} 
             className={`${className}`}
         >
-            {value}
+            {children}
         </Link>
     )
 }
