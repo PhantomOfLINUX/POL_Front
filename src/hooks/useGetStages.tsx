@@ -43,7 +43,7 @@ function useGetStages(
                 const stageGroupTypes = searchParams.get("stageGroupTypes")?.split(",")
                 const params = {
                     page_index:"1",
-                    page_size:"5",
+                    page_size:"10",
                 };
                 const queryString = new URLSearchParams(params)
                 difficultyLevels?.forEach(level=>{queryString.append("difficultyLevels",level)})
