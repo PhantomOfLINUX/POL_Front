@@ -17,7 +17,6 @@ interface getProblemItems {
     difficultyLevels:string[],
     stageGroupTypes:string[],
 }
-
 interface stageListType {
     solution:problemListStatus,
     practice:problemListStatus,
