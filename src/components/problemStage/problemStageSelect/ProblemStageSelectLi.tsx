@@ -16,10 +16,9 @@ const ProblemStageSelectLi:React.FC<ProblemStageSelectLiType> = ({selectName,val
     const searchParams = useSearchParams()
     const router = useRouter();
     const pathname = usePathname();
+    const params = new URLSearchParams(searchParams.toString());
+    const existingItems = params.get(selectName) ? params.get(selectName)!.split(',') : [];
     const ChangeChecked = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const params = new URLSearchParams(searchParams.toString());
-        const existingItems = params.get(selectName) ? params.get(selectName)!.split(',') : [];
-
         if (event.target.checked) {
             if (!existingItems.includes(itemName))
                 existingItems.push(itemName);
@@ -27,7 +26,6 @@ const ProblemStageSelectLi:React.FC<ProblemStageSelectLiType> = ({selectName,val
             const itemIndex = existingItems.indexOf(itemName);
             existingItems.splice(itemIndex, 1);
         }
-
         if (existingItems.length > 0) {
             params.set(selectName, existingItems.join(','));
         } else {
@@ -35,10 +33,9 @@ const ProblemStageSelectLi:React.FC<ProblemStageSelectLiType> = ({selectName,val
         }
         router.push(pathname+"?"+params.toString());
     };
-    
     return (
         <li className="flex">
-            <input type="checkbox" onChange={ChangeChecked}/>
+            <input type="checkbox" onChange={ChangeChecked} defaultChecked={existingItems.includes(itemName)}/>
             {value}
         </li>
     )
