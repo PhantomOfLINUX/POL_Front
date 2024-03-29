@@ -24,8 +24,14 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
         <span>총</span>
         <div className="w-5/6 h-problemStage-height px-1 border-solid border rounded-md border-SelectBorder-color">
             <div className="w-full flex justify-evenly"><span>해결</span><span>제목</span><span>설명</span><span>난이도</span></div>
-            
-        </div>
+            {stages?.map(ele=>(
+                <ProblemStagesLi 
+                    key={ele.id} 
+                    title={ele.title} 
+                    info={ele.description} 
+                    level={ele.difficultyLevelType}
+                />
+            ))}
         </>
     )
 }
