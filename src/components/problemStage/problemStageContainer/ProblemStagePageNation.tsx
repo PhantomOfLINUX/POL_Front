@@ -1,8 +1,14 @@
+"use client"
+
 import React from "react";
 
+interface ProblemStagePageNationType {
+    totalPages:number
+}
 
 
-const ProblemStagePageNation = () => {
+const ProblemStagePageNation:React.FC<ProblemStagePageNationType> = ({totalPages}) => {
+    
     return (
         <div>
             

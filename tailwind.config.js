@@ -20,17 +20,17 @@ module.exports = {
         "problemStageLi-color": "#D1D5DB",
       },
       minHeight: {
-        "min-height": "400px",
+        "min-height": "25rem",
       },
       height: {
-        "social-height": "98px",
-        "problemStage-height": "1020px",
+        "social-height": "6.125rem",
+        "problemStage-height": "50rem",
       },
       width: {
-        "problemStage-width": "92px",
-        "problemStage-isCompleted": "88px",
-        "problemStage-title": "188px",
-        "problemStage-info": "340px",
+        "problemStage-width": "5.75rem",
+        "problemStage-isCompleted": "5.5rem",
+        "problemStage-title": "11.75rem",
+        "problemStage-info": "21.25rem",
       },
       borderRadius: {
         "problemStage-selected-radius": "2px",
