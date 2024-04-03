@@ -2,7 +2,7 @@ import React from "react";
 
 interface ProblemStagePageNationBtnType {
     pageBtn:number|string,
-    curPage?:number
+    curPage?:number,
 }
 
 const ProblemStagePageNationBtn:React.FC<ProblemStagePageNationBtnType> = ({pageBtn,curPage}) => {

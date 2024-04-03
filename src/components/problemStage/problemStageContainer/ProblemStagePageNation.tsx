@@ -17,9 +17,9 @@ const ProblemStagePageNation:React.FC<ProblemStagePageNationType> = ({totalStage
       )
     );
     const [curPageNation,setCurPageNation] = useState(0);//페이지네이션의 현재 위치
-    const [curPage,setCurPage] = useState(1)
+    const [curPage,setCurPage] = useState(1)//현재 페이지
     return (
-        <div className="flex px-5">
+        <div className="flex">
             <ProblemStagePageNationBtn pageBtn={"<"}/>
                 {totalPages[curPageNation].map(ele=><ProblemStagePageNationBtn curPage={curPage} key={ele} pageBtn={ele}/>)}
             <ProblemStagePageNationBtn pageBtn={">"}/>
