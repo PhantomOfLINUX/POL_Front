@@ -41,7 +41,7 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
             </div>
             <ProblemStagePageNationContainer 
                 totalElement={(pageParameters as { totalElement: number }).totalElement}
-                totalPages={pageParameters.totalPages}
+                totalStages={pageParameters.totalPages}
             />
         </ul>
         </>
