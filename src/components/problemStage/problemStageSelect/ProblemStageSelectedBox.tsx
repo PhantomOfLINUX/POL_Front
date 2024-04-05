@@ -29,12 +29,3 @@ const ProblemStageSelectedBox = () => {
 }
 
 export default ProblemStageSelectedBox;
-// <ProblemStageSelected key={item.problemItemName} listName={listName} value={item.problemItemKoName} name={item.problemItemName}/>
-/*
-                problemStageDataKey.map((dataKey:problemStageSelectType)=>{
-                    ProblemStageData[dataKey]["problemListUl"].map(ele=>(
-                        <div></div>
-                    ))
-                })
-
-*/
