@@ -2,8 +2,9 @@
     "isCompleted":{
         "problemListKoName":"풀이상태",
         "problemListUl":[
-            {"problemItemName":"true", "problemItemKoName":"풀이완료"},
-            {"problemItemName":"false", "problemItemKoName":"시도 안 함"}
+            {"problemItemName":"COMPLETED", "problemItemKoName":"풀이완료"},
+            {"problemItemName":"IN_PROGRESS", "problemItemKoName":"도전 진행 중"},
+            {"problemItemName":"NOT_COMPLETED", "problemItemKoName":"시도 안 함"}
         ]
     },
     "stageGroupTypes" :{
