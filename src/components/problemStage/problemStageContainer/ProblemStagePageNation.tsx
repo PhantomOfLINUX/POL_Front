@@ -21,10 +21,15 @@ const ProblemStagePageNation:React.FC<ProblemStagePageNationType> = ({totalStage
     return (
         <div className="flex">
             <ProblemStagePageNationBtn pageBtn={"<"}/>
-                {totalPages[curPageNation].map(ele=><ProblemStagePageNationBtn curPage={curPage} key={ele} pageBtn={ele}/>)}
+                {totalPages[curPageNation]?.map(ele=><ProblemStagePageNationBtn curPage={curPage} key={ele} pageBtn={ele}/>)}
             <ProblemStagePageNationBtn pageBtn={">"}/>
         </div>
     )
 }
 
 export default ProblemStagePageNation
+
+/*
+< 그전으로 보내야함
+> 다음으로 보내야함
+*/
