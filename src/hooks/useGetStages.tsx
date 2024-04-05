@@ -41,8 +41,9 @@ function useGetStages(
                 const isCompleted = searchParams.get("isCompleted")?.split(",")
                 const difficultyLevels = searchParams.get("difficultyLevels")?.split(",")
                 const stageGroupTypes = searchParams.get("stageGroupTypes")?.split(",")
+                const page_index = searchParams.get("page")
                 const params = {
-                    page_index:"1",
+                    page_index:page_index||"1",
                     page_size:"10",
                 };
                 const queryString = new URLSearchParams(params)
