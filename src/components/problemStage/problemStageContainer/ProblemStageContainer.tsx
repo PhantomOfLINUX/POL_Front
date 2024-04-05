@@ -12,9 +12,31 @@ interface ProblemStageContainerType {
     refreshToken:string|undefined
 }
 
+interface Stage {
+    id: string;
+    title: string;
+    description: string;
+    difficultyLevelType: string;
+    questionCount: number;
+    completedStatus: string;
+  }
+  
+  interface PageParameters {
+    currentPageIndex: number;
+    currentPageOfElement: number;
+    pageSize: number;
+    totalElement: number;
+    totalPages: number;
+  }
+  
+  interface UseGetStagesResult {
+    stages: Stage[];
+    pageParameters: PageParameters;
+  }
+
 
 const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,refreshToken}) => {
-    const result = useGetStages(accessToken, refreshToken);
+    const result = useGetStages(accessToken, refreshToken) as UseGetStagesResult|undefined;
     const pageParameters = result?.pageParameters ?? {currentPageIndex:0,currentPageOfElement:0,pageSize:0,totalElement:0,totalPages:0};
     const stages = result?.stages ?? [];
     return (
@@ -31,7 +53,8 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
                 </div>
                 {stages?.map(ele=>(
                     <ProblemStagesLi 
-                        key={ele.id} 
+                        key={ele.id}
+                        solved={ele?.completedStatus}
                         title={ele.title} 
                         info={ele.description} 
                         level={ele.difficultyLevelType}
