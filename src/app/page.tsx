@@ -1,11 +1,13 @@
 import React from "react";
 import Link from "next/link";
 
+import MainGoButton from "@/components/mainGoButton/MainGoButton";
+
 const Introduction = () => {
     return (
         <div className="page-container">
             <div className="content-wrap">
-                <Link href={"/challengelist"}>문제 풀러가기</Link>
+                <MainGoButton/>
             </div>
         </div>
 
