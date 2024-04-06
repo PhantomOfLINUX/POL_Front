@@ -54,6 +54,7 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
                 {stages?.map(ele=>(
                     <ProblemStagesLi 
                         key={ele.id}
+                        stageId={ele.id}
                         solved={ele?.completedStatus}
                         title={ele.title} 
                         info={ele.description} 
