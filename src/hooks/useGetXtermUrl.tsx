@@ -4,17 +4,25 @@ import { useSearchParams } from "next/navigation";
 
 import useCheckAccess from "./useCheckAccess";
 
-import {getPlayerId} from "@/utils/xtermUtils/xtermUtils"
+interface xHeader {
+    key:string,
+    value:string
+}
+
+interface useGetXtermUrlType {
+    url:string,
+    xHeaders:xHeader[]
+}
 
 const url = process.env.NEXT_PUBLIC_BASE_API
 
 function useGetXtermUrl( 
     accessToken:string|undefined,
     refreshToken:string|undefined
-):string {
+):useGetXtermUrlType {
     const validAccessToken = useCheckAccess(accessToken, refreshToken);
     const searchParam = useSearchParams();
-    const [xtermUrl, setXtermUrl] = useState<string>("");
+    const [xtermUrl, setXtermUrl] = useState<useGetXtermUrlType>({url:"",xHeaders:[]});
     useEffect(()=>{
         const getXtermUrl = async () => {
             const stageID = searchParam.get("stageId")
@@ -26,7 +34,7 @@ function useGetXtermUrl(
                 })
                 const xtermData = await xtermDataOk.json();
                 if(xtermDataOk.ok){
-                    console.log(xtermData);
+                    setXtermUrl(xtermData);
                 }
             }catch(error) {
                 console.error(error)
@@ -34,7 +42,6 @@ function useGetXtermUrl(
         }
         getXtermUrl()
     },[validAccessToken,searchParam])
-    
 
     return xtermUrl
 }

@@ -12,7 +12,8 @@ interface XtermBoxType {
 }
 
 const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken}) => {
-    const url = useGetXtermUrl(accessToken,refreshToken);
+    const {url,xHeaders} = useGetXtermUrl(accessToken,refreshToken);
+    console.log(url,xHeaders)
     return (
         <div>
             <Xterm/>
