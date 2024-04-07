@@ -1,38 +1,54 @@
 "use client"
 import React, { useEffect, useRef } from 'react';
 import { Terminal } from 'xterm';
-import { AttachAddon } from 'xterm-addon-attach';
+import { io, Socket } from "socket.io-client";
 import 'xterm/css/xterm.css';
 
-const socketUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
+interface ServerToClientEvents {
+  noArg: () => void;
+  basicEmit: (a: number, b: string, c: Buffer) => void;
+  withAck: (d: string, callback: (e: number) => void) => void;
+}
+
+interface ClientToServerEvents {
+  hello: () => void;
+}
+
+/*export interface XtermType {
+  socket:Socket<ServerToClientEvents, ClientToServerEvents>|null
+}*/
+
 
 const Xterm: React.FC = () => {
   const terminalRef = useRef<Terminal | null>(null);
   const xtermContainerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (!terminalRef.current && xtermContainerRef.current) {
-      const websocket = new WebSocket(socketUrl ? socketUrl : "");
       const newTerminal = new Terminal();
-      const attachAddon = new AttachAddon(websocket);
-      newTerminal.loadAddon(attachAddon);
       terminalRef.current = newTerminal;
       let curr_line = "";
+
       newTerminal.onKey((e) => {
         let { key } = e;
-        if (key === "\r") {
+        //socket 연결
+        if (key === "\r") {//endter
           if (curr_line) {
-            
+            newTerminal.write("\r")
           }
         } else if (key === "\x7F") {
           if (curr_line.length > 0) {
             curr_line = curr_line.slice(0, curr_line.length - 1);
+            newTerminal.write('\b \b');
           }
-        } else {
+        } else {//other key
           curr_line += key;
+          newTerminal.write(key)
         }
-      });
+      });//key 작업 모듈화 필요
+
       newTerminal.open(xtermContainerRef.current);
     }
+    //return 으로 socket 연결 종료
   }, []);
 
   return (
