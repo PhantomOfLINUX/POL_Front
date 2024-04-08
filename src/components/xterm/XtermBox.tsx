@@ -4,8 +4,6 @@ import React from "react";
 
 import useGetXtermUrl from "@/hooks/useGetXtermUrl";
 
-import {socketProvider} from "@/lib/socket"
-
 import Xterm from "./Xterm";
 
 interface XtermBoxType {
@@ -14,11 +12,10 @@ interface XtermBoxType {
 }
 
 const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken}) => {
-    const {url,xHeaders} = useGetXtermUrl(accessToken,refreshToken);
-    const socket = socketProvider(url,xHeaders)
+    const {url,query} = useGetXtermUrl(accessToken,refreshToken);
     return (
         <div>
-           <Xterm />
+           <Xterm url={url} query={query}/>
         </div>
     )
 }

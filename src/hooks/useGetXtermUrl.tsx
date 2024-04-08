@@ -4,14 +4,10 @@ import { useSearchParams } from "next/navigation";
 
 import useCheckAccess from "./useCheckAccess";
 
-interface xHeader {
-    key:string,
-    value:string
-}
 
 interface useGetXtermUrlType {
     url:string,
-    xHeaders:xHeader[]
+    query:string
 }
 
 const url = process.env.NEXT_PUBLIC_BASE_API
@@ -22,18 +18,21 @@ function useGetXtermUrl(
 ):useGetXtermUrlType {
     const validAccessToken = useCheckAccess(accessToken, refreshToken);
     const searchParam = useSearchParams();
-    const [xtermUrl, setXtermUrl] = useState<useGetXtermUrlType>({url:"",xHeaders:[]});
+    const [xtermUrl, setXtermUrl] = useState<useGetXtermUrlType>({url:"",query:""});
     useEffect(()=>{
         const getXtermUrl = async () => {
             const stageID = searchParam.get("stageId")
             try{
-                const xtermDataOk = await fetch(`${url}/lab/terminal/stage/${stageID}`,{
+                const xtermDataOk = await fetch(`${url}/lab/terminal/access-url/${stageID}`,{
                     headers:{
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                         Authorization:`Bearer ${validAccessToken}`
                     }
                 })
                 const xtermData = await xtermDataOk.json();
                 if(xtermDataOk.ok){
+                    console.log(xtermData)
                     setXtermUrl(xtermData);
                 }
             }catch(error) {
