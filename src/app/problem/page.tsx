@@ -1,13 +1,13 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const Xterm = dynamic(()=>import("@/components/xterm/Xterm"),{ssr:false})
+const XtermContainer = dynamic(()=>import("@/components/xterm/XtermContainer"),{ssr:false})
 
 const Problem = () => {
     
     return (
         <div>
-            <Xterm/>
+            <XtermContainer/>
         </div>
     )
 }
