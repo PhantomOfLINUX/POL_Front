@@ -17,7 +17,7 @@ const ProblemStageModal:React.FC<ProblemStageModalType> = ({modalState,stageId,t
     const router = useRouter();
     const closeModal = (e:React.MouseEvent<HTMLButtonElement>|React.MouseEvent<HTMLDivElement>) => {e.preventDefault(); setModalState(false)}
     return (
-        <div onClick={(e)=>{closeModal(e)}} className={`${modalState?"block":"hidden"} flex items-center justify-center fixed z-50 w-full h-full p-4 bg-OpaqueBackground-color md:inset-0 h-[calc(100%-1rem)]`}>
+        <div onClick={(e)=>{closeModal(e)}} className={`${modalState?"block":"hidden"} flex items-center justify-center fixed z-50 w-full h-full p-4 bg-OpaqueBackground-color md:inset-0`}>
             <div className="absolute max-w-md max-h-full bg-white rounded-lg shadow">
                     <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 className="text-xl font-medium text-gray-900 dark:text-white">
