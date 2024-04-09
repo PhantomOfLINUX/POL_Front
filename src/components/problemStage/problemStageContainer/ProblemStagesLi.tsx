@@ -19,11 +19,11 @@ interface ProblemStagesLiType {
 const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,info,level,questionCount,solved,stageId}) => {
     const router = useRouter();
     const [mouseUp, setMouseUp] = useState<boolean>(false)
-    const [modalOpen,setModalOpen] = useState<boolean>(false)
+    const [modalState,setModalState] = useState<boolean>(false)
     return (
         <>
         <li onClick={()=>{
-            setModalOpen(true)
+            setModalState(true)
         }} onMouseEnter={(e)=>{setMouseUp(true)}} onMouseLeave={(e)=>{setMouseUp(false)}} className={`${mouseUp?"bg-slate-100":"bg-white"} list-none w-full px-10 h-14 flex items-center justify-evenly border-b-problemStageLi-borderWidth border-problemStageLi-color cursor-pointer`}>
             <span className="w-problemStage-isCompleted"> 
             {solved!=="NOT_COMPLETED"?
@@ -41,12 +41,13 @@ const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,info,level,questio
             <span className="w-problemStage-width">{questionCount}</span>
         </li>
         <ProblemStageModal
-            modalOpen={modalOpen}
+            modalState={modalState}
             stageId={stageId}
             title={title}
             info={info}
             level={level}
             questionCount={questionCount}
+            setModalState={setModalState}
         />
         </>
     )
@@ -54,11 +55,3 @@ const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,info,level,questio
 
 
 export default ProblemStagesLi
-/*  
-title,info,level,questionCount,solved,stageId
-    title:string,
-    info:string,
-    level:string,
-    problemCount:number
-
-*/
