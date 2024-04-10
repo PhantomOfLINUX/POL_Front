@@ -6,12 +6,11 @@ import MyPageProblemForm from "./MyPageProblem";
 import MyPageProfileForm from "./MyPageProfile";
 import MyPageSubscribeForm from "./MyPageSubscribe";
 import MyPageUserSettingForm from "./MyPageUserSetting";
-import myPageStore from "@/store/myPageStore";
+import useMyPageStore from "@/store/myPageStore";
 
 
 const MyPageInfoForm = () => {
-    const { pageSelector } = myPageStore();
-    console.log(pageSelector);
+    const { pageSelector } = useMyPageStore();
     if (pageSelector === 1) {
         return (
             <div><MyPageProfileForm /></div>

@@ -1,13 +1,22 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import useMyPageProfileStore from "@/store/myPageProfileStore";
 
 const MyPageProfileForm = () => {
+    const { userEmail, userName, userId, userLevel } = useMyPageProfileStore();
 
     return (
-        <>프로필 정보가 들어갈 자리, 이메일,이름(닉네임), 전화번호</>
+        <div>
+            이메일 = {userEmail}
+            <br />
+            이름 = {userName}
+            <br />
+            유저코드 = {userId}
+            <br />
+            레벨 = {userLevel}
+        </div>
     )
 }
-
 
 export default MyPageProfileForm;
