@@ -1,35 +1,33 @@
 "use client"
 
-import React,{Suspense} from "react";
+import React,{Suspense,useState} from "react";
 
-import useGetXtermUrl from "@/hooks/useGetXtermUrl";
+import type { Resource } from "@/lib/wrappingPromise";
 
 import Xterm from "./Xterm";
-import useCheckProblemSolved from "@/hooks/useCheckProblemSolved";
+
+interface CheckProblem {
+    uid: string;
+    stageId: number;
+    stageCode: string;
+    exists: boolean;
+}
 
 interface XtermBoxType {
     accessToken:string|undefined,
     refreshToken:string|undefined
+    problemSolvedCheck:Resource<CheckProblem> | undefined
 }
 
-const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken}) => {
-    const {url,query} = useGetXtermUrl(accessToken, refreshToken);
-    const problemSolvedCheck = useCheckProblemSolved(accessToken, refreshToken)
-    console.log(problemSolvedCheck?.read())
-    
+const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken,problemSolvedCheck}) => {
+    const [ModalCheck,setModalCheck] = useState<boolean>(true);
+    console.log(problemSolvedCheck)
     return (
-        <Suspense fallback={<div>Loding...</div>}>
-           {problemSolvedCheck?.read().exists&&<Xterm url={url} query={query}/>}
-        </Suspense>
+        <div>
+            {problemSolvedCheck?.read().exists&&ModalCheck?<div>asd</div>:<div>xcvc</div>}
+        </div>
     )
 }
 
 
 export default XtermBox
-
-/*
-먼저 스테이지 check 
-true면 - 모달창
-false면 - 넘어가기
-
-*/

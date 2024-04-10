@@ -18,27 +18,23 @@ function useCheckProblemSolved(
 ): Resource<CheckProblem> | undefined {
     const validAccessToken = useCheckAccess(accessToken, refreshToken);
     const searchParams = useSearchParams();
-    const [problemSolvedCheck, setProblemSolvedCheck] = useState<Resource<CheckProblem> | undefined>();
-
-    useEffect(() => {
-        const stageID = searchParams.get("stageId");
-            const fetchData = async () => {
-            const response = await fetch(`${url}/lab/terminal/existence/${stageID}`, {
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${validAccessToken}`,
-                },
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-                return response.json();
-        };
-        setProblemSolvedCheck(wrapPromise(fetchData()));
-    }, [validAccessToken, searchParams]);
-
-    return problemSolvedCheck;
+    const stageID = searchParams.get("stageId");
+    if (validAccessToken && stageID) {
+        const checkPromiseSolved = fetch(`${url}/lab/terminal/existence/${stageID}`, {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${validAccessToken}`,
+            },
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('Network response was not ok');
+            return res.json();
+        });
+        return wrapPromise(checkPromiseSolved);
+    }
+    return undefined;
 }
+
 
 export default useCheckProblemSolved;
