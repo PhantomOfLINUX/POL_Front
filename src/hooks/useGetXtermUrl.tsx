@@ -32,7 +32,6 @@ function useGetXtermUrl(
                 })
                 const xtermData = await xtermDataOk.json();
                 if(xtermDataOk.ok){
-                    console.log(xtermData)
                     setXtermUrl(xtermData);
                 }
             }catch(error) {

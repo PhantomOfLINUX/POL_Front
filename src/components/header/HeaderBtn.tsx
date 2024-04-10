@@ -4,7 +4,7 @@ import Link from "next/link"
 
 interface HeaderBtnType {
     href:string,
-    children:string,
+    children:string|React.ReactNode,
     className:string,
 }
 

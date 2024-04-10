@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from "react";
+
 import useCheckAccess from "./useCheckAccess";
 
 import { useSearchParams } from 'next/navigation'
-
 
 const url = process.env.NEXT_PUBLIC_BASE_API
 
