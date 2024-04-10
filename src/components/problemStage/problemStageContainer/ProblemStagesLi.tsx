@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React,{useState} from "react";
 
 import { useRouter } from "next/navigation";
 import Image from 'next/image'
@@ -11,13 +11,14 @@ interface ProblemStagesLiType {
     level:string,
     questionCount:number
     solved:string
+    stageId:string
 }
 
-const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,info,level,questionCount,solved}) => {
+const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,info,level,questionCount,solved,stageId}) => {
     const router = useRouter();
-
+    const [mouseUp, setMouseUp] = useState<boolean>(false)
     return (
-        <li onClick={()=>{router.push("/problem")}} className="list-none w-full px-10 h-14 flex items-center justify-evenly border-b-problemStageLi-borderWidth border-problemStageLi-color cursor-pointer">
+        <li onClick={()=>{router.push(`/problem?stageId=${stageId}`)}} onMouseEnter={(e)=>{setMouseUp(true)}} onMouseLeave={(e)=>{setMouseUp(false)}} className={`${mouseUp?"bg-slate-100":"bg-white"} list-none w-full px-10 h-14 flex items-center justify-evenly border-b-problemStageLi-borderWidth border-problemStageLi-color cursor-pointer`}>
             <span className="w-problemStage-isCompleted"> 
             {solved!=="NOT_COMPLETED"?
             <Image 
