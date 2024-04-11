@@ -8,6 +8,7 @@ import type { Resource } from "@/lib/wrappingPromise";
 
 import XtermModal from "./XtermModal";
 import XtermUrlProvider from "./XtermUrlProvider";
+import Loding from "@/components/loading/Loading";
 
 interface CheckProblem {
     uid: string;
@@ -27,9 +28,12 @@ const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken,problemSolved
     const [XtermUrlCheck,setXtermUrlCheck] = useState<boolean>(true);//true-get false-post
     const xtemrConnectUrl = useGetXtermUrl(accessToken,refreshToken,problemSolvedCheck?.read().exists,ModalCheck,XtermUrlCheck)
     return (
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<Loding/>}>
             {problemSolvedCheck?.read().exists&&ModalCheck?
-                <XtermModal setXtermUrlCheck={setXtermUrlCheck} setModalState={setModalCheck}/>
+                <>
+                    <div className="w-screen h-96"></div>
+                    <XtermModal setXtermUrlCheck={setXtermUrlCheck} setModalState={setModalCheck}/>
+                </>
                 :
                 <XtermUrlProvider xtemrConnectUrl={xtemrConnectUrl}/>
             }
