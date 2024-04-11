@@ -1,39 +1,36 @@
 "use client"
+
 import React, { useEffect, useRef } from 'react';
 import { Terminal } from 'xterm';
 import { AttachAddon } from 'xterm-addon-attach';
+
 import 'xterm/css/xterm.css';
 
-const socketUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
+interface XtermType{
+  url:string,
+  query:string
+}
 
-const Xterm: React.FC = () => {
+const Xterm: React.FC<XtermType> = ({url,query}) => {
   const terminalRef = useRef<Terminal | null>(null);
   const xtermContainerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    if (!terminalRef.current && xtermContainerRef.current) {
-      const websocket = new WebSocket(socketUrl ? socketUrl : "");
+    if (!terminalRef.current && xtermContainerRef.current && url && query) {
       const newTerminal = new Terminal();
+      const websocket = new WebSocket(url);
+      websocket.onopen = () => {
+        console.log("서버 연결")
+      }
+      websocket.onerror = (error) => {
+        console.error(error)
+      }
       const attachAddon = new AttachAddon(websocket);
-      newTerminal.loadAddon(attachAddon);
       terminalRef.current = newTerminal;
-      let curr_line = "";
-      newTerminal.onKey((e) => {
-        let { key } = e;
-        if (key === "\r") {
-          if (curr_line) {
-            
-          }
-        } else if (key === "\x7F") {
-          if (curr_line.length > 0) {
-            curr_line = curr_line.slice(0, curr_line.length - 1);
-          }
-        } else {
-          curr_line += key;
-        }
-      });
+      newTerminal.loadAddon(attachAddon);
       newTerminal.open(xtermContainerRef.current);
     }
-  }, []);
+
+  }, [url,query]);
 
   return (
     <div ref={xtermContainerRef} className='xterm' />

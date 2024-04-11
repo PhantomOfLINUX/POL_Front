@@ -5,7 +5,7 @@ import ProblemStageSelectedBox from "./ProblemStageSelectedBox";
 
 const ProblemStageSelectContainer = () => {
     return (
-        <div className="w-5/6">
+        <div className="w-8/12 ">
             <div className="flex">
                 <ProblemStageSelect selectName={"isCompleted"}/>
                 <ProblemStageSelect selectName={"stageGroupTypes"}/>

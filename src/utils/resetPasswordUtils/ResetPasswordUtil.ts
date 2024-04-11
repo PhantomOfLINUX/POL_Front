@@ -19,12 +19,6 @@ export const CheckPassword = (password: string) => {
 
 export const CheckPasswordCheck = (password: string, passwordCheck: string) => passwordCheck !== "" && password !== passwordCheck;
 
-// export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPassword: string, newPasswordCheck: string, userToken: string | null) => {
-//     e.preventDefault()
-//     console.log("비밀번호 변경 테스트")
-//     console.log("test", userToken, "test")
-
-// }
 
 export const ResetPassword = async (e: React.MouseEvent<HTMLElement>, newPassword: string, newPasswordCheck: string, userToken: string | null) => {
     e.preventDefault()

@@ -4,21 +4,33 @@ import Link from "next/link";
 
 import MyPageProblemForm from "./MyPageProblem";
 import MyPageProfileForm from "./MyPageProfile";
+import MyPageSubscribeForm from "./MyPageSubscribe";
 import MyPageUserSettingForm from "./MyPageUserSetting";
+import useMyPageStore from "@/store/myPageStore";
+
 
 const MyPageInfoForm = () => {
-
-    return (
-        <div className="border-2 border-gray w-1/2 items-center p-3 bg-color-white rounded-lg mb-6">
-            <div>
-                <div><MyPageProfileForm /></div>
-                <div><MyPageProblemForm /></div>
-                <div><MyPageUserSettingForm /></div>
-            </div>
-
-        </div>
-
-    )
+    const { pageSelector } = useMyPageStore();
+    if (pageSelector === 1) {
+        return (
+            <div><MyPageProfileForm /></div>
+        );
+    }
+    if (pageSelector === 2) {
+        return (
+            <div><MyPageProblemForm /></div>
+        )
+    }
+    if (pageSelector === 3) {
+        return (
+            <div><MyPageSubscribeForm /></div>
+        )
+    }
+    if (pageSelector === 4) {
+        return (
+            <div><MyPageUserSettingForm /></div>
+        )
+    }
 }
 
 
