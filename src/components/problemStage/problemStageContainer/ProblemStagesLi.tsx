@@ -8,6 +8,7 @@ import Image from 'next/image'
 
 interface ProblemStagesLiType {
     title:string,
+    stageCode:string,
     info:string,
     level:string,
     questionCount:number
@@ -15,7 +16,7 @@ interface ProblemStagesLiType {
     stageId:string
 }
 
-const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,info,level,questionCount,solved,stageId}) => {
+const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,stageCode,info,level,questionCount,solved,stageId}) => {
     const [modalState,setModalState] = useState<boolean>(false)
     return (
         <>
@@ -32,6 +33,7 @@ const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,info,level,questio
                 style={{ width: '20px', height: '20px' }}
             />:""}
             </span>
+            <span className="w-problemStage-title">{stageCode}</span>
             <span className="w-problemStage-title font-bold">{title}</span>
             <span className="w-problemStage-info">{info}</span>
             <span className="w-problemStage-width">{level}</span>

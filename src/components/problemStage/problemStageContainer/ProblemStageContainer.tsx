@@ -14,6 +14,7 @@ interface ProblemStageContainerType {
 
 interface Stage {
     id: string;
+    stageCode:string,
     title: string;
     description: string;
     difficultyLevelType: string;
@@ -46,6 +47,7 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
             <div>
                 <div className="w-full h-10 px-10 flex justify-evenly items-center border-b-problemStageLi-borderWidth border-problemStageLi-color">
                     <span className="w-problemStage-isCompleted font-bold">해결</span>
+                    <span className="w-problemStage-title font-bold">문제 번호</span>
                     <span className="w-problemStage-title font-bold">제목</span>
                     <span className="w-problemStage-info font-bold">설명</span>
                     <span className="w-problemStage-width font-bold">난이도</span>
@@ -54,6 +56,7 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
                 {stages?.map(ele=>(
                     <ProblemStagesLi 
                         key={ele.id}
+                        stageCode={ele.stageCode}
                         stageId={ele.id}
                         solved={ele?.completedStatus}
                         title={ele.title} 
