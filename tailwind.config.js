@@ -19,6 +19,7 @@ module.exports = {
         "SelectBorder-color": "#90929E",
         "problemStageLi-color": "#D1D5DB",
         "disabled-color": "#D9D9D9",
+        "OpaqueBackground-color": "rgba(0, 0, 0, 0.3)",
       },
       minHeight: {
         "min-height": "25rem",

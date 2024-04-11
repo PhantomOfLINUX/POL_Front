@@ -7,15 +7,15 @@ import { AttachAddon } from 'xterm-addon-attach';
 import 'xterm/css/xterm.css';
 
 interface XtermType{
-  url:string,
-  query:string
+  url:string|undefined,
+  query:string|undefined
 }
 
 const Xterm: React.FC<XtermType> = ({url,query}) => {
   const terminalRef = useRef<Terminal | null>(null);
   const xtermContainerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    if (!terminalRef.current && xtermContainerRef.current && url && query) {
+    if (!terminalRef.current && xtermContainerRef.current && url&&query) {
       const newTerminal = new Terminal();
       const websocket = new WebSocket(url);
       websocket.onopen = () => {

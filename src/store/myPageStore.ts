@@ -2,16 +2,16 @@ import { create } from 'zustand'
 
 export type SelectorSetter = (page: number | null) => void;
 
-export interface MyPageState {
+export interface PageState {
     pageSelector: number | null;
     setSelector: SelectorSetter;
 }
 
-const useMyPageStore = create<MyPageState>(set => ({
+const myPageStore = create<PageState>(set => ({
     pageSelector: 1,
     setSelector: (page) => {
         set({ pageSelector: page })
     }
 }));
 
-export default useMyPageStore;
+export default myPageStore;

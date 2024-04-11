@@ -1,12 +1,14 @@
 'use client'
 import React from "react";
 import { useState } from "react";
-import useMyPageStore from "@/store/myPageStore";
+import myPageStore from "@/store/myPageStore";
 
 
 const MyPageSidebarForm = () => {
     //path 태그들은 싹다 사이드바 아이콘 
-    const { setSelector } = useMyPageStore();
+    const [myPageSelector, setMyPageSelector] = useState<number>(1);
+    const { setSelector } = myPageStore();
+    const { pageSelector } = myPageStore();
     return (
 
         <div className="w-60 text-white p-3 bg-thema-color rounded-lg mr-36 h-1/2">
@@ -24,8 +26,8 @@ const MyPageSidebarForm = () => {
                     <li className="dark:bg-gray-800 dark:text-gray-50">
                         <a className="flex items-center p-2 space-x-3 rounded-md">
                             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="13.5" cy="10" r="4" stroke="white" strokeLinecap="round" />
-                                <path d="M5.59102 19.6061C6.3254 17.2894 8.72723 16.1875 11.1575 16.1875H15.8425C18.2728 16.1875 20.6746 17.2894 21.409 19.6061C21.6303 20.3041 21.8082 21.0882 21.8896 21.9384C21.9422 22.4882 21.4898 22.9375 20.9375 22.9375H6.0625C5.51022 22.9375 5.05784 22.4882 5.11044 21.9384C5.19178 21.0882 5.36974 20.3041 5.59102 19.6061Z" stroke="white" strokeLinecap="round" />
+                                <circle cx="13.5" cy="10" r="4" stroke="white" stroke-linecap="round" />
+                                <path d="M5.59102 19.6061C6.3254 17.2894 8.72723 16.1875 11.1575 16.1875H15.8425C18.2728 16.1875 20.6746 17.2894 21.409 19.6061C21.6303 20.3041 21.8082 21.0882 21.8896 21.9384C21.9422 22.4882 21.4898 22.9375 20.9375 22.9375H6.0625C5.51022 22.9375 5.05784 22.4882 5.11044 21.9384C5.19178 21.0882 5.36974 20.3041 5.59102 19.6061Z" stroke="white" stroke-linecap="round" />
                             </svg>
                             <button onClick={() => { setSelector(1) }}>
                                 나의 정보
@@ -36,9 +38,9 @@ const MyPageSidebarForm = () => {
                     <li>
                         <a className="flex items-center p-2 space-x-3 rounded-md">
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.33301 10.4165L8.33301 16.6665" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M12.5 12.5V16.6667" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M16.667 8.3335V16.6668" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M8.33301 10.4165L8.33301 16.6665" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12.5 12.5V16.6667" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16.667 8.3335V16.6668" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                 <rect x="3.125" y="4.1665" width="18.75" height="16.6667" rx="2" stroke="white" />
                             </svg>
                             <button onClick={() => { setSelector(2) }}>
@@ -50,7 +52,7 @@ const MyPageSidebarForm = () => {
                         <a className="flex items-center p-2 space-x-3 rounded-md">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.5 9.398C3.5 8.37292 3.5 7.86038 3.70266 7.47025C3.87343 7.14149 4.14149 6.87343 4.47025 6.70266C4.86038 6.5 5.37292 6.5 6.398 6.5H17.602C18.6271 6.5 19.1396 6.5 19.5298 6.70266C19.8585 6.87343 20.1266 7.14149 20.2973 7.47025C20.5 7.86038 20.5 8.37292 20.5 9.398V15.602C20.5 16.6271 20.5 17.1396 20.2973 17.5298C20.1266 17.8585 19.8585 18.1266 19.5298 18.2973C19.1396 18.5 18.6271 18.5 17.602 18.5H6.398C5.37292 18.5 4.86038 18.5 4.47025 18.2973C4.14149 18.1266 3.87343 17.8585 3.70266 17.5298C3.5 17.1396 3.5 16.6271 3.5 15.602V9.398Z" stroke="white" />
-                                <path d="M3.5 10.5L20.5 10.5" stroke="white" strokeLinecap="round" />
+                                <path d="M3.5 10.5L20.5 10.5" stroke="white" stroke-linecap="round" />
                                 <circle cx="6.5" cy="15.5" r="0.5" fill="white" />
                             </svg>
                             <button onClick={() => { setSelector(3) }}>
