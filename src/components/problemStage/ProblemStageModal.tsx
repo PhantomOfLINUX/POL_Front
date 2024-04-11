@@ -47,8 +47,3 @@ const ProblemStageModal:React.FC<ProblemStageModalType> = ({modalState,stageId,t
 }
 
 export default ProblemStageModal
-
-/*
-            router.push(`/problem?stageId=${stageId}`)
-
-*/
