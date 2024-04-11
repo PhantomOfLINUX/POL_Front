@@ -1,9 +1,10 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 
 import { useSearchParams } from "next/navigation";
 
 import useCheckAccess from "./useCheckAccess";
 
+import { wrapPromise, Resource } from "@/lib/wrappingPromise";
 
 interface useGetXtermUrlType {
     url:string,
@@ -14,34 +15,45 @@ const url = process.env.NEXT_PUBLIC_BASE_API
 
 function useGetXtermUrl( 
     accessToken:string|undefined,
-    refreshToken:string|undefined
-):useGetXtermUrlType {
+    refreshToken:string|undefined,
+    problemSolvedCheck:boolean|undefined,
+    ModalCheck:boolean,
+    XtermUrlCheck:boolean,
+):Resource<useGetXtermUrlType> | undefined{
     const validAccessToken = useCheckAccess(accessToken, refreshToken);
     const searchParam = useSearchParams();
-    const [xtermUrl, setXtermUrl] = useState<useGetXtermUrlType>({url:"",query:""});
-    useEffect(()=>{
-        const getXtermUrl = async () => {
-            const stageID = searchParam.get("stageId")
-            try{
-                const xtermDataOk = await fetch(`${url}/lab/terminal/access-url/${stageID}`,{
-                    headers:{
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        Authorization:`Bearer ${validAccessToken}`
-                    }
-                })
-                const xtermData = await xtermDataOk.json();
-                if(xtermDataOk.ok){
-                    setXtermUrl(xtermData);
+    const stageID = searchParam.get("stageId")
+    let promise = undefined
+    if(problemSolvedCheck&&!ModalCheck&&!XtermUrlCheck){//problemSolvedCheck&&ModalCheck true modal open, XtermUrlCheck false
+        const postXtermUrl = fetch(`${url}/lab/terminal/stage/${stageID}`, {
+            method:"POST",    
+            headers:{
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization:`Bearer ${validAccessToken}`
                 }
-            }catch(error) {
-                console.error(error)
-            }
+            }).then(res=> {
+                if (!res.ok) throw new Error('Network response was not ok');
+                return res.json();
+            })
+            .catch(error=>console.error(error))
+            promise = wrapPromise(postXtermUrl);
         }
-        getXtermUrl()
-    },[validAccessToken,searchParam])
-
-    return xtermUrl
+    else if(!problemSolvedCheck||(problemSolvedCheck&&!ModalCheck&&XtermUrlCheck)){//problemSolvedCheck&&ModalCheck false modal open, XtermUrlCheck false
+        const getXtermUrl = fetch(`${url}/lab/terminal/access-url/${stageID}`, {
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization:`Bearer ${validAccessToken}`
+                }
+            }).then(res=> {
+                if (!res.ok) throw new Error('Network response was not ok');
+                return res.json();
+            })
+            .catch(error=>console.error(error))
+            promise = wrapPromise(getXtermUrl);
+        }
+    return promise
 }
 
 

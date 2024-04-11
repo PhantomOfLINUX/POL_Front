@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSearchParams } from "next/navigation";
 import useCheckAccess from "./useCheckAccess";
 import { wrapPromise, Resource } from "@/lib/wrappingPromise";
