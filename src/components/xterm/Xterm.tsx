@@ -6,7 +6,6 @@ import { AttachAddon } from 'xterm-addon-attach';
 
 import 'xterm/css/xterm.css';
 
-
 interface XtermType{
   url:string|undefined,
   query:string|undefined
