@@ -54,7 +54,7 @@ function useGetXtermUrl(
                 .catch(error=>console.error(error))
                 setPromise(wrapPromise(postXtermUrl,10000));
             }
-    },[ModalCheck,XtermUrlCheck])
+    },[ModalCheck,XtermUrlCheck,problemSolvedCheck,,stageID,validAccessToken])
     return promise
 }
 
