@@ -11,7 +11,6 @@ import myPageStore from "@/store/myPageStore";
 
 const MyPageInfoForm = () => {
     const { pageSelector } = myPageStore();
-    console.log(pageSelector);
     if (pageSelector === 1) {
         return (
             <div><MyPageProfileForm /></div>
