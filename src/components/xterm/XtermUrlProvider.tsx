@@ -17,7 +17,7 @@ interface XtermUrlProviderType{
 const XtermUrlProvider:React.FC<XtermUrlProviderType> = ({xtemrConnectUrl}) => {
     return (
         <>
-            <Xterm url={xtemrConnectUrl?.read().url} query={xtemrConnectUrl?.read().query}/>
+            <Xterm url={xtemrConnectUrl?.read()?.url} query={xtemrConnectUrl?.read()?.query}/>
         </>
     )
 }
