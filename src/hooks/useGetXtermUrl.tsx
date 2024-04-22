@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 
 import { useSearchParams } from "next/navigation";
 
@@ -54,7 +54,7 @@ function useGetXtermUrl(
                 .catch(error=>console.error(error))
                 setPromise(wrapPromise(postXtermUrl,10000));
             }
-    },[ModalCheck,XtermUrlCheck])
+    },[ModalCheck,XtermUrlCheck,problemSolvedCheck,,stageID,validAccessToken])
     return promise
 }
 
