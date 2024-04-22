@@ -1,6 +1,6 @@
 "use client"
 
-import React,{Suspense,useState} from "react";
+import React,{Suspense,useState,useCallback} from "react";
 
 import useGetXtermUrl from "@/hooks/useGetXtermUrl";
 
@@ -25,7 +25,7 @@ interface XtermBoxType {
 
 const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken,problemSolvedCheck}) => {
     const [ModalCheck,setModalCheck] = useState<boolean>(true);
-    const [XtermUrlCheck,setXtermUrlCheck] = useState<boolean>(true);//true-get false-post
+    const [XtermUrlCheck,setXtermUrlCheck] = useState<boolean>(true);//3개로 true-get false-post
     const xtemrConnectUrl = useGetXtermUrl(accessToken,refreshToken,problemSolvedCheck?.read().exists,ModalCheck,XtermUrlCheck)
     return (
         <Suspense fallback={<Loding/>}>
@@ -43,11 +43,3 @@ const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken,problemSolved
 
 
 export default XtermBox
-
-
-/*
-Xterm에 먼저 주면 안된다.. 
-problemSolvedCheck가 
-false면 get으로 주기
-ture면 modal을 이용해서 주기
-*/
