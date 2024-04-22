@@ -2,7 +2,7 @@ export interface Resource<T> {
   read: () => T;
 }
 
-export function wrapPromise<T>(promise: Promise<T>, timer: number): Resource<T> {
+export function wrapPromise<T>(promise: Promise<T>, timer:number=0): Resource<T> {
   type Status = 'pending' | 'success' | 'error';
   
   let status: Status = 'pending';
