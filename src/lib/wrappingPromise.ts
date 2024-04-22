@@ -1,33 +1,33 @@
 export interface Resource<T> {
-    read: () => T;
+  read: () => T;
 }
 
-export function wrapPromise<T>(promise: Promise<T>):Resource<T> {
-    type Status = 'pending' | 'success' | 'error';
-    
-    let status: Status = 'pending';
-    let result: T | Error;
+export function wrapPromise<T>(promise: Promise<T>, timer: number): Resource<T> {
+  type Status = 'pending' | 'success' | 'error';
   
-    let suspender = promise.then(
-      (r: T) => {
+  let status: Status = 'pending';
+  let result: T | Error;
+
+  let suspender = promise.then(
+    r => setTimeout(() => {
         status = 'success';
         result = r;
-      },
-      (e: Error) => {
+    }, timer),
+    e => setTimeout(() => { 
         status = 'error';
         result = e;
-      }
-    );
-    return {
+    }, timer)
+);
+
+  return {
       read(): T {
-        if (status === 'pending') {
-          throw suspender;
-        } else if (status === 'error') {
-          throw result;
-        } else {
-          return result as T;
-        }
+          if (status === 'pending') {
+              throw suspender; 
+          } else if (status === 'error') {
+              throw result;
+          } else {
+              return result as T; 
+          }
       },
-    };
-  }
-  
+  };
+}

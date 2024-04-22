@@ -37,7 +37,7 @@ function useGetXtermUrl(
                     return res.json();
                 })
                 .catch(error=>console.error(error))
-                setPromise(wrapPromise(getXtermUrl));
+                setPromise(wrapPromise(getXtermUrl,0));
         }
         else if(!problemSolvedCheck||(problemSolvedCheck&&!ModalCheck&&XtermUrlCheck)){//problemSolvedCheck&&ModalCheck false modal open, XtermUrlCheck false
             const postXtermUrl = fetch(`${url}/lab/terminal/stage/${stageID}`, {
@@ -52,9 +52,8 @@ function useGetXtermUrl(
                     return res.json();
                 })
                 .catch(error=>console.error(error))
-                setPromise(wrapPromise(postXtermUrl));
+                setPromise(wrapPromise(postXtermUrl,10000));
             }
-        console.log(promise)
     },[ModalCheck,XtermUrlCheck])
     return promise
 }
