@@ -13,7 +13,7 @@ interface XtermCheckProviderType {
 }
 
 const XtermCheckProvider:React.FC<XtermCheckProviderType> = ({accessToken,refreshToken}) => {
-    const problemSolvedCheck = useCheckProblemSolved(accessToken, refreshToken) 
+    const problemSolvedCheck = useCheckProblemSolved(accessToken, refreshToken)
     return (
         <Suspense fallback={<Loding/>}>
             <XtermBox problemSolvedCheck={problemSolvedCheck} accessToken={accessToken} refreshToken={refreshToken}/>
