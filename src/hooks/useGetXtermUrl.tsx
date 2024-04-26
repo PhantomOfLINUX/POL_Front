@@ -6,6 +6,7 @@ import useCheckAccess from "./useCheckAccess";
 
 import { wrapPromise, Resource } from "@/lib/wrappingPromise";
 
+
 interface useGetXtermUrlType {
     url:string,
     query:string
