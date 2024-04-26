@@ -4,9 +4,8 @@ import { ProfileSetter } from "@/store/myPageProfileStore";
 
 export const GetMyPageProfileInfo = async (e: React.MouseEvent<HTMLElement>, accessToken: string, setProfileInfo: ProfileSetter) => {
     e.preventDefault();
-    //console.log(accessToken);
     try {
-        const getMyProfile = await fetch(`${url}/api/plyers/me/profile`, {
+        const getMyProfile = await fetch(`${url}/api/players/me/profile`, {
             //credentials: 'include',
             method: 'GET',
             headers: {
