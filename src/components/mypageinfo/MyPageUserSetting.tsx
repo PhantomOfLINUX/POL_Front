@@ -44,7 +44,9 @@ const MyPageUserSettingForm: React.FC<MyPageInfoType> = ({ accessToken, refreshT
                                 <h3 className="text-lg font-medium">정말 계정을 삭제 하시겠습니까?</h3>
                             </div>
                             <div className="mt-2 mb-4 text-sm">
-                                "계정 삭제" 버튼을 누르면 귀하의 모든 계정 정보 및 개인 정보가 사라지며 이는 복구 불가능 합니다. <br />그래도 삭제 하시겠습니까?
+                            "계정 삭제" 버튼을 누르면 귀하의 모든 계정 정보 및 개인 정보가 사라지며 이는 복구 불가능 합니다.
+                            <br />
+                            그래도 삭제 하시겠습니까?
                             </div>
                             <div className="flex justify-between">
                                 <button type="button" className="text-white bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none 

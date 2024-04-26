@@ -2,21 +2,21 @@ export interface Resource<T> {
   read: () => T;
 }
 
-export function wrapPromise<T>(promise: Promise<T>, timer:number=0): Resource<T> {
+export function wrapPromise<T>(promise: Promise<T>): Resource<T> {
   type Status = 'pending' | 'success' | 'error';
   
   let status: Status = 'pending';
   let result: T | Error;
 
   let suspender = promise.then(
-    r => setTimeout(() => {
+    r => {        
         status = 'success';
         result = r;
-    }, timer),
-    e => setTimeout(() => { 
+    },
+    e =>{ 
         status = 'error';
         result = e;
-    }, timer)
+    }
 );
 
   return {

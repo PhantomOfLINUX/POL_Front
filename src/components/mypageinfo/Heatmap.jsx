@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import CalHeatmap from 'cal-heatmap';
 import 'cal-heatmap/cal-heatmap.css'; // 히트맵 이쁘게 나오게 해주는 외부 css 파일
 import Tooltip from 'cal-heatmap/plugins/Tooltip'; // tooltip 플러그인 import
@@ -20,14 +20,15 @@ const dayjs = [ // 캘린더 왼쪽에 들어갈 요일의 약자
     "Sat",
 ]
 
-const calInstance = new CalHeatmap();
 
 const HeatmapForm = () => {
     const [cal, setCal] = useState(null);
     const { Heatmap } = useMyPageHeatmapInfoStore();
-
+    const heatmapRef = useRef(null);
     useEffect(() => {
-        calInstance.paint( // 캘린더 내부 생성
+       if(!heatmapRef.current){
+        heatmapRef.current = new CalHeatmap();
+        heatmapRef.current.paint( // 캘린더 내부 생성
             {
                 data: { // 어떤 데이터, 형식을 사용해서 캘린더를 채울것인지
                     source: Heatmap, // 임시 배열 이름, 위의 caldata를 가져왔으며 나중에 Heatmap 배열을 사용할거임
@@ -88,10 +89,9 @@ const HeatmapForm = () => {
                 ],
             ]
         );
-        setCal(calInstance);
-    }, [])
-
-
+        setCal(heatmapRef.current);
+    }
+    }, [Heatmap,cal])
     return (
         <div
             style={{ // 배경색, 글자색, 칸 하나하나 크기 등등
