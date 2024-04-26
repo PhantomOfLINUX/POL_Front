@@ -11,7 +11,6 @@ interface Props {
 }
 
 const ChangePasswordForm: React.FC<Props> = ({ accessToken }) => {
-    const { userToken } = useAuthStore();
     const [userPassword, setUserPassword] = useState<string>("")
     const [newPassword, setNewPassword] = useState<string>("")
     const [newPasswordCheck, setNewPasswordCheck] = useState<string>("")
