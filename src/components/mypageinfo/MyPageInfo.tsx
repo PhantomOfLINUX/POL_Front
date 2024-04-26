@@ -1,6 +1,5 @@
 'use client'
 import React from "react";
-import Link from "next/link";
 
 import MyPageProblemForm from "./MyPageProblem";
 import MyPageProfileForm from "./MyPageProfile";
@@ -8,9 +7,17 @@ import MyPageSubscribeForm from "./MyPageSubscribe";
 import MyPageUserSettingForm from "./MyPageUserSetting";
 import useMyPageStore from "@/store/myPageStore";
 
+export interface MyPageInfoType {
+    accessToken: string | undefined,
+    refreshToken: string | undefined
+}
+
+const MyPageInfoForm: React.FC<MyPageInfoType> = ({ accessToken, refreshToken }) => {
+    const { pageSelector } = useMyPageStore();
 
 const MyPageInfoForm = () => {
     const { pageSelector } = useMyPageStore();
+      
     if (pageSelector === 1) {
         return (
             <div><MyPageProfileForm /></div>
@@ -28,9 +35,10 @@ const MyPageInfoForm = () => {
     }
     if (pageSelector === 4) {
         return (
-            <div><MyPageUserSettingForm /></div>
+            <div><MyPageUserSettingForm accessToken={accessToken} refreshToken={refreshToken} /></div>
         )
     }
+
 }
 
 

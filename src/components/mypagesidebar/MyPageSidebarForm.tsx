@@ -4,6 +4,11 @@ import { useState } from "react";
 import useMyPageStore from "@/store/myPageStore";
 
 
+
+const MyPageSidebarForm = () => {
+    //path 태그들은 싹다 사이드바 아이콘 
+    const { setSelector } = useMyPageStore();
+
 const MyPageSidebarForm = () => {
     //path 태그들은 싹다 사이드바 아이콘 
     const { setSelector } = useMyPageStore();
