@@ -5,7 +5,8 @@ export const LoginInLocally = async (
     id: string,
     password: string,
     setShowAlert: (show: boolean) => void,
-    setAlertMessage: (message: string) => void
+    setAlertMessage: (message: string) => void,
+    setLoginFailed: (failed: boolean) => void
 ) => {
     e.preventDefault();
     try {
@@ -24,11 +25,12 @@ export const LoginInLocally = async (
         if (loggedIn.ok) {
             setAlertMessage(`어서오세요, ${id}님`);
             setShowAlert(true);
+            setLoginFailed(false);
             setTimeout(() => {
                 window.location.replace("/");
             }, 100);
         } else {
-            alert("아이디 또는 비밀번호가 맞지 않습니다.");
+            setLoginFailed(true);
         }
     } catch (error) {
         console.error("로그인 요청 중 오류 발생: ", error);

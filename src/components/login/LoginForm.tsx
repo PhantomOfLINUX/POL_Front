@@ -13,6 +13,7 @@ const LoginForm = () => {
     const [password,setPassword] = useState<string>("")
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
+    const [loginFailed, setLoginFailed] = useState(false);
 
     const handleCloseAlert = () => {
         setShowAlert(false);
@@ -30,7 +31,8 @@ const LoginForm = () => {
                     />
                 </div>
             )}
-            <form onSubmit={e=>LoginInLocally(e, id, password, setShowAlert, setAlertMessage)}>
+            <form onSubmit={e=>LoginInLocally(e, id, password, setShowAlert, setAlertMessage, setLoginFailed)}>
+                {loginFailed && <p className="text-xs ml-2 mb-2 text-danger-500">아이디 또는 비밀번호를 다시 확인해주세요</p>}
                 <LoginInput name="loginEmail" id="loginEmail" type="text" placeholder="이메일" onChange={setId}/>
                 <LoginInput name="loginPassword" id="loginPassword" type="password" placeholder="비밀번호" onChange={setPassword}/>
                 <div className="flex justify-center">
