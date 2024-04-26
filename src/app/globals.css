@@ -3,38 +3,53 @@
 @tailwind utilities;
 
 body {
-  font-family: S-CoreDream-3Light;
-  .page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  .content-wrap {
-    flex: 1;
-  }
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: S-CoreDream-3Light, S-CoreDream-9Black;
+    letter-spacing: -0.05em;
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .content-wrap {
+        flex: 1;
+    }
 }
 @font-face {
-  font-family: "S-CoreDream-3Light";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "S-CoreDream-3Light";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "S-CoreDream-9Black";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @layer components {
-  .loginSignUp {
-    @apply min-h-min-height w-screen flex flex-col justify-start items-center;
-  }
-  .loginSignUpBtn {
-    @apply w-80 h-12 bg-thema-color text-white rounded;
-  }
-  .loginSignUpInputContainer {
-    @apply flex w-80 h-12 mb-6 bg-white rounded border-solid border-2 border-inputBorder-color;
-  }
-  .loginSignUpInput {
-    @apply w-full px-3;
-  }
-  .headerBtn {
-    @apply flex justify-center items-center w-24 h-12 bg-thema-color text-white rounded ml-8;
-  }
+    .loginSignUp {
+        height: calc(100vh - 16rem);
+        @apply min-h-min-height w-screen flex flex-col justify-start items-center;
+    }
+    .loginSignUpBtn {
+        @apply w-80 h-12 mt-2 bg-blue-500 text-white rounded;
+        @apply hover:bg-blue-600 active:bg-blue-700;
+    }
+    .loginSignUpInputContainer {
+        @apply mt-1 flex w-80 h-12 bg-white rounded;
+    }
+    .loginSignUpInput {
+        @apply w-full px-3 border-2 rounded-md border-gray-400 placeholder-gray-500 outline-none;
+        @apply hover:border-blue-500 focus:border-blue-600 active:border-blue-700;
+    }
+    .headerBtn {
+        @apply flex justify-center items-center w-24 h-12 bg-blue-500 text-white rounded ml-8;
+        @apply hover:bg-blue-600 active:bg-blue-700;
+    }
 }

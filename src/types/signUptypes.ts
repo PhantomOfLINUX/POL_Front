@@ -7,6 +7,6 @@ export type signType = {
     placeholder: string;
     type: string;
     onChange: React.Dispatch<React.SetStateAction<string>>;
-    isVaild?:boolean;
+    isValid?:boolean;
     errorMsg:string;
   }
