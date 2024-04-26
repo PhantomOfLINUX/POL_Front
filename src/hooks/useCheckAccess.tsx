@@ -11,8 +11,7 @@ function useCheckAccess(
     useEffect(()=> {
         const checkAccessToken = async () => {
             try{
-                const CheckedAccessToken = await fetch(`${url}/api/auth/validate?token=${accessToken}`)
-                if(CheckedAccessToken.status!==200){
+                if(accessToken===""){
                     const submitedAccessToken = await fetch(`${url}/api/auth/refresh`,{
                         method:"POST",
                         headers: {

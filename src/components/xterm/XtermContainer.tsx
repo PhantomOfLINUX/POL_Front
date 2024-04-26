@@ -1,7 +1,7 @@
 import React from "react";
 
 import XtermQuestion from "./XtermQuestion";
-import XtermBox from "./XtermBox";
+import XtermCheckProvider from "./XtermCheckProvider";
 
 import { cookies } from "next/headers";
 
@@ -12,7 +12,7 @@ const XtermContainer = () => {
     return (
         <main>
             <XtermQuestion/>
-            <XtermBox 
+            <XtermCheckProvider 
                 accessToken={POL_ACCESS_TOKEN}
                 refreshToken={POL_REFRESH_TOKEN}
             />               
