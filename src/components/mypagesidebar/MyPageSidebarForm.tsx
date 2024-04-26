@@ -9,6 +9,11 @@ const MyPageSidebarForm = () => {
     //path 태그들은 싹다 사이드바 아이콘 
     const { setSelector } = useMyPageStore();
 
+const MyPageSidebarForm = () => {
+    //path 태그들은 싹다 사이드바 아이콘 
+    const [myPageSelector, setMyPageSelector] = useState<number>(1);
+    const { setSelector } = myPageStore();
+    const { pageSelector } = myPageStore();
     return (
 
         <div className="w-60 text-white p-3 bg-thema-color rounded-lg mr-36 h-1/2">

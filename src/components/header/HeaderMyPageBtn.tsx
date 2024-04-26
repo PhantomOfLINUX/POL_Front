@@ -22,7 +22,6 @@ type mypageType = {
 }
 
 const HeaderMyPageBtn: React.FC<mypageType> = ({ accessToken }) => {
-    //console.log(accessToken)
     const { setProfileInfo } = useMyPageProfileStore();
     const { setCompletedCode } = useMyPageCompletedStore();
     const { setInProgressCode } = useMyPageInProgressStore();

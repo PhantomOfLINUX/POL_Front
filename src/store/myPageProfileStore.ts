@@ -2,7 +2,6 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware';
 export type ProfileSetter = (email: string | null, name: string | null, uid: string | null, level: number | null) => void;
 
-
 export interface ProfileState {
     userEmail: string | null;
     userName: string | null;
@@ -27,7 +26,6 @@ const useMyPageProfileStore = create(
         }
     )
 );
-
 
 
 export default useMyPageProfileStore;
