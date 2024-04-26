@@ -14,16 +14,9 @@ const MyPageProblemForm = () => {
             <br />
             진행중인 문제 : {inProgress + ', '}
             <br />
-            {/* {Heatmap[0].date}
-            <br />
-            {Heatmap[0].count}
-            <br />
-            {Heatmap[1].date}
-            <br />
-            {Heatmap[1].count} */}
-            {/* <div>
+            <div>
                 <HeatmapForm />
-            </div> */}
+            </div>
         </div>
     )
 }
