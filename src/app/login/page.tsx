@@ -7,7 +7,7 @@ import Spacing80 from "@/components/spacing/Spacing80";
 const login = () => {
     return (
         <div className="h-screen">
-            <Spacing80></Spacing80>
+            <Spacing80 />
             <LoginSignupDescription />
             <LoginForm />
         </div>
