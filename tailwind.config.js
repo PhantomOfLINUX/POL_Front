@@ -61,7 +61,7 @@ module.exports = {
                 "problemStage-info": "21.25rem",
             },
             borderRadius: {
-                "problemStage-selected-radius": "2px",
+                "problemStage-selected-radius": "4px",
             },
             borderWidth: {
                 "problemStageLi-borderWidth": "1px",
