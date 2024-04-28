@@ -26,7 +26,7 @@ const ProblemStagePageNationBtn: React.FC<ProblemStagePageNationBtnType> = ({
     if (isCurrentPage) {
         className += " bg-blue-500 border-blue-500 text-gray-50 z-10 hover:bg-blue-400";
     } else {
-        className += " border-gray-300 hover:bg-gray-100 hover:text-gray-700";
+        className += " border-gray-400 hover:bg-gray-100 hover:text-gray-700";
     }
 
     if (pageBtn === "<") {

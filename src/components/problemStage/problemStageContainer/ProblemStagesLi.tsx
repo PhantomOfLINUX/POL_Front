@@ -21,15 +21,15 @@ const ProblemStagesLi:React.FC<ProblemStagesLiType> = ({title,stageCode,info,lev
         <>
         <li onClick={()=>{
             setModalState(true)
-        }} className=" hover:bg-slate-100 list-none w-full px-10 h-14 flex items-center justify-evenly border-b-problemStageLi-borderWidth border-problemStageLi-color cursor-pointer">
+        }} className=" hover:bg-gray-50 list-none w-full px-10 h-14 flex items-center justify-evenly border-b-problemStageLi-borderWidth border-problemStageLi-color cursor-pointer">
             <span className="w-problemStage-isCompleted"> 
             {solved!=="NOT_COMPLETED"?
             <Image 
                 src={`./problemStage/${solved}.svg`} 
                 alt="down"
-                width={20}
-                height={20}
-                style={{ width: '20px', height: '20px' }}
+                width={24}
+                height={24}
+                style={{ width: '24px', height: '24px' }}
             />:""}
             </span>
             <span className="w-problemStage-title">{stageCode}</span>

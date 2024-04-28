@@ -23,7 +23,7 @@ const ProblemStageForm = () => {
 
 
     return (
-        <form onSubmit={(e)=>{SubmitInput(e)}} className="flex items-center justify-center p-3 my-2 w-8/12 h-12 border-solid border rounded-md border-gray-600">
+        <form onSubmit={(e)=>{SubmitInput(e)}} className="bg-gray-0 flex items-center justify-center p-3 my-2 w-8/12 h-12 border-solid border rounded-md border-gray-600">
             <button type="submit">
                 <Image 
                     src={`./problemStage/problemStageInput.svg`} 

@@ -33,7 +33,7 @@ const ProblemStageSelected:React.FC<ProblemStageSelectedType> = ({selectName,val
     }
 
     return (
-        <div className="flex items-center justify-between mr-2 px-2 h-6 rounded-problemStage-selected-radius bg-blue-700 text-gray-0 text-xs">
+        <div className="flex items-center justify-between mr-2 px-2 h-6 rounded-problemStage-selected-radius bg-blue-500 text-gray-0 text-xs">
             <span className="mr-2 py-1"># {value}</span><button onClick={clickProblemStageSelected}>x</button>
         </div>
     )
