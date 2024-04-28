@@ -1,11 +1,11 @@
-import React, { SetStateAction, useRef, useEffect } from "react";
+import React, {SetStateAction, useRef, useEffect} from "react";
 
 interface XtermModalType {
     setModalState: React.Dispatch<SetStateAction<boolean>>;
     setXtermUrlCheck: React.Dispatch<SetStateAction<boolean>>;
 }
 
-const XtermModal: React.FC<XtermModalType> = ({ setModalState, setXtermUrlCheck }) => {
+const XtermModal: React.FC<XtermModalType> = ({setModalState, setXtermUrlCheck}) => {
     const closeModal = () => setModalState(false);
     const startButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -28,7 +28,7 @@ const XtermModal: React.FC<XtermModalType> = ({ setModalState, setXtermUrlCheck 
                     </div>
                     <div className="p-4 md:p-5 space-y-4">
                         <p className="text-center leading-relaxed text-gray-700">
-                            문제를 처음부터 다시 풀이할 경우,<br /> 터미널 초기화 작업에 시간이 약 1분 소요됩니다.
+                            문제를 처음부터 다시 풀이할 경우,<br/> 터미널 초기화 작업에 시간이 약 1분 소요됩니다.
                         </p>
                     </div>
                     <div className="flex flex-col items-center p-4 md:p-5 border-t border-gray-300 rounded-b space-y-4">

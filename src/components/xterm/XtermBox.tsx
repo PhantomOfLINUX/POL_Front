@@ -1,10 +1,10 @@
 "use client"
 
-import React,{Suspense,useState,useCallback} from "react";
+import React, {Suspense, useState, useCallback} from "react";
 
 import useGetXtermUrl from "@/hooks/useGetXtermUrl";
 
-import type { Resource } from "@/lib/wrappingPromise";
+import type {Resource} from "@/lib/wrappingPromise";
 
 import XtermModal from "./XtermModal";
 import XtermUrlProvider from "./XtermUrlProvider";
@@ -18,29 +18,28 @@ interface CheckProblem {
 }
 
 interface XtermBoxType {
-    accessToken:string|undefined,
-    refreshToken:string|undefined
-    problemSolvedCheck:Resource<CheckProblem> | undefined
+    accessToken: string | undefined,
+    refreshToken: string | undefined
+    problemSolvedCheck: Resource<CheckProblem> | undefined
 }
 
-const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken,problemSolvedCheck}) => {
-    const [ModalCheck,setModalCheck] = useState<boolean>(true);
-    const [XtermUrlCheck,setXtermUrlCheck] = useState<boolean>(true);//3개로 true-get false-post
-    const xtermConnectUrl = useGetXtermUrl(accessToken,refreshToken,problemSolvedCheck?.read().exists,ModalCheck,XtermUrlCheck)
+const XtermBox: React.FC<XtermBoxType> = ({accessToken, refreshToken, problemSolvedCheck}) => {
+    const [ModalCheck, setModalCheck] = useState<boolean>(true);
+    const [XtermUrlCheck, setXtermUrlCheck] = useState<boolean>(true);//3개로 true-get false-post
+    const xtermConnectUrl = useGetXtermUrl(accessToken, refreshToken, problemSolvedCheck?.read().exists, ModalCheck, XtermUrlCheck)
     return (
         <Suspense fallback={<Loding/>}>
-            {problemSolvedCheck?.read().exists&&ModalCheck?
+            {problemSolvedCheck?.read().exists && ModalCheck ?
                 <>
                     <div className="w-screen h-96"></div>
                     <XtermModal setXtermUrlCheck={setXtermUrlCheck} setModalState={setModalCheck}/>
                 </>
                 :
-                <XtermUrlProvider xtemrConnectUrl={xtermConnectUrl}/>
+                <XtermUrlProvider xtermConnectUrl={xtermConnectUrl}/>
             }
         </Suspense>
     )
 }
-
 
 
 export default XtermBox
