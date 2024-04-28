@@ -42,10 +42,10 @@ const ProblemStageContainer:React.FC<ProblemStageContainerType> = ({accessToken,
     const stages = result?.stages ?? [];
     return (
         <>
-        <span className="w-8/12 text-SelectBorder-color font-black">총<span className="text-thema-color">{(pageParameters as { totalElement: number }).totalElement}개의 스테이지</span>를 풀어볼수 있어요</span>
+        <span className="w-8/12 text-gray-600 font-medium">총<span className="text-blue-500 font-black">{(pageParameters as { totalElement: number }).totalElement}개의 스테이지</span>를 풀어볼수 있어요</span>
         <ul className="w-8/12 flex flex-col justify-between h-problemStage-height px-1 border-solid border rounded-md border-SelectBorder-color my-4">
             <div>
-                <div className="w-full h-10 px-10 flex justify-evenly items-center border-b-problemStageLi-borderWidth border-problemStageLi-color">
+                <div className="w-full h-10 px-10 flex justify-evenly items-center border-b-problemStageLi-borderWidth border-gray-300">
                     <span className="w-problemStage-isCompleted font-bold">해결</span>
                     <span className="w-problemStage-title font-bold">문제 번호</span>
                     <span className="w-problemStage-title font-bold">제목</span>
