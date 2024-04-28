@@ -26,7 +26,7 @@ interface XtermBoxType {
 const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken,problemSolvedCheck}) => {
     const [ModalCheck,setModalCheck] = useState<boolean>(true);
     const [XtermUrlCheck,setXtermUrlCheck] = useState<boolean>(true);//3개로 true-get false-post
-    const xtemrConnectUrl = useGetXtermUrl(accessToken,refreshToken,problemSolvedCheck?.read().exists,ModalCheck,XtermUrlCheck)
+    const xtermConnectUrl = useGetXtermUrl(accessToken,refreshToken,problemSolvedCheck?.read().exists,ModalCheck,XtermUrlCheck)
     return (
         <Suspense fallback={<Loding/>}>
             {problemSolvedCheck?.read().exists&&ModalCheck?
@@ -35,7 +35,7 @@ const XtermBox:React.FC<XtermBoxType> = ({accessToken,refreshToken,problemSolved
                     <XtermModal setXtermUrlCheck={setXtermUrlCheck} setModalState={setModalCheck}/>
                 </>
                 :
-                <XtermUrlProvider xtemrConnectUrl={xtemrConnectUrl}/>
+                <XtermUrlProvider xtemrConnectUrl={xtermConnectUrl}/>
             }
         </Suspense>
     )
