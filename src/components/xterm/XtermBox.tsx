@@ -9,6 +9,7 @@ import type {Resource} from "@/lib/wrappingPromise";
 import XtermModal from "./XtermModal";
 import XtermUrlProvider from "./XtermUrlProvider";
 import Loding from "@/components/loading/Loading";
+import Spinner from "@/components/loading/Spinner";
 
 interface CheckProblem {
     uid: string;
@@ -28,7 +29,7 @@ const XtermBox: React.FC<XtermBoxType> = ({accessToken, refreshToken, problemSol
     const [XtermUrlCheck, setXtermUrlCheck] = useState<boolean>(true);//3개로 true-get false-post
     const xtermConnectUrl = useGetXtermUrl(accessToken, refreshToken, problemSolvedCheck?.read().exists, ModalCheck, XtermUrlCheck)
     return (
-        <Suspense fallback={<Loding/>}>
+        <Suspense fallback={<Spinner/>}>
             {problemSolvedCheck?.read().exists && ModalCheck ?
                 <>
                     <div className="w-screen h-96"></div>
