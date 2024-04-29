@@ -18,7 +18,10 @@ const Xterm: React.FC<XtermType> = ({url, query}) => {
     const xtermContainerRef = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
         if (!terminalRef.current && xtermContainerRef.current && url && query) {
-            const newTerminal = new Terminal();
+            const newTerminal = new Terminal({
+                cols:112,
+                rows:45
+            });
             const websocket = connectWebSocket(url);
             const attachAddon = new AttachAddon(websocket);
             terminalRef.current = newTerminal;
@@ -29,7 +32,7 @@ const Xterm: React.FC<XtermType> = ({url, query}) => {
     }, [url, query]);
 
     return (
-        <div ref={xtermContainerRef} className='xterm w-Xterm-width h-Xterm-height'/>
+        <div ref={xtermContainerRef} className='xterm w-Xterm-width'/>
     );
 };
 
