@@ -3,7 +3,9 @@ import React from "react";
 
 const XtermQuestion = () => {
     return (
-        <div></div>
+        <div className="h-Xterm-height w-XtermQuestion-width">
+            asdasd
+        </div>
     )
 }
 
