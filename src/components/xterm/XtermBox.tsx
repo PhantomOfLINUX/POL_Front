@@ -8,7 +8,7 @@ import type {Resource} from "@/lib/wrappingPromise";
 
 import XtermModal from "./XtermModal";
 import XtermUrlProvider from "./XtermUrlProvider";
-import Loding from "@/components/loading/Loading";
+
 import Spinner from "@/components/loading/Spinner";
 
 interface CheckProblem {
