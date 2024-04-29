@@ -7,7 +7,7 @@ const Introduction = () => {
     return (
         <div className="page-container">
             <div className="content-wrap">
-                <MainGoButton/>
+                <MainGoButton />
             </div>
         </div>
 

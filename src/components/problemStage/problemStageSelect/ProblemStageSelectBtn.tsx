@@ -10,14 +10,14 @@ interface problemStageSelectBtnType {
 
 const ProblemStageSelect:React.FC<problemStageSelectBtnType> = ({value,setUlToggle}) => {
     return (
-        <button onClick={()=>{setUlToggle(preOpen=>!preOpen)}} className="w-28 h-9 mr-2 flex items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color">
+        <button onClick={()=>{setUlToggle(preOpen=>!preOpen)}} className="bg-gray-0 min-w-min h-9 mr-4 flex items-center justify-between px-3 border-solid border rounded-md border-gray-600 text-gray-900">
             {value}
             <Image 
                 src={"./problemStage/problemSelect.svg"} 
                 alt="down"
-                width={50}
-                height={50}
-                style={{ width: 'auto', height: 'auto' }}
+                width={16}
+                height={16}
+                className="flex-shrink-0 ml-1.5"
             />
         </button>
     )

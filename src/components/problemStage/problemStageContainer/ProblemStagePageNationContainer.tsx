@@ -10,7 +10,7 @@ interface ProblemStagePageNationContainerType {
 const ProblemStagePageNationContainer:React.FC<ProblemStagePageNationContainerType> = ({totalElement,totalStages}) => {
     return (
         <div className="flex items-center justify-between px-6 h-14 border-t-problemStageLi-borderWidth border-problemStageLi-color">
-            <span>총 {totalElement}개의 스테이지를 찾았어요</span>
+            <span>총 <span className="text-blue-500 font-black">{totalElement}개의 스테이지</span>를 찾았어요</span>
             <ProblemStagePageNation totalStages={totalStages}/>
         </div>
     )

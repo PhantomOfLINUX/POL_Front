@@ -17,7 +17,7 @@ const ProblemStageSelectUl:React.FC<ProblemStageSelectUlType> = ({list,selectNam
     const ulRef = useRef<HTMLUListElement>(null);
     useOutsideClick(ulRef,setUlToggle,ulToggle)
     return (
-        <ul ref={ulRef} className={`${ulToggle?"block" : "hidden"} bg-white relative top-2 w-28 items-center justify-between px-1 border-solid border rounded-md border-SelectBorder-color`}>
+        <ul ref={ulRef} className={`${ulToggle?"block" : "hidden"} bg-gray-0 relative top-2 min-w-24 items-center justify-between px-1.5 py-2 border-solid border rounded-md border-gray-600`}>
             {list.map(li=>{
                 return <ProblemStageSelectLi selectName={selectName} key={li.problemItemName} value={li.problemItemKoName} itemName={li.problemItemName}/>
 }            )}

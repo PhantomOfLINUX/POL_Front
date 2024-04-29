@@ -11,7 +11,7 @@ interface HeaderBtnType {
 const HeaderBtn:React.FC<HeaderBtnType> = ({href,children,className}) => {
     return(
         <Link 
-            href={`${href}`} 
+            href={`${href}`}    
             className={`${className}`}
         >
             {children}

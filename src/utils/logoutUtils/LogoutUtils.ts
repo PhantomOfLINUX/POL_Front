@@ -1,8 +1,6 @@
 import useMyPageProfileStore from "@/store/myPageProfileStore";
 
 const url = process.env.NEXT_PUBLIC_BASE_API;
-const clearUserIdStorage = useMyPageProfileStore.persist.clearStorage;
-
 export const logoutLocally = (accessToken: string) => {
     try {
         fetch(`${url}/api/auth/logout`, {
@@ -17,7 +15,6 @@ export const logoutLocally = (accessToken: string) => {
             if (response.ok) {
                 alert("로그아웃 되었습니다.")
                 window.location.replace("/")
-                clearUserIdStorage();
             }
             else {
                 throw new Error(`뭔가 이상합니다.. ${response.status}`);
