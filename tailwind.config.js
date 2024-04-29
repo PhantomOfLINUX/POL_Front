@@ -50,6 +50,9 @@ module.exports = {
       minHeight: {
         "min-height": "25rem",
       },
+      minWidth: {
+        "XtermQuestion-width": "450px",
+      },
       height: {
         "social-height": "6.125rem",
         "problemStage-height": "50rem",
@@ -61,7 +64,6 @@ module.exports = {
         "problemStage-title": "11.75rem",
         "problemStage-info": "21.25rem",
         "Xterm-width": "930px",
-        "XtermQuestion-width": "450px",
       },
       borderRadius: {
         "problemStage-selected-radius": "4px",
