@@ -23,7 +23,7 @@ const ProblemStageForm = () => {
 
 
     return (
-        <form onSubmit={(e)=>{SubmitInput(e)}} className="flex items-center justify-center p-3 my-2 w-8/12 h-12 border-solid border rounded-md border-SelectBorder-color">
+        <form onSubmit={(e)=>{SubmitInput(e)}} className="bg-gray-0 flex items-center justify-center p-3 my-2 w-8/12 h-12 border-solid border rounded-md border-gray-600">
             <button type="submit">
                 <Image 
                     src={`./problemStage/problemStageInput.svg`} 
@@ -34,8 +34,8 @@ const ProblemStageForm = () => {
                 />
             </button>
             <input 
-                placeholder="문제 제목으로 찾아볼 수 있어요" 
-                className="ml-3 w-full h-full outline-none"
+                placeholder="문제 제목 또는 설명으로 찾아볼 수 있어요"
+                className="ml-3 w-full h-full outline-none text-gray-900 placeholder-gray-500"
                 value={inputValue}
                 onChange={(e)=>setInputValue(e.target.value)}
             />
