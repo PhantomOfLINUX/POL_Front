@@ -5,7 +5,7 @@ import React, {Suspense} from "react";
 import useCheckProblemSolved from "@/hooks/useCheckProblemSolved";
 
 import XtermBox from "./XtermBox";
-import Loading from "@/components/loading/Loading";
+import Spinner from "@/components/loading/Spinner";
 
 interface XtermCheckProviderType {
     accessToken: string | undefined,
@@ -15,7 +15,7 @@ interface XtermCheckProviderType {
 const XtermCheckProvider: React.FC<XtermCheckProviderType> = ({accessToken, refreshToken}) => {
     const problemSolvedCheck = useCheckProblemSolved(accessToken, refreshToken)
     return (
-        <Suspense fallback={<Loading/>}>
+        <Suspense fallback={<Spinner/>}>
             <XtermBox problemSolvedCheck={problemSolvedCheck} accessToken={accessToken} refreshToken={refreshToken}/>
         </Suspense>
     )
