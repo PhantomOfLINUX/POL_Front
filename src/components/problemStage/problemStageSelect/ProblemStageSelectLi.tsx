@@ -40,7 +40,7 @@ const ProblemStageSelectLi:React.FC<ProblemStageSelectLiType> = ({selectName,val
     };
     
     return (
-        <li className="flex">
+        <li className="flex  space-x-2 px-1">
             <input name={value} type="checkbox" onChange={ChangeChecked} checked={existingItems.includes(itemName)}/>
             <label htmlFor={value}>{value}</label>
         </li>

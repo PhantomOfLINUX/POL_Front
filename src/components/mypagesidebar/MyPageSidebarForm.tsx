@@ -5,8 +5,14 @@ import useMyPageStore from "@/store/myPageStore";
 
 
 const MyPageSidebarForm = () => {
+<<<<<<< HEAD
     //path 태그들은 싹다 사이드바 아이콘 
     const { setSelector } = useMyPageStore();
+=======
+    const [myPageSelector, setMyPageSelector] = useState<number>(1);
+    const { setSelector } = useMyPageStore();
+    const { pageSelector } = useMyPageStore();
+>>>>>>> d5b907939b025104df84e8fa8a75886851253267
     return (
 
         <div className="w-60 text-white p-3 bg-thema-color rounded-lg mr-36 h-1/2">
