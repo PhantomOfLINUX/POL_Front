@@ -53,6 +53,7 @@ export function getXtermUrl(
 export const connectWebSocket = (url:string) => {
     let websocket = new WebSocket(url);
     websocket.onerror = (error) =>{
+        console.error(error)
         websocket = connectWebSocket(url);
     }
     return websocket   
