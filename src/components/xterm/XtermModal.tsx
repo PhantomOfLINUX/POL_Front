@@ -19,7 +19,7 @@ const XtermModal: React.FC<XtermModalType> = ({setModalState, setXtermUrlCheck})
             tabIndex={-1}
             className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center bg-gray-600 bg-opacity-60"
         >
-            <div className="relative p-4 w-full max-w-md max-h-full">
+            <div className="relative p-4 w-2/5 max-w-md max-h-full">
                 <div className="relative bg-gray-50 border-gray-300 rounded-lg shadow">
                     <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                         <h3 className="text-xl font-semibold text-gray-900">
@@ -35,14 +35,14 @@ const XtermModal: React.FC<XtermModalType> = ({setModalState, setXtermUrlCheck})
                         <button
                             ref={startButtonRef}
                             type="button"
-                            className="w-80 h-12 mt-2 bg-blue-300 text-gray-50 rounded hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-700 focus:outline-none"
+                            className="w-full h-12 mt-2 bg-blue-300 text-gray-50 rounded hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-700 focus:outline-none"
                             onClick={() => setModalState(false)}
                         >
                             처음부터 문제 풀기
                         </button>
                         <button
                             type="button"
-                            className="w-80 h-12 mt-2 bg-blue-300 text-gray-50 rounded hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-700 focus:outline-none"
+                            className="w-full h-12 mt-2 bg-blue-300 text-gray-50 rounded hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-700 focus:outline-none"
                             onClick={() => {
                                 setXtermUrlCheck(false);
                                 setModalState(false);
