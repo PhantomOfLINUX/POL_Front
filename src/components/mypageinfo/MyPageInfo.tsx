@@ -15,11 +15,6 @@ export interface MyPageInfoType {
 const MyPageInfoForm: React.FC<MyPageInfoType> = ({ accessToken, refreshToken }) => {
     const { pageSelector } = useMyPageStore();
 
-<<<<<<< HEAD
-const MyPageInfoForm = () => {
-    const { pageSelector } = useMyPageStore();
-=======
->>>>>>> d5b907939b025104df84e8fa8a75886851253267
     if (pageSelector === 1) {
         return (
             <div><MyPageProfileForm /></div>

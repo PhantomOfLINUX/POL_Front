@@ -8,11 +8,7 @@ export interface MyPageState {
 }
 
 const useMyPageStore = create<MyPageState>(set => ({
-<<<<<<< HEAD
-    pageSelector: 1,
-=======
     pageSelector: 2,
->>>>>>> d5b907939b025104df84e8fa8a75886851253267
     setSelector: (page) => {
         set({ pageSelector: page })
     }
