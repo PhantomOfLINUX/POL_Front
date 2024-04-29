@@ -12,29 +12,29 @@ module.exports = {
                 blue: {
                     300: "#7ca6f3",
                     400: "#5089ef",
-                    500: "#246beb",
-                    600: "#1d56bc",
-                    700: "#16408d",
+                    500: "#246beb", // normal
+                    600: "#1d56bc", // hover
+                    700: "#16408d", // pressed
                 },
                 gray: {
                     0: "#ffffff",
                     50: "#f8f8f8",
                     100: "#f0f0f0",
-                    200: "#e4e4e4",
-                    300: "#dbdbdb",
+                    200: "#e4e4e4", // disabled
+                    300: "#dbdbdb", // 콘텐츠 테두리
                     400: "#c6c6c6",
-                    500: "#8e8e8e",
-                    600: "#717171",
-                    700: "#555555",
+                    500: "#8e8e8e", // 텍스트-disabled
+                    600: "#717171", // 입력창 기본
+                    700: "#555555", // body
                     800: "#2d2d2d",
-                    900: "#1d1d1d",
+                    900: "#1d1d1d", // title
                     1000: "#000000",
                 },
                 danger: {
                     50: "#FEECF0",
                     100: "#FCD4DE",
-                    500: "#EB003B",
-                    600: "#D50136",
+                    500: "#EB003B", // base
+                    600: "#D50136", //text
                 },
                 "thema-color": "#2D347F",
                 "inputBorder-color": "#90929E",
@@ -61,7 +61,7 @@ module.exports = {
                 "problemStage-info": "21.25rem",
             },
             borderRadius: {
-                "problemStage-selected-radius": "2px",
+                "problemStage-selected-radius": "4px",
             },
             borderWidth: {
                 "problemStageLi-borderWidth": "1px",

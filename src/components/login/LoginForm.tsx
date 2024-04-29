@@ -6,14 +6,33 @@ import LoginInput from "./LoginInput";
 import SocialLogin from "../socialLogin/SocialLogin";
 
 import { LoginInLocally } from "@/utils/loginUtils/LoginUtil";
+import SuccessAlert from "../alert/SuccessAlert";
 
 const LoginForm = () => {
     const [id,setId] = useState<string>("")
     const [password,setPassword] = useState<string>("")
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
+    const [loginFailed, setLoginFailed] = useState(false);
+
+    const handleCloseAlert = () => {
+        setShowAlert(false);
+        window.location.replace("/");
+    };
 
     return (
         <main className="loginSignUp">
-            <form onSubmit={e=>LoginInLocally(e,id,password)}>
+            {showAlert && (
+                <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
+                    <SuccessAlert
+                        title="로그인 성공"
+                        message={alertMessage}
+                        onClose={handleCloseAlert}
+                    />
+                </div>
+            )}
+            <form onSubmit={e=>LoginInLocally(e, id, password, setShowAlert, setAlertMessage, setLoginFailed)}>
+                {loginFailed && <p className="text-xs ml-2 mb-2 text-danger-500">아이디 또는 비밀번호를 다시 확인해주세요</p>}
                 <LoginInput name="loginEmail" id="loginEmail" type="text" placeholder="이메일" onChange={setId}/>
                 <LoginInput name="loginPassword" id="loginPassword" type="password" placeholder="비밀번호" onChange={setPassword}/>
                 <div className="flex justify-center">

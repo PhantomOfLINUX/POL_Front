@@ -9,7 +9,7 @@ const Signup = () => {
         <div>
             <LoginSignupDescription />
             <SignUpForm />
-            <Spacing80></Spacing80>
+            <Spacing80 />
         </div>
     );
 };
