@@ -20,7 +20,13 @@ export const GetMyPageProblemStateCompleted = async (e: React.MouseEvent<HTMLEle
                 Authorization: `Bearer ${accessToken}`,
             }
         }).then(response => response.json())
-            .then(response => setCompletedCode(response.stageCodeDTOS.length))
+            .then((response: { stageCodeDTOS: { stageCode: string; accessUrl: string; }[] }) => {
+                const stageCodeDTOS = response.stageCodeDTOS;
+                const stageCodes = stageCodeDTOS.map((stage: { stageCode: string; accessUrl: string; }) => stage.stageCode);
+                const stageCodesLength = stageCodeDTOS.length;
+                setCompletedCode(stageCodesLength, stageCodes);
+            })
+        //.then(response => console.log("성공한 문제 = ", response))
     }
     catch (error) {
         console.error('무슨에러일까요?:', error);
@@ -39,12 +45,12 @@ export const GetMyPageProblemStateInProgress = async (e: React.MouseEvent<HTMLEl
                 Authorization: `Bearer ${accessToken}`,
             }
         }).then(response => response.json())
-            //.then(response => response);
-            .then((response: { stageCodeDTOS: { stageCode: string; accessUrl: string; }[] }) => {
-                const stageCodeDTOS = response.stageCodeDTOS;
-                const stageCodes = stageCodeDTOS.map((stage: { stageCode: string; accessUrl: string; }) => stage.stageCode);
-                setInProgressCode(stageCodes);
-            })
+            // .then((response: { stageCodeDTOS: { stageCode: string; accessUrl: string; }[] }) => {
+            //     const stageCodeDTOS = response.stageCodeDTOS;
+            //     const stageCodes = stageCodeDTOS.map((stage: { stageCode: string; accessUrl: string; }) => stage.stageCode);
+            //     setInProgressCode(stageCodes);
+            // })
+            .then(response => console.log("진행중인 문제 = ", response))
     }
     catch (error) {
         console.error('무슨에러일까요?:', error);

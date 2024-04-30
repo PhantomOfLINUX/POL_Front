@@ -17,7 +17,7 @@ const mypage = () => {
                 <div className="pl-36 pt-16">
                     <nav className="px-0 h-1/2 flex z-10">
                         <MyPageSidebarForm />
-                        <div className="border-2 border-gray w-1/2 items-center p-3 bg-color-white rounded-lg">
+                        <div className="border-2 border-gray w-2/3 items-center p-3 bg-color-white rounded-lg">
                             <MyPageInfoForm accessToken={POL_ACCESS_TOKEN} refreshToken={POL_REFRESH_TOKEN} />
                         </div>
                     </nav>
