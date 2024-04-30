@@ -68,9 +68,8 @@ const MyPageUserSettingForm: React.FC<MyPageInfoType> = ({ accessToken, refreshT
             </div>
             {
                 modal &&
-                (<div>
-                    <div className="position: absolute w-full max-h-screen z-0 top-0 left-0 right-0 bottom-0 bg-gray-500 bg-opacity-30" onClick={() => toggleModal()}></div>
-                    <div className="position: absolute top-1/2 left-1/4 z-20">
+                (<div className="fixed flex justify-center items-center w-full max-h-screen z-0 top-0 left-0 right-0 bottom-0 bg-gray-500 bg-opacity-30" onClick={(e) => {e.preventDefault(); toggleModal()}}>
+                    <div className="">
                         <div id="alert-additional-content-2" className="w-full p-4 mb-4 text-red-800 border border-red-300 rounded-lg bg-danger-100 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
                             <div className="flex items-center">
                                 <svg className="flex-shrink-0 w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
