@@ -12,14 +12,14 @@ interface ProblemStageModalType {
 }
 
 const ProblemStageModal: React.FC<ProblemStageModalType> = ({
-                                                                modalState,
-                                                                stageId,
-                                                                title,
-                                                                info,
-                                                                level,
-                                                                questionCount,
-                                                                setModalState,
-                                                            }) => {
+    modalState,
+    stageId,
+    title,
+    info,
+    level,
+    questionCount,
+    setModalState,
+    }) => {
     const router = useRouter();
     const closeModal = () => setModalState(false);
 
@@ -30,7 +30,8 @@ const ProblemStageModal: React.FC<ProblemStageModalType> = ({
             aria-hidden={!modalState}
             className={`${
                 modalState ? "" : "hidden"
-            } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center bg-gray-600 bg-opacity-60`}
+            } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] min-h-full flex items-center justify-center bg-gray-600 bg-opacity-60`}
+            onClick={(e)=>{e.preventDefault(); closeModal()}}
         >
             <div className="relative p-4 w-full max-w-2xl max-h-full">
                 <div className="relative bg-gray-50 border-gray-300 rounded-lg shadow">

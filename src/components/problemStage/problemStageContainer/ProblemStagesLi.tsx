@@ -47,6 +47,15 @@ const ProblemStagesLi: React.FC<ProblemStagesLiType> = ({
                 <span className="flex-1 text-center px-1">{level}</span>
                 <span className="flex-1 text-center px-1">{questionCount}</span>
             </li>
+            <ProblemStageModal
+            modalState={modalState}
+            stageId={stageId}
+            title={title}
+            info={info}
+            level={level}
+            questionCount={questionCount}
+            setModalState={setModalState}
+            />
         </>
     )
 }
