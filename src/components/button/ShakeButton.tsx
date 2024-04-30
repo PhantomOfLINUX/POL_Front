@@ -2,13 +2,21 @@
 
 import React from "react";
 
-const ShakeButton = () => {
+interface ShakeButtonProps {
+    children: React.ReactNode;
+    onClick?: () => void;
+    className?: string;
+}
+
+const ShakeButton: React.FC<ShakeButtonProps> = ({ children, onClick, className }) => {
     return (
-        <button className="text-gray-50 w-64 h-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-            문제 풀어보기
+        <button
+            className={`bg-blue-500 text-gray-50 p-4 m-4 hover:animate-shake ${className}`}
+            onClick={onClick}
+        >
+            {children}
         </button>
     )
 }
-
 
 export default ShakeButton
