@@ -131,7 +131,7 @@ const HeatmapForm = () => {
                 <span style={{ color: '#768390', fontSize: 12 }}>More</span>
             </div>
             <br />
-            <div className='grid grid-cols-3 gap-20'>
+            <div className='grid grid-cols-3 gap-20 pl-10'>
                 <button
 
                     href="#"

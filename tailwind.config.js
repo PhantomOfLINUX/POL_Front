@@ -46,6 +46,7 @@ module.exports = {
                 "problemStageLi-color": "#D1D5DB",
                 "disabled-color": "#D9D9D9",
                 "OpaqueBackground-color": "rgba(0, 0, 0, 0.3)",
+                "deleteAlert-color": "EB003B",
             },
             minHeight: {
                 "min-height": "25rem",
@@ -53,6 +54,7 @@ module.exports = {
             height: {
                 "social-height": "6.125rem",
                 "problemStage-height": "50rem",
+                "100": "100dvh",
             },
             width: {
                 "problemStage-width": "5.75rem",
