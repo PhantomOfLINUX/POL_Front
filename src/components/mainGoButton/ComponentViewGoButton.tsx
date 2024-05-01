@@ -4,7 +4,7 @@ import React from "react";
 
 import {useRouter} from "next/navigation";
 
-const MainGoButton = () => {
+const ComponentViewGoButton = () => {
     const router = useRouter();
     const go = () => {
         router.push(`/view/component`);
@@ -18,4 +18,4 @@ const MainGoButton = () => {
 }
 
 
-export default MainGoButton
+export default ComponentViewGoButton
