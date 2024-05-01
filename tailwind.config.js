@@ -30,7 +30,8 @@ module.exports = {
           900: "#1d1d1d", // title
           1000: "#000000",
         },
-        danger: { // 900
+        danger: {
+          // 900
           50: "#FEECF0",
           100: "#FCD4DE",
           200: "#FECDD3",
@@ -38,7 +39,6 @@ module.exports = {
           500: "#EB003B", // base
           600: "#D50136", //text
           800: "#c53030",
-
         },
         "thema-color": "#2D347F",
         "inputBorder-color": "#90929E",
@@ -53,12 +53,12 @@ module.exports = {
       },
       keyframes: {
         shake: {
-          '0%, 100%': { transform: 'translateX(0px)' },
-          '50%': { transform: 'translateX(-4px)' }
+          "0%, 100%": { transform: "translateX(0px)" },
+          "50%": { transform: "translateX(-4px)" },
         },
       },
       animation: {
-        shake: 'shake 150ms 4 linear'
+        shake: "shake 150ms 4 linear",
       },
 
       minHeight: {
