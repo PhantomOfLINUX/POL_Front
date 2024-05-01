@@ -13,7 +13,7 @@ export const connectWebSocket = (url:string) => {
 }
 
 
-export const checkQuestion = (answer:string,questionIndex:number,stageId:string | null,accessToken:string|undefined,setQusetion_index:React.Dispatch<SetStateAction<number>>,setIsIncorrect:React.Dispatch<SetStateAction<boolean>>) => {
+export const checkQuestion = (answer:string,questionIndex:number,stageId:string | null,accessToken:string|undefined,setQusetion_index:React.Dispatch<SetStateAction<number>>,setIsIncorrect:React.Dispatch<SetStateAction<number>>,setInputValue:React.Dispatch<SetStateAction<string>>) => {
     if(stageId&&accessToken){
         try{
             fetch(`${url}/api/questions/grading`,{
@@ -26,12 +26,17 @@ export const checkQuestion = (answer:string,questionIndex:number,stageId:string 
                 body:JSON.stringify({stageId,questionIndex,answer})
             }).then(res=>res.json())
             .then(res=>{
-                console.log(res)
                 if(res.isCorrect){
-                    setQusetion_index(res.nextIndex)
-                    setIsIncorrect(false)
+                    if(res.isLast){
+                        
+                    }
+                    else{
+                        setQusetion_index(res.nextIndex)
+                        setIsIncorrect(0)
+                        setInputValue("")
+                    }
                 }else{
-                    setIsIncorrect(true)
+                    setIsIncorrect((pre)=>pre+1)
                 }
             })
 

@@ -56,6 +56,7 @@ module.exports = {
       animation: {
         shake: "shake 150ms 4 linear",
       },
+
       minHeight: {
         "min-height": "25rem",
       },
