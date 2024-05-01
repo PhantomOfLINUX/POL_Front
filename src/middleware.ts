@@ -6,6 +6,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 const url = process.env.NEXT_PUBLIC_BASE_API;
+const protectedPaths = ["/problem", "/challengelist"];
 
 const ReAccessToken = async (refreshToken: string) => {
   try {
@@ -51,8 +52,11 @@ export async function middleware(request: NextRequest) {
       }
     }
   }
-  if ((pathname.startsWith("/problem") || pathname.startsWith("/challengelist")) && accessToken === undefined)
-    return NextResponse.redirect(new URL('/login', request.url))
+  if (protectedPaths.some(path => pathname.startsWith(path)) && accessToken === undefined) {
+    const loginUrl = new URL('/login', request.url);
+    loginUrl.searchParams.set('redirect', pathname);
+    return NextResponse.redirect(loginUrl);
+  }
 }
 
 export const config = {

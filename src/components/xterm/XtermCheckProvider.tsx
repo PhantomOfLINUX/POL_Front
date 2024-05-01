@@ -1,21 +1,21 @@
 "use client"
 
-import React,{Suspense} from "react";
+import React, {Suspense} from "react";
 
 import useCheckProblemSolved from "@/hooks/useCheckProblemSolved";
 
 import XtermBox from "./XtermBox";
-import Loding from "@/components/loading/Loading";
+import Spinner from "@/components/loading/Spinner";
 
 interface XtermCheckProviderType {
-    accessToken:string|undefined,
-    refreshToken:string|undefined
+    accessToken: string | undefined,
+    refreshToken: string | undefined
 }
 
-const XtermCheckProvider:React.FC<XtermCheckProviderType> = ({accessToken,refreshToken}) => {
+const XtermCheckProvider: React.FC<XtermCheckProviderType> = ({accessToken, refreshToken}) => {
     const problemSolvedCheck = useCheckProblemSolved(accessToken, refreshToken)
     return (
-        <Suspense fallback={<Loding/>}>
+        <Suspense fallback={<Spinner/>}>
             <XtermBox problemSolvedCheck={problemSolvedCheck} accessToken={accessToken} refreshToken={refreshToken}/>
         </Suspense>
     )
