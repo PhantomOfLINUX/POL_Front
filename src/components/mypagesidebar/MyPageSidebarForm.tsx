@@ -8,9 +8,17 @@ const MyPageSidebarForm = () => {
     const [myPageSelector, setMyPageSelector] = useState<number>(1);
     const { setSelector } = useMyPageStore();
     const { pageSelector } = useMyPageStore();
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
     return (
         <div className="pr-10">
-            <div className="w-60 text-white p-3 bg-thema-color rounded-lg h-1/3">
+            <div className="w-60 text-white p-3 bg-blue-500 rounded-lg h-1/4">
                 < div className="flex items-center p-2 space-x-4" >
                     {/* <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500"> */}
                     < div >
@@ -29,7 +37,7 @@ const MyPageSidebarForm = () => {
                                     <circle cx="13.5" cy="10" r="4" stroke="white" strokeLinecap="round" />
                                     <path d="M5.59102 19.6061C6.3254 17.2894 8.72723 16.1875 11.1575 16.1875H15.8425C18.2728 16.1875 20.6746 17.2894 21.409 19.6061C21.6303 20.3041 21.8082 21.0882 21.8896 21.9384C21.9422 22.4882 21.4898 22.9375 20.9375 22.9375H6.0625C5.51022 22.9375 5.05784 22.4882 5.11044 21.9384C5.19178 21.0882 5.36974 20.3041 5.59102 19.6061Z" stroke="white" strokeLinecap="round" />
                                 </svg>
-                                <button onClick={() => { setSelector(1) }}>
+                                <button onClick={() => { setSelector(1), scrollToTop() }}>
                                     나의 정보
                                 </button>
 
@@ -71,7 +79,7 @@ const MyPageSidebarForm = () => {
                             </a>
                         </li>
                     </ul>
-                    <ul className="pt-4 pb-2 space-y-1 text-sm">
+                    {/* <ul className="pt-4 pb-2 space-y-1 text-sm">
                         <li>
                             <a className="flex items-center p-2 space-x-3 rounded-md">
                                 <span>example</span>
@@ -82,7 +90,7 @@ const MyPageSidebarForm = () => {
                                 <span>example</span>
                             </a>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div >
         </div>
