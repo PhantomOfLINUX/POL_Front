@@ -32,11 +32,11 @@ export const checkQuestion = (answer:string,questionIndex:number,stageId:string 
                     }
                     else{
                         setQusetion_index(res.nextIndex)
-                        setIsIncorrect(true)
+                        setIsIncorrect(false)
                         setInputValue("")
                     }
                 }else{
-                    setIsIncorrect(false)
+                    setIsIncorrect(true)
                 }
             })
 

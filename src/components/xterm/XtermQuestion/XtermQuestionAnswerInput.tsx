@@ -24,6 +24,7 @@ const XtermQuestionAnswerInput:React.FC<XtermQuestionAnswerInputType> = ({access
         e.preventDefault();
         checkQuestion(inputValue,question_index,stage_id,accessToken,setQusetion_index,setIsIncorrect,setInputValue)
     }
+    console.log(isIncorrect)
     return (
         <form className="ml-14 h-44">
             {answerType==="SHORT_ANSWER"&&
