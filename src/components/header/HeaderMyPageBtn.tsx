@@ -33,7 +33,7 @@ const HeaderMyPageBtn: React.FC<mypageType> = ({ accessToken }) => {
                 GetMyPageProblemStateInProgress(e, accessToken, setInProgressCode),
                 GetMyPageProblemHeatmap(e, accessToken, setHeatmapInfoArray)
         }}>
-            <Link href="/mypage"><CgProfile className="text-5xl text-thema-color ml-10" /></Link>
+            <Link href="/mypage"><CgProfile className="text-5xl text-blue-500 ml-10" /></Link>
         </button>
 
     )

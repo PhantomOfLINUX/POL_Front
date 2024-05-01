@@ -31,10 +31,14 @@ module.exports = {
           1000: "#000000",
         },
         danger: {
+          // 900
           50: "#FEECF0",
           100: "#FCD4DE",
+          200: "#FECDD3",
+          400: "#FC8181",
           500: "#EB003B", // base
           600: "#D50136", //text
+          800: "#c53030",
         },
         "thema-color": "#2D347F",
         "inputBorder-color": "#90929E",
@@ -60,24 +64,18 @@ module.exports = {
       minHeight: {
         "min-height": "25rem",
       },
-      minWidth: {
-        "XtermQuestion-width": "450px",
-      },
       height: {
         "social-height": "6.125rem",
         "problemStage-height": "50rem",
-        "XtermQuestion-height": "765px",
       },
       width: {
         "problemStage-width": "5.75rem",
         "problemStage-isCompleted": "5.5rem",
         "problemStage-title": "11.75rem",
         "problemStage-info": "21.25rem",
-        "Xterm-width": "930px",
       },
       borderRadius: {
         "problemStage-selected-radius": "4px",
-        "XtermQuestion-Radius": "10px",
       },
       borderWidth: {
         "problemStageLi-borderWidth": "1px",
