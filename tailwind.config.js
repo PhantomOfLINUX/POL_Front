@@ -60,7 +60,21 @@ module.exports = {
       animation: {
         shake: "shake 150ms 4 linear",
       },
-
+      fontWeight: {
+        'thin': '100',
+        'extralight': '200',
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'extrabold': '800',
+        'black': '900',
+      },
+      fontFamily: {
+        'default': ['SCoreDream', 'sans-serif'],
+        'SCoreDream': ['SCoreDream', 'sans-serif'],
+      },
       minHeight: {
         "min-height": "25rem",
       },
