@@ -47,6 +47,16 @@ module.exports = {
         "disabled-color": "#D9D9D9",
         "OpaqueBackground-color": "rgba(0, 0, 0, 0.3)",
       },
+      keyframes: {
+        shake: {
+          '0%, 100%': { transform: 'translateX(0px)' },
+          '50%': { transform: 'translateX(-4px)' }
+        },
+      },
+      animation: {
+        shake: 'shake 150ms 4 linear'
+      },
+
       minHeight: {
         "min-height": "25rem",
       },
