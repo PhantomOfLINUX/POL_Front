@@ -27,8 +27,9 @@ export const LoginInLocally = async (
             setShowAlert(true);
             setLoginFailed(false);
             setTimeout(() => {
-                window.location.replace("/");
-            }, 100);
+                const redirectPath = new URLSearchParams(window.location.search).get('redirect') || '/';
+                window.location.replace(window.location.origin + redirectPath);
+            }, 500);
         } else {
             setLoginFailed(true);
         }

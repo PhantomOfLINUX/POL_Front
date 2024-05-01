@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Loding from "./Loading";
 
 import PageLayout from "@/components/layout/PageLayout";
-import './globals.css'
+import '../styles/globals.css'
 
 export const metadata: Metadata = {
   title:'Phantom of Linux',

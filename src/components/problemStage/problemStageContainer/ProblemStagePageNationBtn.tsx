@@ -8,11 +8,11 @@ interface ProblemStagePageNationBtnType {
 }
 
 const ProblemStagePageNationBtn: React.FC<ProblemStagePageNationBtnType> = ({
-                                                                                pageBtn,
-                                                                                curPage,
-                                                                                pageMove,
-                                                                                checked,
-                                                                            }) => {
+    pageBtn,
+    curPage,
+    pageMove,
+    checked,
+    }) => {
     const isCurrentPage = pageBtn === curPage;
     const isDisabled = checked;
 

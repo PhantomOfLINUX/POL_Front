@@ -8,7 +8,6 @@ import type {Resource} from "@/lib/wrappingPromise";
 
 import XtermModal from "./XtermModal";
 import XtermUrlProvider from "./XtermUrlProvider";
-import Loding from "@/components/loading/Loading";
 import Spinner from "@/components/loading/Spinner";
 
 interface CheckProblem {
@@ -36,7 +35,7 @@ const XtermBox: React.FC<XtermBoxType> = ({accessToken, refreshToken, problemSol
                     <XtermModal setXtermUrlCheck={setXtermUrlCheck} setModalState={setModalCheck}/>
                 </>
                 :
-                <XtermUrlProvider xtermConnectUrl={xtermConnectUrl}/>
+                <XtermUrlProvider accessToken={accessToken} refreshToken={refreshToken} xtermConnectUrl={xtermConnectUrl}/>
             }
         </Suspense>
     )
