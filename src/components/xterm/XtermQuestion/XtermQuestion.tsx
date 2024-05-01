@@ -25,7 +25,6 @@ const XtermQuestion:React.FC<XtermQuestionType> = ({accessToken,refreshToken}) =
     const submitQuestion = (inputValue:string, e:React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         checkQuestion(inputValue,question_index,stage_id,accessToken,setQusetion_index)
-
     }
     
     return (

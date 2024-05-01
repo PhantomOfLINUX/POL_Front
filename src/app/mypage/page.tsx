@@ -15,12 +15,15 @@ const mypage = () => {
         <div className="page-container">
             <div className="content-wrap">
                 <div className="pl-36 pt-16">
-                    <nav className="px-0 h-1/2 flex z-10">
+                    <div className="h-1/2 flex z-2">
                         <MyPageSidebarForm />
-                        <div className="border-2 border-gray w-2/3 items-center p-3 bg-color-white rounded-lg">
-                            <MyPageInfoForm accessToken={POL_ACCESS_TOKEN} refreshToken={POL_REFRESH_TOKEN} />
+                        <div className="flex justify-end pl-20 pb-24">
+                            <div className="border-2 border-gray w-full items-center p-5 bg-color-white rounded-lg">
+                                <MyPageInfoForm accessToken={POL_ACCESS_TOKEN} refreshToken={POL_REFRESH_TOKEN} />
+                            </div>
+
                         </div>
-                    </nav>
+                    </div>
                 </div>
             </div>
         </div>

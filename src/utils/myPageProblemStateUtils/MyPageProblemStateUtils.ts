@@ -45,12 +45,11 @@ export const GetMyPageProblemStateInProgress = async (e: React.MouseEvent<HTMLEl
                 Authorization: `Bearer ${accessToken}`,
             }
         }).then(response => response.json())
-            // .then((response: { stageCodeDTOS: { stageCode: string; accessUrl: string; }[] }) => {
-            //     const stageCodeDTOS = response.stageCodeDTOS;
-            //     const stageCodes = stageCodeDTOS.map((stage: { stageCode: string; accessUrl: string; }) => stage.stageCode);
-            //     setInProgressCode(stageCodes);
-            // })
-            .then(response => console.log("진행중인 문제 = ", response))
+            .then((response: { stageCodeDTOS: { stageCode: string; accessUrl: string; }[] }) => {
+                const stageCodeDTOS = response.stageCodeDTOS;
+                const stageCodes = stageCodeDTOS.map((stage: { stageCode: string; accessUrl: string; }) => stage.stageCode);
+                setInProgressCode(stageCodes);
+            })
     }
     catch (error) {
         console.error('무슨에러일까요?:', error);

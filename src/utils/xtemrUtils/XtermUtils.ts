@@ -34,7 +34,6 @@ export const checkQuestion = (answer:string,questionIndex:number,stageId:string 
                 }
             })
 
-
         }catch(err){
             console.error(err)
         }}
