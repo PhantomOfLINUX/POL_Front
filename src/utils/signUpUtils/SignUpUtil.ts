@@ -2,9 +2,9 @@ import React from "react";
 
 const url = process.env.NEXT_PUBLIC_BASE_API
 
-export const checkEmail = (e:string) => {
-    const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;//유효성 체크
-    return e!==""&&!exptext.test(e)
+export const CheckEmail = (e: string) => {
+    const expect = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;//유효성 체크
+    return !(e!==""&&!expect.test(e))
 }//email check
 
 export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
@@ -20,7 +20,7 @@ export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:s
             alert("이메일이 전송되었습니다.")
         }
         else if(emailCheck.status===400){
-            alert("이미 존재한 이메일입니다.")
+            alert("이미 사용중인 이메일입니다.")
         }
         else{
             throw new Error(`Unexpected status code: ${emailCheck.status}`);
@@ -34,10 +34,12 @@ export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:s
 
 export const CheckPassword = (password:string) => {
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;//유효성 체크
-    return password!==""&&!(passwordRegex.test(password))
+    return !(password!==""&&!(passwordRegex.test(password)))
 }
 
-export const CheckPasswordCheck = (password:string, passwordCheck:string) => passwordCheck!==""&&password!==passwordCheck;
+export const CheckPasswordCheck = (password: string, passwordCheck: string) => !(passwordCheck !== "" && password !== passwordCheck);
+
+export const CheckName = (name: string) => (name.trim().length > 0);
 
 export const SubmitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,name:string,password:string,passwordCheck:string) => {
     e.preventDefault();

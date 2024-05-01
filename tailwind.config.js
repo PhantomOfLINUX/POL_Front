@@ -99,6 +99,8 @@ module.exports = {
       },
       borderWidth: {
         "problemStageLi-borderWidth": "1px",
+        "2": "2px",
+        "3": "3px",
       },
     },
   },
