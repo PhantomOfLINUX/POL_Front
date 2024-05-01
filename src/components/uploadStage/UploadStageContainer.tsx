@@ -2,6 +2,8 @@
 
 import React, {useState} from "react";
 import Textarea from "@/components/uploadStage/Textarea";
+import Input from "@/components/uploadStage/Input";
+import UploadQuestionContainer from "@/components/uploadStage/UploadQuestionContainer";
 
 interface Token {
     accessToken: string | undefined,
@@ -9,7 +11,7 @@ interface Token {
 }
 
 interface Stage {
-    id: string;
+    id: number;
     stageCode: string,
     title: string;
     description: string;
@@ -20,19 +22,23 @@ interface Stage {
 
 const UploadStageContainer: React.FC<Token> = ({accessToken, refreshToken}) => {
     const [message, setMessage] = useState("");
+    const [title, setTitle] = useState("");
 
+    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
+    }
     const handleMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(event.target.value);
     }
 
     return (
-        <div
-            className="w-3/5 min-h-screen bg-gray-0 flex flex-col items-center border-2 border-solid border-gray-300 rounded-3xl my-12"
-        >
-            <Textarea
-                labelText={"스테이지 설명"}
-                message={message}
-                onChange={handleMessageChange}
+        <div className="w-full flex flex-col items-center">
+            <Input
+                id={"StageTitleInput"}
+                labelText={"스테이지 제목"}
+                value={title}
+                onChange={handleTitleChange}
+                placeholder={"제목을 입력해주세요."}
             />
             <Textarea
                 labelText={"스테이지 설명"}
