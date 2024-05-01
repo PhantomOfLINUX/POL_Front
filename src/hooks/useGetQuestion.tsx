@@ -11,8 +11,7 @@ interface QuestionReturn {
     index: 0,
     title: string,
     description: string,
-    answerType: "MULTIPLE_CHOICE",
-    questionCount:number,
+    answerType: "SHORT_ANSWER"|"PRACTICAL",
     options: string[]
 }
 
@@ -24,7 +23,13 @@ function useGetQuestion(
     const validAccessToken = useCheckAccess(accessToken, refreshToken);
     const searchParams = useSearchParams();
     const stage_id = searchParams.get("stageId");
-    const [questionInfo,setQuestionInfo] = useState<QuestionReturn|undefined>();
+    const [questionInfo,setQuestionInfo] = useState<QuestionReturn>({
+            questionId: "",
+            index: 0,
+            title: "",
+            description: "",
+            answerType: "SHORT_ANSWER",
+            options: [""] });
     useEffect(()=>{
         try{
             fetch(`${url}/api/stages/${stage_id}/questions/${question_index}`,{
@@ -36,10 +41,10 @@ function useGetQuestion(
             })
             .then((res)=>res.json())
             .then((res)=>{
-                console.log(res)
+                setQuestionInfo(res)
             })
-            .catch((err)=>{
-                
+            .catch((err:any)=>{
+                console.log(err)        
             })
 
         }catch(err){
