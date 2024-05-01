@@ -4,6 +4,8 @@ import React,{useState} from "react";
 
 import useGetQuestion from "@/hooks/useGetQuestion";
 
+import XtermQuestionStage from "./XtermQuestionStage";
+
 interface XtermQuestionType {
     accessToken: string | undefined,
     refreshToken: string | undefined,
@@ -23,8 +25,7 @@ const XtermQuestion:React.FC<XtermQuestionType> = ({accessToken,refreshToken}) =
     const questionInfo = useGetQuestion(accessToken,refreshToken,question_index)
     return (
         <div className="bg-white rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height min-w-XtermQuestion-width">
-            <p>{dummyData.title}</p>
-            <span>{dummyData.description}</span>
+            <XtermQuestionStage total_questions={questionInfo?.questionCount||0} question_index={question_index}/>
         </div>
     )
 }

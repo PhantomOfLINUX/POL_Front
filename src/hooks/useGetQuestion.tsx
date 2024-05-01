@@ -12,6 +12,7 @@ interface QuestionReturn {
     title: string,
     description: string,
     answerType: "MULTIPLE_CHOICE",
+    questionCount:number,
     options: string[]
 }
 
