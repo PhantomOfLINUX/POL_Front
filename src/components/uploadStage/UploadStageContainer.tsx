@@ -3,47 +3,38 @@
 import React, {useState} from "react";
 import Textarea from "@/components/uploadStage/Textarea";
 import Input from "@/components/uploadStage/Input";
-import UploadQuestionContainer from "@/components/uploadStage/UploadQuestionContainer";
+import { StageUploadRequest } from "@/types/stageType";
 
-interface Token {
-    accessToken: string | undefined,
-    refreshToken: string | undefined
+interface UploadStageContainerProps {
+    stageUploadRequest: StageUploadRequest;
+    onStageChange: (field: keyof StageUploadRequest, value: string) => void;
 }
 
-interface Stage {
-    id: number;
-    stageCode: string,
-    title: string;
-    description: string;
-    difficultyLevelType: string;
-    questionCount: number;
-    completedStatus: string;
-}
-
-const UploadStageContainer: React.FC<Token> = ({accessToken, refreshToken}) => {
+const UploadStageContainer: React.FC<UploadStageContainerProps> = ({stageUploadRequest, onStageChange,}) => {
     const [message, setMessage] = useState("");
     const [title, setTitle] = useState("");
 
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value);
-    }
-    const handleMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setMessage(event.target.value);
-    }
+        onStageChange("title", event.target.value);
+    };
+
+    const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        onStageChange("description", event.target.value);
+    };
 
     return (
-        <div className="w-full flex flex-col items-center">
+        <div className="w-full flex flex-col items-center m-8">
             <Input
                 id={"StageTitleInput"}
                 labelText={"스테이지 제목"}
-                value={title}
+                value={stageUploadRequest.title}
                 onChange={handleTitleChange}
                 placeholder={"제목을 입력해주세요."}
             />
             <Textarea
                 labelText={"스테이지 설명"}
-                message={message}
-                onChange={handleMessageChange}
+                message={stageUploadRequest.description}
+                onChange={handleDescriptionChange}
             />
         </div>
     )
