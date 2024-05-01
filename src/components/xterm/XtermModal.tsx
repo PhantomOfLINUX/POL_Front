@@ -6,7 +6,6 @@ interface XtermModalType {
 }
 
 const XtermModal: React.FC<XtermModalType> = ({setModalState, setXtermUrlCheck}) => {
-    const closeModal = () => setModalState(false);
     const startButtonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
