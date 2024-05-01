@@ -10,10 +10,16 @@ interface TextAreaProps {
     rows?: number;
 }
 
-const TextArea: React.FC<TextAreaProps> = ({ labelText, message, onChange, placeholder = "설명을 작성해주세요.", rows = 4 }) => {
+const Textarea: React.FC<TextAreaProps> = ({labelText, message, onChange, placeholder = "설명을 작성해주세요.", rows = 4}: {
+    labelText: any;
+    message: any;
+    onChange: any;
+    placeholder?: any;
+    rows?: any
+}) => {
     return (
-        <div className="w-4/5 m-8 space-y-2">
-            <label htmlFor="message" className="block ml-2 text-sm font-medium text-gray-900">
+        <div className="w-4/5 m-4 space-y-2 flex flex-1 flex-col">
+            <label htmlFor="message" className="block ml-1 text-sm font-bold text-gray-900">
                 {labelText}
             </label>
             <textarea
@@ -21,11 +27,11 @@ const TextArea: React.FC<TextAreaProps> = ({ labelText, message, onChange, place
                 value={message}
                 onChange={onChange}
                 rows={rows}
-                className="block w-full h-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full h-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 hover:border-gray-600 focus:outline-2 focus:outline-gray-600 resize-none"
                 placeholder={placeholder}
             />
         </div>
     )
 }
 
-export default TextArea
+export default Textarea
