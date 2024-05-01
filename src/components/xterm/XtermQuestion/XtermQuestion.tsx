@@ -6,19 +6,12 @@ import useGetQuestion from "@/hooks/useGetQuestion";
 
 import XtermQuestionStage from "./XtermQuestionStage";
 import XtermQuestionDescription from "./XtermQuestionDescription";
+import XtermQuestionAnswerInput from "./XtermQuestionAnswerInput";
+
 
 interface XtermQuestionType {
     accessToken: string | undefined,
     refreshToken: string | undefined,
-}
-
-const dummyData = {
-    answerType: "MULTIPLE_CHOICE",
-    description: "string",
-    index: 1,
-    options: ['string'],
-    questionId: "Q013-001-M",
-    title: "string1"
 }
 
 const XtermQuestion:React.FC<XtermQuestionType> = ({accessToken,refreshToken}) => {
@@ -28,19 +21,10 @@ const XtermQuestion:React.FC<XtermQuestionType> = ({accessToken,refreshToken}) =
         <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height min-w-XtermQuestion-width">
             <XtermQuestionStage total_questions={3} question_index={question_index}/>
             <XtermQuestionDescription title={questionInfo?.title} desciption={questionInfo?.description}/>
+            <XtermQuestionAnswerInput answerType={questionInfo?.answerType}/>
         </div>
     )
 }
 
 
 export default XtermQuestion
-
-/*
-answerType: "MULTIPLE_CHOICE"
-description: "string"
-index: 1
-options: ['string']
-questionId: "Q013-001-M"
-title: "string1"
-
-*/
