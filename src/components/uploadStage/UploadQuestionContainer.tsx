@@ -35,7 +35,7 @@ const UploadQuestionContainer: React.FC<UploadQuestionContainerProps> = ({
         <div
             className="w-5/6 flex flex-col items-center border-2 border-solid border-gray-300 rounded-3xl my-12 py-4"
         >
-            <span className="text-xl font-bold">{index + 1}번 문항</span>
+            <span className="text-xl font-medium">{index + 1}번 문항</span>
             <Input
                 id={"QuestionTitleInput"}
                 labelText={"문제 제목"}
@@ -84,7 +84,7 @@ const UploadQuestionContainer: React.FC<UploadQuestionContainerProps> = ({
                     id={`RemoveQuestionButton-${index}`}
                     labelText="문항 삭제"
                     onClick={handleRemove}
-                    className="bg-danger-500 hover:bg-danger-600 w-1/5 ml-auto mr-6 border-0"
+                    className="bg-danger-400 hover:bg-danger-500 w-1/5 ml-auto mr-16 border-0"
                 />
             </div>
         </div>

@@ -35,7 +35,7 @@ const ProblemStagePageNation: React.FC<ProblemStagePageNationType> = ({totalStag
             <ProblemStagePageNationBtn pageMove={() => {
                 ChangeChecked(totalPages[curPageNation - 1][0]);
                 setCurPageNation(pre => pre - 1)
-            }} checked={curPageNation === 0} pageBtn={"<"} />
+            }} checked={curPageNation === 0} pageBtn={"<"}/>
 
             {totalPages[curPageNation]?.map((ele, index) => (
                 <ProblemStagePageNationBtn
