@@ -12,14 +12,14 @@ interface ProblemStageModalType {
 }
 
 const ProblemStageModal: React.FC<ProblemStageModalType> = ({
-                                                                modalState,
-                                                                stageId,
-                                                                title,
-                                                                info,
-                                                                level,
-                                                                questionCount,
-                                                                setModalState,
-                                                            }) => {
+    modalState,
+    stageId,
+    title,
+    info,
+    level,
+    questionCount,
+    setModalState,
+    }) => {
     const router = useRouter();
     const closeModal = () => setModalState(false);
 
