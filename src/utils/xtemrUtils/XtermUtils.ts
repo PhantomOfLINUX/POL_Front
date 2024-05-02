@@ -5,9 +5,19 @@ const url = process.env.NEXT_PUBLIC_BASE_API
 
 export const connectWebSocket = (url:string) => {
     let websocket = new WebSocket(url);
+    let websocketPing:any;
     websocket.onerror = (error) =>{
         console.error(error)
         websocket = connectWebSocket(url);
+    }
+    websocket.onopen = () => {
+        websocketPing = setInterval(()=>{
+            websocket.send("")
+            console.log("ping!!")
+        },30000)
+    }
+    websocket.onclose = () => {
+        clearInterval(websocketPing)
     }
     return websocket   
 }
