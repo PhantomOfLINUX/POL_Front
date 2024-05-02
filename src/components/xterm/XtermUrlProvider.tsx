@@ -3,7 +3,7 @@ import React from "react";
 import {Resource} from "@/lib/wrappingPromise";
 
 import Xterm from "./Xterm";
-import XtermQuestion from "./XtermQuestion";
+import XtermQuestion from "./XtermQuestion/XtermQuestion";
 
 interface xtermUrlType {
     url: string,

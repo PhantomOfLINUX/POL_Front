@@ -16,14 +16,14 @@ interface ProblemStagesLiType {
 }
 
 const ProblemStagesLi: React.FC<ProblemStagesLiType> = ({
-                                                            title,
-                                                            stageCode,
-                                                            info,
-                                                            level,
-                                                            questionCount,
-                                                            solved,
-                                                            stageId
-                                                        }) => {
+    title,
+    stageCode,
+    info,
+    level,
+    questionCount,
+    solved,
+    stageId
+}) => {
     const [modalState, setModalState] = useState<boolean>(false)
     return (
         <>
