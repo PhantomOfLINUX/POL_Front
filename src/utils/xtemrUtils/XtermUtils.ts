@@ -17,13 +17,23 @@ export const connectWebSocket = (url:string) => {
         },30000)
     }
     websocket.onclose = () => {
+        console.log("close")
         clearInterval(websocketPing)
     }
     return websocket   
 }
 
 
-export const checkQuestion = (answer:string,questionIndex:number,stageId:string | null,accessToken:string|undefined,setQusetion_index:React.Dispatch<SetStateAction<number>>,setIsIncorrect:React.Dispatch<SetStateAction<boolean>>,setInputValue:React.Dispatch<SetStateAction<string>>) => {
+export const checkQuestion = (
+    answer:string,
+    questionIndex:number,
+    stageId:string | null,
+    accessToken:string|undefined,
+    setQusetion_index:React.Dispatch<SetStateAction<number>>,
+    setIsIncorrect:React.Dispatch<SetStateAction<boolean>>,
+    setInputValue:React.Dispatch<SetStateAction<string>>,
+    setModalCheck:React.Dispatch<SetStateAction<boolean>>
+    ) => {
     if(stageId&&accessToken){
         try{
             fetch(`${url}/api/questions/grading`,{
@@ -38,14 +48,16 @@ export const checkQuestion = (answer:string,questionIndex:number,stageId:string 
             .then(async (res)=>{
                 if(res.isCorrect){
                     if(res.isLast){
-                        //모달창 이용
+                        solveStage(stageId,accessToken)
+                        setModalCheck(true)
                     }
-                    if(res.isComposable){
-                       await composeQuestion(answer,questionIndex,stageId,accessToken);
+                    else{
+                        if(res.isComposable){
+                            await composeQuestion(answer,questionIndex,stageId,accessToken);
+                        }
+                        setQusetion_index(res.nextIndex)
+                        setInputValue("")
                     }
-                    console.log("end")
-                    setQusetion_index(res.nextIndex)
-                    setInputValue("")
                 }else{
                     setIsIncorrect(true)
                 }
@@ -71,5 +83,24 @@ const composeQuestion = async (answer:string,questionIndex:number,stageId:string
     }
     catch(err){
         console.error(err)
+    }
+}
+
+
+const solveStage = (stageId:string | null,accessToken:string|undefined) => {
+    try{
+        fetch(`${url}/api/stages/${stageId}/complete`,{
+            method:"POST",
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization:`Bearer ${accessToken}`
+            },
+            body:JSON.stringify({
+                "status": "COMPLETED"
+            })
+        }).then(res=>res.json()).then(res=>{console.log(res)})
+    }catch(error){
+        console.error(error)
     }
 }
