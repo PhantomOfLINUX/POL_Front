@@ -17,7 +17,7 @@ const LoginInput: React.FC<loginType> = ({ name, id, type, placeholder, onChange
       <input
         name={name}
         id={id}
-        className='loginSignUpInput hover:border-blue-500 focus:border-blue-600 active:border-blue-700'
+        className='loginSignUpInput border-2 border-gray-400 hover:ring-1 hover:ring-blue-500 focus:ring-blue-600 active:ring-blue-600'
         type={type}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}

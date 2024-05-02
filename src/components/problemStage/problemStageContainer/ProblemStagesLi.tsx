@@ -16,14 +16,14 @@ interface ProblemStagesLiType {
 }
 
 const ProblemStagesLi: React.FC<ProblemStagesLiType> = ({
-    title,
-    stageCode,
-    info,
-    level,
-    questionCount,
-    solved,
-    stageId
-}) => {
+                                                            title,
+                                                            stageCode,
+                                                            info,
+                                                            level,
+                                                            questionCount,
+                                                            solved,
+                                                            stageId
+                                                        }) => {
     const [modalState, setModalState] = useState<boolean>(false)
     return (
         <>
@@ -31,7 +31,7 @@ const ProblemStagesLi: React.FC<ProblemStagesLiType> = ({
                 setModalState(true)
             }}
                 className="hover:bg-gray-50 list-none w-full px-1 h-14 flex items-center border-b-problemStageLi-borderWidth border-problemStageLi-color cursor-pointer">
-                <span className="flex-1 flex justify-center items-center pr-1">
+                <span className="flex-1 flex justify-center items-center pr-2">
                 {solved !== "NOT_COMPLETED" ?
                     <Image
                         src={`./problemStage/${solved}.svg`}
@@ -48,13 +48,13 @@ const ProblemStagesLi: React.FC<ProblemStagesLiType> = ({
                 <span className="flex-1 text-center px-1">{questionCount}</span>
             </li>
             <ProblemStageModal
-            modalState={modalState}
-            stageId={stageId}
-            title={title}
-            info={info}
-            level={level}
-            questionCount={questionCount}
-            setModalState={setModalState}
+                modalState={modalState}
+                stageId={stageId}
+                title={title}
+                info={info}
+                level={level}
+                questionCount={questionCount}
+                setModalState={setModalState}
             />
         </>
     )

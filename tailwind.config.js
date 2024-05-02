@@ -40,6 +40,12 @@ module.exports = {
           600: "#D50136", //text
           800: "#c53030",
         },
+        info: {
+          50: "#e9f0ff",
+          100: "#d4e1ff",
+          500: "#2768ff",
+          600: "#1f54cc",
+        },
         "thema-color": "#2D347F",
         "inputBorder-color": "#90929E",
         "vaild-color": "#E7322D",
@@ -60,7 +66,21 @@ module.exports = {
       animation: {
         shake: "shake 150ms 4 linear",
       },
-
+      fontWeight: {
+        'thin': '100',
+        'extralight': '200',
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'extrabold': '800',
+        'black': '900',
+      },
+      fontFamily: {
+        'default': ['SCoreDream', 'sans-serif'],
+        'SCoreDream': ['SCoreDream', 'sans-serif'],
+      },
       minHeight: {
         "min-height": "25rem",
       },
@@ -69,11 +89,33 @@ module.exports = {
       },
 
       height: {
+        '1/12': '8.33%',
+        '2/12': '16.66%',
+        '3/12': '25%',
+        '4/12': '33.33%',
+        '5/12': '41.66%',
+        '6/12': '50%',
+        '7/12': '58.33%',
+        '8/12': '66.66%',
+        '9/12': '75%',
+        '10/12': '83.33%',
+        '11/12': '91.66%',
         "social-height": "6.125rem",
         "problemStage-height": "50rem",
         "XtermQuestion-height": "765px",
       },
       width: {
+        '1/12': '8.33%',
+        '2/12': '16.66%',
+        '3/12': '25%',
+        '4/12': '33.33%',
+        '5/12': '41.66%',
+        '6/12': '50%',
+        '7/12': '58.33%',
+        '8/12': '66.66%',
+        '9/12': '75%',
+        '10/12': '83.33%',
+        '11/12': '91.66%',
         "problemStage-width": "5.75rem",
         "problemStage-isCompleted": "5.5rem",
         "problemStage-title": "11.75rem",
@@ -85,6 +127,8 @@ module.exports = {
       },
       borderWidth: {
         "problemStageLi-borderWidth": "1px",
+        "2": "2px",
+        "3": "3px",
       },
     },
   },

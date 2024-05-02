@@ -1,5 +1,5 @@
-import React, { SetStateAction } from "react";
-import { useRouter } from "next/navigation";
+import React, {SetStateAction} from "react";
+import {useRouter} from "next/navigation";
 
 interface ProblemStageModalType {
     modalState: boolean;
@@ -12,14 +12,14 @@ interface ProblemStageModalType {
 }
 
 const ProblemStageModal: React.FC<ProblemStageModalType> = ({
-    modalState,
-    stageId,
-    title,
-    info,
-    level,
-    questionCount,
-    setModalState,
-    }) => {
+                                                                modalState,
+                                                                stageId,
+                                                                title,
+                                                                info,
+                                                                level,
+                                                                questionCount,
+                                                                setModalState,
+                                                            }) => {
     const router = useRouter();
     const closeModal = () => setModalState(false);
 
@@ -31,12 +31,15 @@ const ProblemStageModal: React.FC<ProblemStageModalType> = ({
             className={`${
                 modalState ? "" : "hidden"
             } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] min-h-full flex items-center justify-center bg-gray-600 bg-opacity-60`}
-            onClick={(e)=>{e.preventDefault(); closeModal()}}
+            onClick={(e) => {
+                e.preventDefault();
+                closeModal()
+            }}
         >
             <div className="relative p-4 w-full max-w-2xl max-h-full">
                 <div className="relative bg-gray-50 border-gray-300 rounded-lg shadow">
                     <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                        <h3 className="text-xl font-semibold text-gray-900">
+                        <h3 className="text-xl font-medium text-gray-900">
                             {title}
                         </h3>
                         <button
@@ -79,7 +82,7 @@ const ProblemStageModal: React.FC<ProblemStageModalType> = ({
                     <div className="flex justify-end items-center p-4 md:p-5 border-t border-gray-300 rounded-b">
                         <button
                             type="button"
-                            className="text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                            className="text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300 font-normal rounded-lg text-sm px-5 py-2.5 text-center"
                             onClick={() => router.push(`/problem?stageId=${stageId}`)}
                         >
                             문제 풀어보기
@@ -87,7 +90,7 @@ const ProblemStageModal: React.FC<ProblemStageModalType> = ({
                         <button
                             data-modal-hide="problem-stage-modal"
                             type="button"
-                            className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                            className="py-2.5 px-5 ms-3 text-sm font-normal text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
                             onClick={closeModal}
                         >
                             다른 문제 둘러보기

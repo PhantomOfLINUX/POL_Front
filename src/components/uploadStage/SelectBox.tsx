@@ -11,7 +11,7 @@ interface SelectBoxProps {
 const SelectBox: React.FC<SelectBoxProps> = ({ id, labelText, value, onChange, options }) => {
     return (
         <div className="w-4/5 m-4 space-y-2">
-            <label htmlFor={id} className="block ml-1 text-sm font-bold text-gray-900">
+            <label htmlFor={id} className="block ml-1 text-sm font-medium text-gray-900">
                 {labelText}
             </label>
             <select
