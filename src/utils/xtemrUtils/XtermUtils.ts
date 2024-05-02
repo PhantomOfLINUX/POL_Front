@@ -25,16 +25,17 @@ export const checkQuestion = (answer:string,questionIndex:number,stageId:string 
                 },
                 body:JSON.stringify({stageId,questionIndex,answer})
             }).then(res=>res.json())
-            .then(res=>{
+            .then(async (res)=>{
                 if(res.isCorrect){
                     if(res.isLast){
-                        
+                        //모달창 이용
                     }
-                    else{
-                        setQusetion_index(res.nextIndex)
-                        setIsIncorrect(false)
-                        setInputValue("")
+                    if(res.isComposable){
+                       await composeQuestion(answer,questionIndex,stageId,accessToken);
                     }
+                    console.log("end")
+                    setQusetion_index(res.nextIndex)
+                    setInputValue("")
                 }else{
                     setIsIncorrect(true)
                 }
@@ -43,4 +44,22 @@ export const checkQuestion = (answer:string,questionIndex:number,stageId:string 
         }catch(err){
             console.error(err)
         }}
+}
+
+
+const composeQuestion = async (answer:string,questionIndex:number,stageId:string | null,accessToken:string|undefined) => {
+    try{
+        await fetch(`${url}/api/question/compose`,{
+            method:"POST",
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization:`Bearer ${accessToken}`
+            },
+            body:JSON.stringify({stageId,questionIndex,answer})
+        }).then(res=>res.json()).then(res=>{console.log(res)})
+    }
+    catch(err){
+        console.error(err)
+    }
 }
