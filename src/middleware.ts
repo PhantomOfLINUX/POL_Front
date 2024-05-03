@@ -83,7 +83,7 @@ const isAdminAccessiblePath = (pathname: string): boolean => {
   return adminAccessiblePaths.some(path => pathname.startsWith(path));
 }
 
-const redirectToNotFound = (request: NextRequest, pathname: string): NextResponse => {
+const redirectToNotFound = (request: NextRequest): NextResponse => {
   const url = new URL('/not-found', request.url);
   return NextResponse.rewrite(url);
 }
@@ -105,13 +105,17 @@ export async function middleware(request: NextRequest) {
     return redirectToLogin(request, pathname);
   }
 
-  if (isAdminAccessiblePath(pathname) && !accessToken) {
-    /*const isAdminPlayer = await isAdmin();
+  if (isAdminAccessiblePath(pathname)) {
+    if (!accessToken) {
+      return redirectToLogin(request, pathname);
+    }
+    const isAdminPlayer = await isAdmin(accessToken.value);
     if (!isAdminPlayer) {
-      return redirectToNotFound(request, pathname);
-    }*/
-    return redirectToNotFound(request, pathname);
+      return redirectToNotFound(request);
+    }
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
