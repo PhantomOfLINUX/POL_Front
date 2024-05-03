@@ -29,10 +29,9 @@ export const checkQuestion = (
     questionIndex:number,
     stageId:string | null,
     accessToken:string|undefined,
-    setQusetion_index:React.Dispatch<SetStateAction<number>>,
     setIsIncorrect:React.Dispatch<SetStateAction<boolean>>,
-    setInputValue:React.Dispatch<SetStateAction<string>>,
-    setModalCheck:React.Dispatch<SetStateAction<boolean>>
+    setModalCheck:React.Dispatch<SetStateAction<boolean>>,
+    setIsCorrect:React.Dispatch<SetStateAction<boolean>>
     ) => {
     if(stageId&&accessToken){
         try{
@@ -55,8 +54,7 @@ export const checkQuestion = (
                         if(res.isComposable){
                             await composeQuestion(answer,questionIndex,stageId,accessToken);
                         }
-                        setQusetion_index(res.nextIndex)
-                        setInputValue("")
+                        setIsCorrect(true)
                     }
                 }else{
                     setIsIncorrect(true)
