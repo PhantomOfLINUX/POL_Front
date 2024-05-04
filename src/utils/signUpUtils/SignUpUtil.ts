@@ -45,19 +45,27 @@ export const CheckName = (name: string) => (name.trim().length > 0);
 export const SubmitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,name:string,password:string,passwordCheck:string) => {
     e.preventDefault();
     if((name!==""&&/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)&&password===passwordCheck)){
-        let SignUpcheck = await fetch((`${url}/api/auth/signup`),{
+        let SignUpCheck = await fetch((`${url}/api/auth/signup`),{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({name,email,password})
         })
-        if(SignUpcheck.ok){
+
+        const responseBody = await SignUpCheck.json();
+
+        if(SignUpCheck.ok){
             alert("회원가입에 성공하셨습니다.")
             window.location.replace("/login")
         }
-        else
-            console.log(SignUpcheck)
+        else if (responseBody.error === "4201_EMAIL_ALREADY_EXISTS_ERROR") {
+            console.log(responseBody);
+            return "이메일 인증이 완료되지 않았어요"
+        }else {
+            return "";
+        }
+
     }
     else{
         console.log("형식이 맞지 않습니다.",!(name===""),CheckPassword(password),CheckPasswordCheck(password,passwordCheck))

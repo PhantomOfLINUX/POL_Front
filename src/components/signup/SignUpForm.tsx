@@ -58,7 +58,7 @@ const SignUpForm = () => {
         const isPasswordCheckValid = CheckPasswordCheck(password, passwordCheck) && (passwordCheck.trim().length > 0);
         const isNameValid = CheckName(name);
 
-        setIsFormValid(isPasswordValid && isPasswordCheckValid && isNameValid);
+        setIsFormValid(isEmailValid && isPasswordValid && isPasswordCheckValid && isNameValid);
     }, [email, password, passwordCheck, name]);
 
 
@@ -66,7 +66,7 @@ const SignUpForm = () => {
         <main className="loginSignUp">
             <div className="mb-8">
                 <SignUpInput name="signUpEmail" id="signUpEmail" label="이메일" placeholder="example@email.com"
-                             type="email" onChange={setEmail} isValid={isEmailValid} errorMsg={emailErrorMsg}/>
+                             type="email" onChange={setEmail} isValid={isEmailValid || (email.trim().length === 0)} errorMsg={emailErrorMsg}/>
                 <button
                     className={`loginSignUpBtn font-normal ${CheckEmail(email) && (email.trim().length > 0) ? '' : 'bg-blue-400 hover:bg-blue-400 cursor-not-allowed'}`}
                     onClick={handleSendAuthentication}>{emailSendButtonText}</button>
@@ -80,7 +80,7 @@ const SignUpForm = () => {
                              onChange={setPasswordCheck} errorMsg="동일한 비밀번호를 입력해주세요"/>
             </div>
             <SignUpInput name="signUpName" id="signUpName" label="닉네임" placeholder="닉네임"
-                         type="text" isValid={CheckName(name)} onChange={setName} errorMsg="닉네임을 입력해주세요"/>
+                         type="text" isValid={CheckName(name) || (name.trim().length === 0)} onChange={setName} errorMsg="닉네임을 입력해주세요"/>
             <button
                 className={`loginSignUpBtn mt-6 mb-2 font-normal ${isFormValid ? '' : 'bg-blue-400 hover:bg-blue-400 cursor-not-allowed'}`}
                 onClick={handleSubmit} disabled={!isFormValid}>함께하기
