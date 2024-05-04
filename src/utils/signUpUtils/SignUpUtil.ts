@@ -7,29 +7,30 @@ export const CheckEmail = (e: string) => {
     return !(e!==""&&!expect.test(e))
 }//email check
 
-export const SendAuthentication = async (e:React.MouseEvent<HTMLElement>,email:string) => {
-    e.preventDefault()
-    try{
-    const emailCheck = await fetch((`${url}/api/auth/email/verification`),{ 
-        method:'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({email,type: "REGISTRATION"})});
-        if(emailCheck.ok){
-            alert("이메일이 전송되었습니다.")
-        }
-        else if(emailCheck.status===400){
-            alert("이미 사용중인 이메일입니다.")
-        }
-        else{
+export const SendAuthentication = async (e: React.MouseEvent<HTMLElement>, email: string): Promise<string> => {
+    e.preventDefault();
+    try {
+        const emailCheck = await fetch(`${url}/api/auth/email/verification`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email, type: "REGISTRATION"})
+        });
+
+        const responseBody = await emailCheck.json(); // 응답을 JSON 형태로 변환
+
+        if (emailCheck.ok) {
+            return "";
+        } else if (responseBody.error === "4201_EMAIL_ALREADY_EXISTS_ERROR") {
+            return "이미 사용중인 이메일이에요"
+        } else {
             throw new Error(`Unexpected status code: ${emailCheck.status}`);
         }
+    } catch (error) {
+        console.error('무슨에러일까요?:', error);
+        return "이메일 전송에 실패했어요. 다시 시도해주세요.";
     }
-        catch (error) {
-            console.error('무슨에러일까요?:', error);
-            return false;
-        }
 }//email 인증
 
 export const CheckPassword = (password:string) => {

@@ -20,14 +20,25 @@ const SignUpForm = () => {
     const [name, setName] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [passwordCheck, setPasswordCheck] = useState<string>("");
+
     const [emailSendButtonText, setEmailSendButtonText] = useState<string>("인증메일 받아보기");
+    const [emailErrorMsg, setEmailErrorMsg] = useState<string>("올바르지 않은 이메일 형식이에요");
+
     const [isFormValid, setIsFormValid] = useState<boolean>(false);
     const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
 
-    const handleSendAuthentication = (e: React.MouseEvent<HTMLButtonElement>) => {
-        if (isEmailValid) {
-            SendAuthentication(e, email);
+    const handleSendAuthentication = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (CheckEmail(email) && (email.trim().length > 0)) {
+            const result = await SendAuthentication(e, email);
+            if (result !== "") {
+                console.log(result);
+                setIsEmailValid(false);
+                setEmailErrorMsg(result);
+                return
+            }
             setEmailSendButtonText("인증메일 다시 받기");
+            setIsEmailValid(true);
+            return
         }
     }
 
@@ -36,12 +47,18 @@ const SignUpForm = () => {
     }
 
     useEffect(() => {
-        const isEmailValid = CheckEmail(email) && (email.trim().length > 0);
+        if (!(CheckEmail(email) && (email.trim().length > 0))) {
+            setIsEmailValid(false);
+            setEmailErrorMsg("올바르지 않은 이메일 형식이에요");
+        }else {
+            setIsEmailValid(true);
+        }
+
         const isPasswordValid = CheckPassword(password) && (password.trim().length > 0);
         const isPasswordCheckValid = CheckPasswordCheck(password, passwordCheck) && (passwordCheck.trim().length > 0);
         const isNameValid = CheckName(name);
-        setIsEmailValid(isEmailValid);
-        setIsFormValid(isEmailValid && isPasswordValid && isPasswordCheckValid && isNameValid);
+
+        setIsFormValid(isPasswordValid && isPasswordCheckValid && isNameValid);
     }, [email, password, passwordCheck, name]);
 
 
@@ -49,9 +66,9 @@ const SignUpForm = () => {
         <main className="loginSignUp">
             <div className="mb-8">
                 <SignUpInput name="signUpEmail" id="signUpEmail" label="이메일" placeholder="example@email.com"
-                             type="email" onChange={setEmail} isValid={CheckEmail(email)} errorMsg="올바르지 않은 이메일 형식이에요"/>
+                             type="email" onChange={setEmail} isValid={isEmailValid} errorMsg={emailErrorMsg}/>
                 <button
-                    className={`loginSignUpBtn font-normal ${isEmailValid ? '' : 'bg-blue-400 hover:bg-blue-400 cursor-not-allowed'}`}
+                    className={`loginSignUpBtn font-normal ${CheckEmail(email) && (email.trim().length > 0) ? '' : 'bg-blue-400 hover:bg-blue-400 cursor-not-allowed'}`}
                     onClick={handleSendAuthentication}>{emailSendButtonText}</button>
             </div>
             <div className="mb-8">
