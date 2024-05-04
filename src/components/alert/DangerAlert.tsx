@@ -5,9 +5,9 @@ interface AlertProps {
     onClose: () => void;
 }
 
-const SuccessAlert = ({ title, message, onClose }: AlertProps) => {
+const DangerAlert = ({ title, message, onClose }: AlertProps) => {
     return (
-        <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-2/5 mt-10" role="alert">
+        <div className="bg-danger-500 border-t-4 border-danger-500 rounded-b text-danger-600 px-4 py-3 shadow-md w-2/5 mt-10" role="alert">
             <div className="flex">
                 <div className="py-1">
                     <svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -33,4 +33,4 @@ const SuccessAlert = ({ title, message, onClose }: AlertProps) => {
     );
 };
 
-export default SuccessAlert;
+export default DangerAlert;

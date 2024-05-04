@@ -1,10 +1,11 @@
 import React from "react";
+import DangerAlert from "@/components/alert/DangerAlert";
 
 const url = process.env.NEXT_PUBLIC_BASE_API
 
 export const CheckEmail = (e: string) => {
     const expect = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;//유효성 체크
-    return !(e!==""&&!expect.test(e))
+    return !(e !== "" && !expect.test(e))
 }//email check
 
 export const SendAuthentication = async (e: React.MouseEvent<HTMLElement>, email: string): Promise<string> => {
@@ -33,41 +34,45 @@ export const SendAuthentication = async (e: React.MouseEvent<HTMLElement>, email
     }
 }//email 인증
 
-export const CheckPassword = (password:string) => {
+export const CheckPassword = (password: string) => {
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;//유효성 체크
-    return !(password!==""&&!(passwordRegex.test(password)))
+    return !(password !== "" && !(passwordRegex.test(password)))
 }
 
 export const CheckPasswordCheck = (password: string, passwordCheck: string) => !(passwordCheck !== "" && password !== passwordCheck);
 
 export const CheckName = (name: string) => (name.trim().length > 0);
 
-export const SubmitSignUp = async (e:React.MouseEvent<HTMLElement>,email:string,name:string,password:string,passwordCheck:string) => {
+export const SubmitSignUp = async (e: React.MouseEvent<HTMLElement>, email: string, name: string, password: string, passwordCheck: string) => {
     e.preventDefault();
-    if((name!==""&&/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)&&password===passwordCheck)){
-        let SignUpCheck = await fetch((`${url}/api/auth/signup`),{
-            method:'POST',
+    if ((name !== "" && /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password) && password === passwordCheck)) {
+        let SignUpCheck = await fetch((`${url}/api/auth/signup`), {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({name,email,password})
+            body: JSON.stringify({name, email, password})
         })
 
         const responseBody = await SignUpCheck.json();
 
-        if(SignUpCheck.ok){
+        if (SignUpCheck.ok) {
             alert("회원가입에 성공하셨습니다.")
             window.location.replace("/login")
+        } else if (responseBody.error === "4402_EMAIL_VERIFIED_FAILURE_ERROR") {
+            return "이메일이 아직 인증되지 않았어요";
+        } else if (responseBody.error === "4202_ EMAIL_ALREADY_EXISTS_OTHER_AUTH_ERROR") {
+            return "이미 다른 방식으로 회원가입된 이메일이에요";
+        } else if (responseBody.error === "4106_DUPLICATE_NAME_ERROR") {
+            return "중복된 닉네임이에요"
+        } else if (responseBody.error === "4105_PROFANITY_IN_NAME_ERROR") {
+            return "닉네임에 사용할 수 없는 단어가 포함되어 있어요"
         }
-        else if (responseBody.error === "4201_EMAIL_ALREADY_EXISTS_ERROR") {
-            console.log(responseBody);
-            return "이메일 인증이 완료되지 않았어요"
-        }else {
+        else {
             return "";
         }
 
-    }
-    else{
-        console.log("형식이 맞지 않습니다.",!(name===""),CheckPassword(password),CheckPasswordCheck(password,passwordCheck))
+    } else {
+        console.log("형식이 맞지 않습니다.", !(name === ""), CheckPassword(password), CheckPasswordCheck(password, passwordCheck))
     }
 }
