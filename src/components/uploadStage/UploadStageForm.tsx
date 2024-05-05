@@ -7,6 +7,7 @@ import AddQuestionButton from "@/components/uploadStage/AddQuestionButton";
 import SubmitStageButton from "@/components/uploadStage/SubmitStageButton";
 import {Question} from "@/types/questionType";
 import {StageUploadRequest} from "@/types/stageType";
+import {uploadStageSet} from "@/utils/uploadStageUtils/UploadStageUtil";
 
 interface UploadStageFormProps {
     accessToken: string | undefined;
@@ -75,7 +76,7 @@ const UploadStageForm: React.FC<UploadStageFormProps> = ({accessToken, refreshTo
         }));
     };
 
-    const submitStage = () => {
+    const submitStage = async () => {
         const emptyFields = questions.reduce<string[]>((acc, question, index) => {
             const emptyFieldsForQuestion = [];
 
@@ -109,7 +110,7 @@ const UploadStageForm: React.FC<UploadStageFormProps> = ({accessToken, refreshTo
         };
 
         console.log(stageUploadRequestWithQuestions);
-        alert("good");
+        await uploadStageSet(stageUploadRequestWithQuestions, accessToken);
     };
 
     return (
