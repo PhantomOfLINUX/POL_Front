@@ -49,12 +49,12 @@ const UploadStageForm: React.FC<UploadStageFormProps> = ({accessToken, refreshTo
         ]);
     };
 
-    const handleRemoveQuestion = (id: number) => {
+    const handleRemoveQuestion = (index: number) => {
         setQuestionContainers((prevContainers) =>
-            prevContainers.filter((container) => container.id !== id)
+            prevContainers.filter((_, i) => i !== index)
         );
         setQuestions((prevQuestions) =>
-            prevQuestions.filter((_, index) => index !== id)
+            prevQuestions.filter((_, i) => i !== index)
         );
     };
 
@@ -125,7 +125,7 @@ const UploadStageForm: React.FC<UploadStageFormProps> = ({accessToken, refreshTo
                     key={container.id}
                     id={container.id}
                     index={index}
-                    onRemove={handleRemoveQuestion}
+                    onRemove={() => handleRemoveQuestion(index)}
                     onChange={handleQuestionChange}
                     question={questions[index]}
                 />
