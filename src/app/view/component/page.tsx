@@ -1,5 +1,5 @@
 import React from "react";
-import TestContainer from "@/app/challengelist/TestContainer";
+import TestContainer from "@/components/mainGoButton/TestContainer";
 
 const ComponentView = ()=> {
     return (

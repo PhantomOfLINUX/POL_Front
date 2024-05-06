@@ -1,4 +1,11 @@
 import React,{useState,useEffect} from "react";
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> d5b907939b025104df84e8fa8a75886851253267
+=======
+>>>>>>> 219a885f9a4d2af241d5fe1cec44ddddd8f267dd
 
 import { useSearchParams } from "next/navigation";
 

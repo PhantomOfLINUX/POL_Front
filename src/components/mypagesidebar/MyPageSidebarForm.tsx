@@ -19,7 +19,7 @@ const MyPageSidebarForm = () => {
     };
     const scrollToProblemState = () => {
         window.scrollTo({
-            top: 550,
+            top: 540,
             behavior: "smooth"
         });
     };
@@ -41,10 +41,10 @@ const MyPageSidebarForm = () => {
 
             if (scrollTop > threshold) { //scrollTop = (현재 스크롤 내렸을 때 위치)가 만약 임계값보다 크다면
                 setIsFixed(true); // true가 스크롤이 밑에서 멈추는 상태
-                console.log("true가 나와야 됨", scrollTop, threshold, isFixed);
+                //console.log("true가 나와야 됨", scrollTop, threshold, isFixed);
             } else {
                 setIsFixed(false);
-                console.log("false가 나와야 됨", scrollTop, threshold, isFixed);
+                //console.log("false가 나와야 됨", scrollTop, threshold, isFixed);
                 //console.log()
             }
         };
@@ -58,8 +58,8 @@ const MyPageSidebarForm = () => {
 
 
     return (
-        <div className="pr-10">
-            <div className="sticky top-5 w-60 text-white p-3 bg-blue-500 rounded-lg h-72">
+        <div className="">
+            <div className="sticky top-14 w-60 text-white p-3 bg-blue-500 rounded-lg h-64">
                 < div className="flex items-center p-2 space-x-4" >
                     < div >
                         <h2 className="text-lg font-semibold">마이페이지</h2>
@@ -96,7 +96,7 @@ const MyPageSidebarForm = () => {
                                 </button>
                             </a>
                         </li>
-                        <li>
+                        {/* <li> // 구독관리
                             <a className="flex items-center p-2 space-x-3 rounded-md">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.5 9.398C3.5 8.37292 3.5 7.86038 3.70266 7.47025C3.87343 7.14149 4.14149 6.87343 4.47025 6.70266C4.86038 6.5 5.37292 6.5 6.398 6.5H17.602C18.6271 6.5 19.1396 6.5 19.5298 6.70266C19.8585 6.87343 20.1266 7.14149 20.2973 7.47025C20.5 7.86038 20.5 8.37292 20.5 9.398V15.602C20.5 16.6271 20.5 17.1396 20.2973 17.5298C20.1266 17.8585 19.8585 18.1266 19.5298 18.2973C19.1396 18.5 18.6271 18.5 17.602 18.5H6.398C5.37292 18.5 4.86038 18.5 4.47025 18.2973C4.14149 18.1266 3.87343 17.8585 3.70266 17.5298C3.5 17.1396 3.5 16.6271 3.5 15.602V9.398Z" stroke="white" />
@@ -107,7 +107,7 @@ const MyPageSidebarForm = () => {
                                     구독 관리
                                 </button>
                             </a>
-                        </li>
+                        </li> */}
                         <li>
                             <a className="flex items-center p-2 space-x-3 rounded-md">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
