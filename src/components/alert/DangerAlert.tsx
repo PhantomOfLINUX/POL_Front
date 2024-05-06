@@ -2,7 +2,7 @@
 interface AlertProps {
     title: string;
     message: string;
-    onClose: () => void;
+    onClose?: () => void;
 }
 
 const DangerAlert = ({ title, message, onClose }: AlertProps) => {
