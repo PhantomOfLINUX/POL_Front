@@ -1,6 +1,7 @@
 import React from "react";
 import ShakeButton from "@/components/button/ShakeButton";
 import AnswerCheckButton from "@/components/button/AnswerCheckButton";
+import DangerAlert from "@/components/alert/DangerAlert";
 
 const TestContainer = () => {
     return (
@@ -12,6 +13,8 @@ const TestContainer = () => {
             <p className="font-bold">이 문장은 SCoreDream 폰트의 bold 두께(500)로 표시됩니다.</p>
             <p className="font-SCoreDream font-black">이 문장은 SCoreDream 폰트의 black 두께(700)로 표시됩니다.</p>
             <p className="font-black">이 문장은 SCoreDream 폰트의 black 두께(700)로 표시됩니다.</p>
+
+            <DangerAlert title={"TITLE"} message={"MESAAGE"} />
         </div>
     )
 }

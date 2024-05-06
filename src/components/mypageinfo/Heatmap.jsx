@@ -21,6 +21,7 @@ const dayjs = [ // 캘린더 왼쪽에 들어갈 요일의 약자
 ]
 
 const currentYear = new Date();
+const basicYear = currentYear.getFullYear();
 
 
 const HeatmapForm = () => {
@@ -28,8 +29,18 @@ const HeatmapForm = () => {
     const [year, setYear] = useState(currentYear.getFullYear());
     const { Heatmap } = useMyPageHeatmapInfoStore();
     const heatmapRef = useRef(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const [flag, setFlag] = useState(true);
+
+    const handleClick = (year) => {
+        setYear(year); // 예시로 2023으로 변경
+
+    };
+
+
     useEffect(() => {
         if (!heatmapRef.current) {
+            console.log(year);
             heatmapRef.current = new CalHeatmap();
             heatmapRef.current.paint( // 캘린더 내부 생성
                 {
@@ -40,7 +51,7 @@ const HeatmapForm = () => {
                         y: 'count', // y값이 caldata에 있는 배열, 이 값에 따라서 색이 칠해점
                         groupY: 'max',
                     },
-                    date: { start: new Date('2024-01-01') }, // 캘린더 시작 날짜
+                    date: { start: new Date(`${year}-01-01`) }, // 캘린더 시작 날짜
                     range: 12, // 총 몇개의 달을 나타낼건지
                     scale: {
                         color: {
@@ -93,22 +104,13 @@ const HeatmapForm = () => {
             );
             setCal(heatmapRef.current);
         }
-    }, [Heatmap, cal])
 
-    const handlePreviousClick = () => {
-        if (cal) {
-            for (let i = 0; i < 12; i++) {
-                cal.previous();
-            }
-        }
-    };
-    const handleNextClick = () => {
-        if (cal) {
-            for (let i = 0; i < 12; i++) {
-                cal.next();
-            }
-        }
-    };
+    }, [cal, year])
+
+    const handleNextClick = (year) => {
+        cal.jumpTo(`${year}-01-30`, true);
+    }
+
 
     return (
         <div
@@ -119,7 +121,51 @@ const HeatmapForm = () => {
                 padding: '1rem',
                 overflow: 'hidden',
             }}
+
         >
+            <div className='float-right pr-16'>
+                <div className='pl-6 pb-3'>
+                    <button onClick={() => { setIsOpen((prev) => !(prev)) }} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        {year}
+                    </button>
+                </div>
+                {isOpen &&
+                    (
+                        <div className='pl-6'>
+                            <div id="dropdown" className="position: absolute z-10 border border-2 bg-white divide-y divide-gray-900 rounded-lg shadow w-40 dark:bg-gray-700">
+                                <ul className="py-2 text-sm text-gray-700 dark:text-gray-500"> {/* 텍스트 요소 */}
+                                    <li>
+                                        <a onClick={() => { setIsOpen(prev => !prev), handleNextClick(basicYear), setYear(basicYear) }} className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {basicYear}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onClick={() => { setIsOpen(prev => !prev), handleNextClick(basicYear + 1), setYear(basicYear + 1) }} className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {basicYear + 1}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onClick={() => { setIsOpen(prev => !prev), handleNextClick(basicYear + 2), setYear(basicYear + 2) }} className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {basicYear + 2}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onClick={() => { setIsOpen(prev => !prev), handleNextClick(basicYear + 3), setYear(basicYear + 3) }} className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {basicYear + 3}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onClick={() => { setIsOpen(prev => !prev), handleNextClick(basicYear + 4), setYear(basicYear + 4) }} className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {basicYear + 4}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
             <div id="ex-ghDay" className="margin-bottom--md"></div>
             <br />
             <div style={{ float: 'right', fontSize: 12 }}>
@@ -131,29 +177,7 @@ const HeatmapForm = () => {
                 <span style={{ color: '#768390', fontSize: 12 }}>More</span>
             </div>
             <br />
-            <div className='grid grid-cols-3 gap-20 pl-10'>
-                <button
 
-                    href="#"
-                    onClick={() => { handlePreviousClick(), setYear(year - 1); }}
-                >
-                    <div className='border'>
-                        {year - 1}
-                    </div>
-                </button>
-                <button className='border '>
-                    현재 : {year}
-                </button>
-
-                <button
-                    href="#"
-                    onClick={() => { handleNextClick(), setYear(year + 1); }}
-                >
-                    <div className='border'>
-                        {year + 1}
-                    </div>
-                </button>
-            </div>
         </div >
     )
 }
