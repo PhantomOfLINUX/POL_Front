@@ -41,10 +41,10 @@ const XtermQuestionAnswerInput:React.FC<XtermQuestionAnswerInputType> = ({access
             <form className="ml-14 h-44">
                 {answerType==="SHORT_ANSWER"&&
                     <div className="loginSignUpInputContainer">
-                        <input className={`loginSignUpInput ${iscorrect&&"border-success-50 hover:border-success-50 focus:border-success-50 active:border-success-50"} transition-colors duration-500 ease-in-out`} placeholder="정답을 입력해주세요" value={inputValue} onChange={(e)=>{setInputValue(e.target.value)}}/>
+                        <input className={`loginSignUpInput ${iscorrect&&"border-success-50 hover:border-success-50 focus:border-success-50"} transition-colors duration-500 ease-in-out`} placeholder="정답을 입력해주세요" value={inputValue} onChange={(e)=>{setInputValue(e.target.value)}}/>
                     </div>}
                 <button 
-                    className={`loginSignUpBtn mt-5 ${isIncorrect?"animate-shake bg-danger-500":"bg-blue-500"} ${iscorrect&&"bg-success-50"} transition-colors duration-500 ease-in-out`} 
+                    className={`loginSignUpBtn mt-5 ${isIncorrect?"animate-shake bg-danger-500 hover:bg-danger-500":"bg-blue-500"} ${iscorrect&&"bg-success-50 hover:bg-success-50"} transition-colors duration-500 ease-in-out`} 
                     onClick={(e)=>{submitQuestion(inputValue,e)}}
                     onAnimationEnd={(e)=>{setIsIncorrect(false)}}>
                         정답 확인해보기
