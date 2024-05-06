@@ -110,7 +110,9 @@ const UploadStageForm: React.FC<UploadStageFormProps> = ({accessToken, refreshTo
         };
 
         console.log(stageUploadRequestWithQuestions);
-        await uploadStageSet(stageUploadRequestWithQuestions, accessToken);
+        if (accessToken != null) {
+            await uploadStageSet(stageUploadRequestWithQuestions, accessToken);
+        }
     };
 
     return (
