@@ -43,17 +43,6 @@ const MyPageProfileForm = () => {
                     </div>
                 </div>
                 <br />
-                <div>
-                    <div className="px-5 font-bold">
-                        유저코드
-                    </div>
-                    <div className="px-3 py-2">
-                        <div className="border-2 rounded-md pl-2 py-1">
-                            {userId}
-                        </div>
-                    </div>
-                </div>
-                <br />
             </div>
         </div>
     )

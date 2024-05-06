@@ -48,8 +48,11 @@ export const GetMyPageProblemStateInProgress = async (e: React.MouseEvent<HTMLEl
             .then((response: { stageCodeDTOS: { stageCode: string; accessUrl: string; }[] }) => {
                 const stageCodeDTOS = response.stageCodeDTOS;
                 const stageCodes = stageCodeDTOS.map((stage: { stageCode: string; accessUrl: string; }) => stage.stageCode);
-                setInProgressCode(stageCodes);
+                const stageCodesLength = stageCodeDTOS.length;
+                setInProgressCode(stageCodesLength, stageCodes);
             })
+        //.then(response => console.log(response.stageCodeDTOS.length))
+        //.then(response => console.log(response.stageCodeDTOS))
     }
     catch (error) {
         console.error('무슨에러일까요?:', error);
