@@ -30,12 +30,8 @@ module.exports = {
           900: "#1d1d1d", // title
           1000: "#000000",
         },
-<<<<<<< HEAD
-        danger: { // 900
-=======
         danger: {
           // 900
->>>>>>> c114aeb75ff569d92ee0abeddc96d5cb0b74f358
           50: "#FEECF0",
           100: "#FCD4DE",
           200: "#FECDD3",
@@ -43,10 +39,6 @@ module.exports = {
           500: "#EB003B", // base
           600: "#D50136", //text
           800: "#c53030",
-<<<<<<< HEAD
-
-=======
->>>>>>> c114aeb75ff569d92ee0abeddc96d5cb0b74f358
         },
         "thema-color": "#2D347F",
         "inputBorder-color": "#90929E",
@@ -72,13 +64,10 @@ module.exports = {
       minHeight: {
         "min-height": "25rem",
       },
-<<<<<<< HEAD
-=======
       minWidth: {
         "XtermQuestion-width": "450px",
       },
 
->>>>>>> c114aeb75ff569d92ee0abeddc96d5cb0b74f358
       height: {
         "social-height": "6.125rem",
         "problemStage-height": "50rem",
