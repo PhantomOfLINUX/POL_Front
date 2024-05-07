@@ -11,13 +11,13 @@ const SignUpInput = ({ name, id, label, type, placeholder, onChange, isValid, er
       <input
         name={name}
         id={id}
-        className={`loginSignUpInput ${isValid ? 'border-danger-500 hover:border-danger-600 focus:border-danger-600' : ''}`}
+        className={`loginSignUpInput ${isValid ? 'border-gray-400' : 'border-danger-500 hover:border-danger-600 focus:border-danger-600'}`}
         type={type}
         placeholder={placeholder}
         onChange={(e)=>onChange(e.target.value)}
       />
       </div>
-      {isValid&&<span className='text-xs mb-2 text-danger-600'>*{errorMsg}</span>}
+      {!isValid && <span className='text-xs mb-2 text-danger-600'>*{errorMsg}</span>}
     </div>
   );
 };
