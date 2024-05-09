@@ -115,6 +115,7 @@ module.exports = {
         "11/12": "91.66%",
         "social-height": "6.125rem",
         "problemStage-height": "50rem",
+        "XtermQuestion-height": "765px",
       },
       width: {
         "1/12": "8.33%",
