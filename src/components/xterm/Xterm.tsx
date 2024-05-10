@@ -6,7 +6,7 @@ import {AttachAddon} from 'xterm-addon-attach';
 
 import { connectWebSocket } from '@/utils/xtemrUtils/XtermUtils';
 
-import 'xterm/css/xterm.css';
+import "./Xterm.css"
 
 interface XtermType {
     url: string | undefined,
@@ -20,8 +20,10 @@ const Xterm: React.FC<XtermType> = ({url, query}) => {
         if (!terminalRef.current && xtermContainerRef.current && url && query) {
             const newTerminal = new Terminal({
                 cols:112,
-                rows:45
+                rows:42,
+                scrollback:0
             });
+            
             const websocket = connectWebSocket(url);
             const attachAddon = new AttachAddon(websocket);
             terminalRef.current = newTerminal;
@@ -32,7 +34,7 @@ const Xterm: React.FC<XtermType> = ({url, query}) => {
     }, [url, query]);
 
     return (
-        <div ref={xtermContainerRef} className='xterm w-Xterm-width'/>
+        <div ref={xtermContainerRef} className='xterm flex justify-center items-center p-5 w-Xterm-width h-XtermQuestion-height bg-black z-20 rounded-rounded-10'/>
     );
 };
 
