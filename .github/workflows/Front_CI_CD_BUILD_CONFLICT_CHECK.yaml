@@ -48,6 +48,8 @@ jobs:
 
   merge_conflict_job:
     runs-on: ubuntu-latest
+    if: github.repository != 'PhantomOfLINUX/POL_Front' || (github.repository == 'PhantomOfLINUX/POL_Front'&& github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop')
+
     name: Find merge conflicts
     steps:
       - uses: actions/checkout@v2
