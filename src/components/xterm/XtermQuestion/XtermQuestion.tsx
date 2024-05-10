@@ -21,7 +21,7 @@ const XtermQuestion:React.FC<XtermQuestionType> = ({questionCount,accessToken,re
     const questionInfo = useGetQuestion(accessToken,refreshToken,question_index)
     
     return (
-        <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height min-w-XtermQuestion-width">
+        <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height min-w-XtermQuestion-width rounded-rounded-10">
             <XtermQuestionStage total_questions={questionCount||0} question_index={question_index}/>
             <XtermQuestionDescription title={questionInfo?.title} desciption={questionInfo?.description}/>
             <XtermQuestionAnswerInput accessToken={accessToken} answerType={questionInfo?.answerType} question_index={question_index} setQusetion_index={setQusetion_index}/>
