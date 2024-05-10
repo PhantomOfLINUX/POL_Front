@@ -59,7 +59,6 @@ const ProblemStageContainer: React.FC<ProblemStageContainerType> = ({accessToken
                         <span className="flex-1 font-medium text-center pr-1">해결</span>
                         <span className="flex-1 font-medium text-left px-1">문제 번호</span>
                         <span className="w-2/12 font-medium text-left px-1">제목</span>
-                        <span className="w-4/12 font-medium text-left px-1">설명</span>
                         <span className="flex-1 font-medium text-center px-1">난이도</span>
                         <span className="flex-1 font-medium text-center pr-1">문항수</span>
                     </div>
