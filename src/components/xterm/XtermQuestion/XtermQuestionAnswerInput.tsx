@@ -38,7 +38,7 @@ const XtermQuestionAnswerInput:React.FC<XtermQuestionAnswerInputType> = ({access
     
     return (
         <>
-            <form className="ml-14 h-44">
+            <form className="flex-col justify-center mx-14 h-44 overflow-hidden">
                 {answerType==="SHORT_ANSWER"&&
                     <div className="loginSignUpInputContainer">
                         <input className={`loginSignUpInput ${iscorrect&&"border-success-50 hover:border-success-50 focus:border-success-50"} transition-colors duration-500 ease-in-out`} placeholder="정답을 입력해주세요" value={inputValue} onChange={(e)=>{setInputValue(e.target.value)}}/>

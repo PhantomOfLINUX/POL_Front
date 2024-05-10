@@ -16,14 +16,14 @@ interface ProblemStagesLiType {
 }
 
 const ProblemStagesLi: React.FC<ProblemStagesLiType> = ({
-                                                            title,
-                                                            stageCode,
-                                                            info,
-                                                            level,
-                                                            questionCount,
-                                                            solved,
-                                                            stageId
-                                                        }) => {
+    title,
+    stageCode,
+    info,
+    level,
+    questionCount,
+    solved,
+    stageId
+}) => {
     const [modalState, setModalState] = useState<boolean>(false)
     return (
         <>
@@ -42,8 +42,7 @@ const ProblemStagesLi: React.FC<ProblemStagesLiType> = ({
                     /> : ""}
                 </span>
                 <span className="flex-1 text-left px-1">{stageCode}</span>
-                <span className="w-4/12 text-left px-1 font-normal">{title}</span>
-                {/*<span className="w-4/12 text-left px-1">{info}</span>*/}
+                <span className="w-2/12 text-left px-1">{title}</span>
                 <span className="flex-1 text-center px-1">{level}</span>
                 <span className="flex-1 text-center px-1">{questionCount}</span>
             </li>

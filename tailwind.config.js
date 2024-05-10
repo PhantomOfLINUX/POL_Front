@@ -115,6 +115,7 @@ module.exports = {
         "11/12": "91.66%",
         "social-height": "6.125rem",
         "problemStage-height": "50rem",
+        "XtermQuestion-height": "765px",
       },
       width: {
         "1/12": "8.33%",
@@ -134,6 +135,16 @@ module.exports = {
         "problemStage-info": "21.25rem",
       },
       borderRadius: {
+        "rounded-1": "1px",
+        "rounded-2": "2px",
+        "rounded-3": "3px",
+        "rounded-4": "4px",
+        "rounded-5": "5px",
+        "rounded-6": "6px",
+        "rounded-7": "7px",
+        "rounded-8": "8px",
+        "rounded-9": "9px",
+        "rounded-10": "10px",
         "problemStage-selected-radius": "4px",
       },
       borderWidth: {
