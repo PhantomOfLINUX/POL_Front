@@ -7,12 +7,12 @@ export type resetType = {
     placeholder: string;
     type: string;
     onChange: React.Dispatch<React.SetStateAction<string>>;
-    isVaild?: boolean;
+    isValid?: boolean;
     errorMsg: string;
 }
 
 
-const ResetPasswordInput = ({ label, type, placeholder, onChange, isVaild, errorMsg }: resetType) => {
+const ResetPasswordInput = ({ label, type, placeholder, onChange, isValid, errorMsg }: resetType) => {
     return (
         <div className='min-h-24'>
             <label>{label}</label>
@@ -24,7 +24,7 @@ const ResetPasswordInput = ({ label, type, placeholder, onChange, isVaild, error
                     onChange={(e) => onChange(e.target.value)}
                 />
             </div>
-            {isVaild && <span className='text-xs text-vaild-color'>*{errorMsg}</span>}
+            {!isValid && <span className='text-xs text-vaild-color'>*{errorMsg}</span>}
         </div>
     );
 };
