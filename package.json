@@ -41,6 +41,8 @@
     "typescript": "^5.3.3"
   },
   "husky":{
-    "pre-push":"npm run build"
+    "hooks":{
+      "pre-push":"npm run build"
+    }
   }
 }
