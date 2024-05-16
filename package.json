@@ -40,7 +40,7 @@
     "tailwindcss": "^3.4.3",
     "typescript": "^5.3.3"
   },
-  "husky":{
+  "huskyrc":{
     "hooks":{
       "pre-commit": "echo 'Hello Gabia, woof!'",
       "pre-push":"npm run build"
