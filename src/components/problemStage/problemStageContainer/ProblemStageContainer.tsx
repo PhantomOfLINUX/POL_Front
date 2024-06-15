@@ -37,7 +37,7 @@ interface UseGetStagesResult {
 
 
 
-const ProblemStageContainer: React.FC<ProblemStageContainerType> = ({accessToken, refreshToken}) => {
+const ProblemStageContainer: React.FC<ProblemStageContainerType> = ({ accessToken, refreshToken }) => {
     const result = useGetStages(accessToken, refreshToken) as UseGetStagesResult | undefined;
     const pageParameters = result?.pageParameters ?? {
         currentPageIndex: 0,
@@ -50,7 +50,7 @@ const ProblemStageContainer: React.FC<ProblemStageContainerType> = ({accessToken
     return (
         <>
             <span className="w-8/12 text-gray-700">총 <span
-                    className="text-blue-500 font-bold">{(pageParameters as {
+                className="text-blue-500 font-bold">{(pageParameters as {
                     totalElement: number
                 }).totalElement}개의 스테이지</span>를 풀어볼 수 있어요</span>
             <ul className="w-8/12 flex flex-col bg-gray-0 justify-between h-problemStage-height px-2 border-solid border rounded-md border-SelectBorder-color my-4 mb-36">
@@ -63,6 +63,7 @@ const ProblemStageContainer: React.FC<ProblemStageContainerType> = ({accessToken
                         <span className="flex-1 font-medium text-center px-1">난이도</span>
                         <span className="flex-1 font-medium text-center pr-1">문항수</span>
                     </div>
+
                     {stages?.map(ele => (
                         <ProblemStagesLi
                             key={ele.id}
