@@ -8,9 +8,9 @@ interface ProblemStagePageNationContainerType {
 }
 
 const ProblemStagePageNationContainer: React.FC<ProblemStagePageNationContainerType> = ({
-                                                                                            totalElement,
-                                                                                            totalStages
-                                                                                        }) => {
+    totalElement,
+    totalStages
+}) => {
     return (
         <div
             className="flex items-center justify-between px-6 h-14 border-t-problemStageLi-borderWidth border-problemStageLi-color">

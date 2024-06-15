@@ -8,7 +8,6 @@ import ProblemStageData from "../ProblemStageData.json"
 
 import type { problemStageSelectType } from "@/types/problemStage";
 
-
 const ProblemStageSelect:React.FC<{selectName:problemStageSelectType}> = ({selectName}) => {
     const [ulToggle,setUlToggle] = useState<boolean>(false);
     const {problemListKoName, problemListUl} = ProblemStageData[selectName];

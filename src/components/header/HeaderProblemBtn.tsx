@@ -4,7 +4,7 @@ import React from "react";
 
 import { useRouter } from "next/navigation";
 
-const HeaderProblemBtn = () => {
+const HeaderProblemBtn = ({accessToken}:{accessToken:string}) => {
 
     const router = useRouter();
     const goProblemSolve = () => {
