@@ -132,6 +132,7 @@ const HeatmapForm = () => {
                 </div>
                 {isOpen &&
                     (
+
                         <div className='pl-6'>
                             <div id="dropdown" className="position: absolute z-10 border border-2 bg-white divide-y divide-gray-900 rounded-lg shadow w-40 dark:bg-gray-700">
                                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-500"> {/* 텍스트 요소 */}
