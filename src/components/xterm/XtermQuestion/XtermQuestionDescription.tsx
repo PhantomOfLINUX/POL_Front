@@ -8,7 +8,7 @@ interface XtermQuestionDescriptionType {
 
 const XtermQuestionDescription:React.FC<XtermQuestionDescriptionType> = ({title,desciption}) => {
     return (
-        <div className="ml-14 h-64">
+        <div className="mx-14 h-64 ">
             <p className="text-base font-bold">{title}</p>
             <div className="mt-4">
                 <span className="text-base">{desciption}</span>
