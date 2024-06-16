@@ -15,8 +15,8 @@ const HeaderMockTestBtn = ({accessToken}:{accessToken:string}) => {
             const value = localStorage.getItem(key);
             if (value) queryParams.set(key, value);
         });
-
-        router.push(`/challengelist?${queryParams.toString()}`);
+        
+        router.push(`/challengelist?stageGroupTypes=MOCK_TESTS`);
     }
     return (
         <button onClick={goProblemSolve}
