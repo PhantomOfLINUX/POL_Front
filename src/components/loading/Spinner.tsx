@@ -22,7 +22,7 @@ const Spinner: React.FC = () => {
 
     return (
         <div
-            className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-50 z-9999"
+            className="fixed top-0 left-0 w-full h-full flex justify-center items-center flex-col bg-gray-900 bg-opacity-50 z-9999"
         >
             <div className="transform rotate-0 animate-spin">
                 <dotlottie-player
@@ -34,6 +34,8 @@ const Spinner: React.FC = () => {
                     autoplay
                 ></dotlottie-player>
             </div>
+            <p className="text-gray-0"> 터미널이 만들어지고 있어요</p>
+            <p className="text-gray-0"> 최대 60초의 시간이 걸려요, 조금만 기다려주세요</p>
         </div>
     );
 };

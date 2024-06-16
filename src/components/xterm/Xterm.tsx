@@ -16,21 +16,49 @@ interface XtermType {
 const Xterm: React.FC<XtermType> = ({url, query}) => {
     const terminalRef = useRef<Terminal | null>(null);
     const xtermContainerRef = useRef<HTMLDivElement | null>(null);
-    useEffect(() => {
-        if (!terminalRef.current && xtermContainerRef.current && url && query) {
-            const newTerminal = new Terminal({
-                cols:112,
-                rows:42,
-                scrollback:0
-            });
-            
-            const websocket = connectWebSocket(url);
-            const attachAddon = new AttachAddon(websocket);
-            terminalRef.current = newTerminal;
-            newTerminal.loadAddon(attachAddon);
-            newTerminal.open(xtermContainerRef.current);
-        }
+    const websocketRef = useRef<WebSocket | null>(null);
 
+    useEffect(() => {
+        const initializeTerminal = () => {
+            if (!terminalRef.current && xtermContainerRef.current && url && query) {
+                const newTerminal = new Terminal({
+                    cols: 112,
+                    rows: 42,
+                    scrollback: 0
+                });
+
+                const websocket = connectWebSocket(url);
+                websocketRef.current = websocket;
+
+
+                websocket.onopen = () => {
+                    const attachAddon = new AttachAddon(websocket);
+                    newTerminal.loadAddon(attachAddon);
+                    console.log("WebSocket connection established and AttachAddon loaded");
+                };
+
+                websocket.onerror = (error) => {
+                    console.error("WebSocket error: ", error);
+                };
+
+                websocket.onclose = () => {
+                    console.log("WebSocket connection closed");
+                };
+
+                terminalRef.current = newTerminal;
+                newTerminal.open(xtermContainerRef.current);
+            }
+        };
+
+        initializeTerminal();
+
+
+        return () => {
+            terminalRef.current?.dispose();
+            terminalRef.current = null;
+            websocketRef.current?.close();
+            websocketRef.current = null;
+        };
     }, [url, query]);
 
     return (
