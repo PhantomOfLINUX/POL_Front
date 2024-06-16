@@ -16,8 +16,7 @@ const XtermModal: React.FC = () => {
         <div
             id="xterm-modal"
             tabIndex={-1}
-            className={`${ModalCheck ? "fixed flex" : "hidden"} overflow-y-auto overflow-x-hidden top-0 right-0 left-0 bottom-0 z-50 w-full h-full items-center justify-center bg-gray-600 bg-opacity-60`}
-            style={{ zIndex: 1000 }}
+            className={`${ModalCheck ? "fixed flex" : "hidden"} overflow-y-auto overflow-x-hidden top-0 right-0 left-0 bottom-0 z-900 w-full h-full items-center justify-center bg-gray-600 bg-opacity-60`}
         >
             <div className="relative p-4 w-2/5 max-w-xl max-h-full z-50">
                 <div className="relative bg-gray-50 border-gray-300 rounded-lg shadow z-50">
