@@ -36,19 +36,19 @@ const XtermQuestionAnswerInput: React.FC<XtermQuestionAnswerInputType> = ({ acce
 
     return (
         <>
-            <form className="flex-col justify-center mx-14 h-44 overflow-hidden">
+            <form className="flex flex-col items-center justify-center mx-14 h-44 overflow-hidden"> {/* 중앙 정렬을 위한 flex 설정 */}
                 {answerType === "SHORT_ANSWER" &&
-                    <div className="loginSignUpInputContainer">
+                    <div className="loginSignUpInputContainer w-full">
                         <input className={`loginSignUpInput ${iscorrect && "border-success-50 hover:border-success-50 focus:border-success-50"} transition-colors duration-500 ease-in-out`} placeholder="정답을 입력해주세요" value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} />
                     </div>}
                 <button
-                    className={`loginSignUpBtn mt-5 ${isIncorrect ? "animate-shake bg-danger-500 hover:bg-danger-500" : "bg-blue-500"} ${iscorrect && "bg-success-50 hover:bg-success-50"} transition-colors duration-500 ease-in-out`}
+                    className={`loginSignUpBtn mt-5 ${isIncorrect ? "animate-shake bg-danger-500 hover:bg-danger-500" : "bg-blue-500"} ${iscorrect && "bg-success-50 hover:bg-success-50"} transition-colors duration-500 ease-in-out w-full max-w-xs`} /* 버튼 중앙 정렬을 위한 width 설정 */
                     onClick={(e) => { submitQuestion(inputValue, e) }}
                     onAnimationEnd={(e) => { setIsIncorrect(false) }}>
                     정답 확인해보기
                 </button>
                 <button
-                    className={`loginSignUpBtn mt-5 ${iscorrect ? "block" : "hidden"}`}
+                    className={`loginSignUpBtn mt-5 ${iscorrect ? "block" : "hidden"} w-full max-w-xs`} /* 버튼 중앙 정렬을 위한 width 설정 */
                     onClick={goNextStep}>
                     다음 문제로 넘어가기
                 </button>
