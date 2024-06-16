@@ -37,7 +37,7 @@ interface UseGetStagesResult {
 
 
 
-const ProblemStageContainer: React.FC<ProblemStageContainerType> = ({accessToken, refreshToken}) => {
+const ProblemStageContainer: React.FC<ProblemStageContainerType> = ({ accessToken, refreshToken }) => {
     const result = useGetStages(accessToken, refreshToken) as UseGetStagesResult | undefined;
     const pageParameters = result?.pageParameters ?? {
         currentPageIndex: 0,
