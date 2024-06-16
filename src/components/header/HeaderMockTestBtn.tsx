@@ -20,8 +20,8 @@ const HeaderMockTestBtn = ({ accessToken }: { accessToken: string }) => {
     }
     return (
         <button onClick={goProblemSolve}
-            className="headerBtn">
-            모의고사<br />풀어보기
+            className="headerBtn text-[12.5px]">
+            모의고사 풀어보기
         </button>
     )
 }
