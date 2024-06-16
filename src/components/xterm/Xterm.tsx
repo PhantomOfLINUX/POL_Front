@@ -62,7 +62,7 @@ const Xterm: React.FC<XtermType> = ({ url, query }) => {
     }, [url, query]);
 
     return (
-        <div ref={xtermContainerRef} className='xterm flex justify-center items-center p-5 w-Xterm-width h-XtermQuestion-height bg-black z-1 rounded-rounded-10' />
+        <div ref={xtermContainerRef} className='xterm flex justify-center items-center p-5 w-Xterm-width h-XtermQuestion-height bg-black z-20 rounded-rounded-10' />
     );
 };
 

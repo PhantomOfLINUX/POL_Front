@@ -52,6 +52,7 @@ const XtermQuestion: React.FC<XtermQuestionType> = ({ questionCount, accessToken
 
     const hintURL = getHintURL(Number(questionInfo?.questionId));
 
+
     return (
         <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height min-w-XtermQuestion-width rounded-rounded-10 relative">
             <div className="float-right pt-2 pr-2">
