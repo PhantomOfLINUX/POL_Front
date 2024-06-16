@@ -40,6 +40,7 @@ const XtermQuestionAnswerInput: React.FC<XtermQuestionAnswerInputType> = ({ acce
                 {answerType === "SHORT_ANSWER" &&
                     <div className="loginSignUpInputContainer w-full">
                         <input className={`loginSignUpInput ${iscorrect && "border-success-50 hover:border-success-50 focus:border-success-50"} transition-colors duration-500 ease-in-out`} placeholder="정답을 입력해주세요" value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} />
+
                     </div>}
                 <button
                     className={`loginSignUpBtn mt-5 ${isIncorrect ? "animate-shake bg-danger-500 hover:bg-danger-500" : "bg-blue-500"} ${iscorrect && "bg-success-50 hover:bg-success-50"} transition-colors duration-500 ease-in-out w-full max-w-xs`} /* 버튼 중앙 정렬을 위한 width 설정 */

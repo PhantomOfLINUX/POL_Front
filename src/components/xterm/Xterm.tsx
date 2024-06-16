@@ -52,6 +52,7 @@ const Xterm: React.FC<XtermType> = ({url, query}) => {
 
         initializeTerminal();
 
+
         return () => {
             terminalRef.current?.dispose();
             terminalRef.current = null;
