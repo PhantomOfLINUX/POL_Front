@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# 변경 사항을 스테이징 영역에서 워킹 디렉토리로 되돌림
+git stash -q --keep-index
+
+# 빌드 실행
+echo "Running pre-push hook: npm run build"
+npm run build
+
+# 빌드 결과 확인
+RESULT=$?
+# 빌드 실패 시 푸시 거부
+if [ $RESULT -ne 0 ]; then
+  echo "Build failed, push denied!"
+  # 변경 사항을 워킹 디렉토리에서 스테이징 영역으로 복원
+  git stash pop -q
+  exit 1
+fi
+
+# 변경 사항을 워킹 디렉토리에서 스테이징 영역으로 복원
+git stash pop -q
+exit 0

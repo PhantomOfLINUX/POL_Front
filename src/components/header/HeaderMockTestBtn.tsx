@@ -5,7 +5,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 
-const HeaderMockTestBtn = () => {
+const HeaderMockTestBtn = ({accessToken}:{accessToken:string}) => {
 
     const router = useRouter();
     const goProblemSolve = () => {
@@ -16,7 +16,7 @@ const HeaderMockTestBtn = () => {
             if (value) queryParams.set(key, value);
         });
 
-        router.push(`/challengelist${queryParams.toString() ? `?${queryParams}` : ''}`);
+        router.push(`/challengelist?${queryParams.toString()}`);
     }
     return (
         <button onClick={goProblemSolve}
