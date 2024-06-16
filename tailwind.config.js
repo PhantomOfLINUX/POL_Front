@@ -98,7 +98,7 @@ module.exports = {
         "min-height": "25rem",
       },
       minWidth: {
-        "XtermQuestion-width": "450px",
+        "XtermQuestion-width": "400px",
       },
 
       height: {

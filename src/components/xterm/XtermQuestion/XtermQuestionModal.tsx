@@ -1,13 +1,13 @@
 "use client"
 
-import React, {useRef,useEffect,SetStateAction} from "react";
+import React, { useRef, useEffect, SetStateAction } from "react";
 
 interface XtermModalType {
-    ModalCheck:boolean,
+    ModalCheck: boolean,
     setModalState: React.Dispatch<SetStateAction<boolean>>;
 }
 
-const XtermModal: React.FC<XtermModalType> = ({ModalCheck,setModalState}) => {
+const XtermModal: React.FC<XtermModalType> = ({ ModalCheck, setModalState }) => {
     const startButtonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const XtermModal: React.FC<XtermModalType> = ({ModalCheck,setModalState}) => {
         <div
             id="xterm-modal"
             tabIndex={-1}
-            className={`${ModalCheck?"fixed flex":"hidden"} overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 w-full md:inset-0 max-h-full items-center justify-center bg-gray-600 bg-opacity-60`}
+            className={`${ModalCheck ? "fixed flex" : "hidden"} overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-1 w-full md:inset-0 max-h-full items-center justify-center bg-gray-600 bg-opacity-60`}
         >
             <div className="relative p-4 w-2/5 max-w-xl max-h-full">
                 <div className="relative bg-gray-50 border-gray-300 rounded-lg shadow">
