@@ -50,32 +50,35 @@ const XtermQuestion: React.FC<XtermQuestionType> = ({ questionCount, accessToken
         }
     };
 
-    const hintURL = getHintURL(questionInfo?.questionId);
+    const hintURL = getHintURL(Number(questionInfo?.questionId));
+
 
     return (
         <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height min-w-XtermQuestion-width rounded-rounded-10 relative">
             <div className="float-right pt-2 pr-2">
                 <button className="headerBtn" onClick={toggleHint}>힌트</button>
             </div>
-            {showHint && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white p-8 rounded-lg shadow-lg w-[80%] h-[80%] relative">
-                        <button
-                            className="absolute top-2 right-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
-                            onClick={toggleHint}
-                        >
-                            닫기
-                        </button>
-                        <iframe src={hintURL} className="w-full h-full mt-4" />
+            {
+                showHint && hintURL && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <div className="bg-white p-8 rounded-lg shadow-lg w-[80%] h-[80%] relative">
+                            <button
+                                className="absolute top-2 right-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
+                                onClick={toggleHint}
+                            >
+                                닫기
+                            </button>
+                            <iframe src={hintURL} className="w-full h-full mt-4" />
+                        </div>
                     </div>
-                </div>
-            )}
+                )
+            }
             <div className="pt-4">
                 <XtermQuestionStage total_questions={questionCount || 0} question_index={question_index} />
                 <XtermQuestionDescription title={questionInfo?.title} description={questionInfo?.description} />
                 <XtermQuestionAnswerInput accessToken={accessToken} answerType={questionInfo?.answerType} question_index={question_index} setQusetion_index={setQusetion_index} />
             </div>
-        </div>
+        </div >
     );
 }
 
