@@ -72,7 +72,7 @@ const XtermQuestion: React.FC<XtermQuestionType> = ({ questionCount, accessToken
             )}
             <div className="pt-4">
                 <XtermQuestionStage total_questions={questionCount || 0} question_index={question_index} />
-                <XtermQuestionDescription title={questionInfo?.title} desciption={questionInfo?.description} />
+                <XtermQuestionDescription title={questionInfo?.title} description={questionInfo?.description} />
                 <XtermQuestionAnswerInput accessToken={accessToken} answerType={questionInfo?.answerType} question_index={question_index} setQusetion_index={setQusetion_index} />
             </div>
         </div>
