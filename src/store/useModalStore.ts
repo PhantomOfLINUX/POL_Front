@@ -1,6 +1,6 @@
 // store/useModalStore.ts
 import create from 'zustand';
-import { SetStateAction } from "react";
+import {SetStateAction} from "react";
 
 interface ModalState {
     ModalCheck: boolean;
