@@ -8,6 +8,7 @@ import HeaderAnalyzeBtn from "./HeaderAnalyzeBtn";
 import Image from 'next/image'
 
 import { cookies } from 'next/headers'
+import HeaderSatisfactionBtn from "@/components/header/HeaderSatisfactionBtn";
 
 const Header = () => {
     const cookiesStore = cookies();
@@ -33,6 +34,7 @@ const Header = () => {
                         <HeaderProblemBtn accessToken={POL_ACCESS_TOKEN.value} />
                         <HeaderMockTestBtn accessToken={POL_ACCESS_TOKEN.value} />
                         <HeaderAnalyzeBtn accessToken={POL_ACCESS_TOKEN.value} />
+                        <HeaderSatisfactionBtn accessToken={POL_ACCESS_TOKEN.value} />
                         <HeaderLogoutBtn accessToken={POL_ACCESS_TOKEN.value} />
                         <HeaderMyPageBtn accessToken={POL_ACCESS_TOKEN.value} />
                     </>}

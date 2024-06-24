@@ -5,7 +5,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 
-const HeaderMockTestBtn = ({accessToken}:{accessToken:string}) => {
+const HeaderMockTestBtn = ({ accessToken }: { accessToken: string }) => {
 
     const router = useRouter();
     const goProblemSolve = () => {
@@ -15,13 +15,13 @@ const HeaderMockTestBtn = ({accessToken}:{accessToken:string}) => {
             const value = localStorage.getItem(key);
             if (value) queryParams.set(key, value);
         });
-        
+
         router.push(`/challengelist?stageGroupTypes=MOCK_TESTS`);
     }
     return (
         <button onClick={goProblemSolve}
-            className="headerBtn">
-            모의고사<br />풀어보기
+            className="headerBtn text-[12.5px]">
+            모의고사 풀어보기
         </button>
     )
 }

@@ -7,14 +7,14 @@ type logoutType = {
     accessToken: string,
 }
 
-const HeaderAnalyzeBtn: React.FC<logoutType> = ({ accessToken }) => {
+const HeaderSatisfactionBtn: React.FC<logoutType> = ({ accessToken }) => {
 
     return (
         <button type="button" className="headerBtn">
-            <Link href="/analysis">내 풀이 분석</Link>
+            <Link href="https://forms.gle/wi67QMHEPJEhCwoh9">만족도 조사</Link>
         </button>
 
     )
 }
 
-export default HeaderAnalyzeBtn
+export default HeaderSatisfactionBtn

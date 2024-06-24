@@ -1,8 +1,8 @@
 "use client"
 
-import React, {useEffect, useRef} from 'react';
-import {Terminal} from 'xterm';
-import {AttachAddon} from 'xterm-addon-attach';
+import React, { useEffect, useRef } from 'react';
+import { Terminal } from 'xterm';
+import { AttachAddon } from 'xterm-addon-attach';
 
 import { connectWebSocket } from '@/utils/xtemrUtils/XtermUtils';
 
@@ -13,7 +13,7 @@ interface XtermType {
     query: string | undefined
 }
 
-const Xterm: React.FC<XtermType> = ({url, query}) => {
+const Xterm: React.FC<XtermType> = ({ url, query }) => {
     const terminalRef = useRef<Terminal | null>(null);
     const xtermContainerRef = useRef<HTMLDivElement | null>(null);
     const websocketRef = useRef<WebSocket | null>(null);
@@ -62,7 +62,7 @@ const Xterm: React.FC<XtermType> = ({url, query}) => {
     }, [url, query]);
 
     return (
-        <div ref={xtermContainerRef} className='xterm flex justify-center items-center p-5 w-Xterm-width h-XtermQuestion-height bg-black z-20 rounded-rounded-10'/>
+        <div ref={xtermContainerRef} className='xterm flex justify-center items-center p-5 w-Xterm-width h-XtermQuestion-height bg-black z-20 rounded-rounded-10' />
     );
 };
 
