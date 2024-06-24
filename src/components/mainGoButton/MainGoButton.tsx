@@ -18,8 +18,8 @@ const MainGoButton = () => {
     }
     return (
         <button onClick={goProblemSolve}
-                className="text-gray-50 w-1/3 h-1/6 bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm text-center p-4 m-4">
-            문제 풀어보기
+                className="text-gray-50 w-1/6 h-1/12 bg-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-lg text-center p-4 my-12">
+            문제 풀어보러 가기
         </button>
     )
 }
