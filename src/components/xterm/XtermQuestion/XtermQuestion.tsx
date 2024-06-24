@@ -54,7 +54,7 @@ const XtermQuestion: React.FC<XtermQuestionType> = ({ questionCount, accessToken
 
 
     return (
-        <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height min-w-XtermQuestion-width rounded-rounded-10 relative">
+        <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-100 h-XtermQuestion-height min-w-XtermQuestion-width rounded-rounded-10 relative">
             <div className="float-right pt-2 pr-2">
                 <button className="headerBtn" onClick={toggleHint}>힌트</button>
             </div>
@@ -73,7 +73,7 @@ const XtermQuestion: React.FC<XtermQuestionType> = ({ questionCount, accessToken
                     </div>
                 )
             }
-            <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height max-w-xl w-full rounded-rounded-10"> {/* w-full 추가 */}
+            <div className="bg-white flex-col items-center rounded-XtermQuestion-Radius z-10 h-XtermQuestion-height max-w-lg w-full rounded-rounded-10"> {/* w-full 추가 */}
                 <XtermQuestionStage total_questions={questionCount || 0} question_index={question_index} />
                 <XtermQuestionDescription title={questionInfo?.title} description={questionInfo?.description} />
                 <XtermQuestionAnswerInput accessToken={accessToken} answerType={questionInfo?.answerType} question_index={question_index} setQusetion_index={setQusetion_index} />

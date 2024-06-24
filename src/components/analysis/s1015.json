@@ -1,0 +1,26 @@
+{
+  "log": [
+    "cat /etc/passwd",
+    "cat /etc/passwd",
+    "useradd john",
+    "cat /etc/passwd",
+    "[grage] john:x:1000:1000::/home/john:/bin/bash",
+    "[grade] result: true",
+    "useradd alice",
+    "cat /etc/pass",
+    "/t",
+    "alice:x:1001:1001::/home/alice:/bin/bash",
+    "[grade] result: true",
+    "clear",
+    "useradd bob",
+    "usermod -d /home/bob -s /bin/zsh bob",
+    "[grade]",
+    "bob:x:1002:1002::/home/bob:/bin/zsh",
+    "[grade] result: true",
+    "useradd -e 2024-12-31 charlie",
+    "cat /etc/passwd",
+    "[grade]",
+    "Account expires                                         : Dec 31, 2024",
+    "[grade] result: true"
+  ]
+}

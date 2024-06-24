@@ -11,7 +11,7 @@ const HeaderAnalyzeBtn: React.FC<logoutType> = ({ accessToken }) => {
 
     return (
         <button type="button" className="headerBtn">
-            <Link href="/">내 풀이 분석</Link>
+            <Link href="/analysis">내 풀이 분석</Link>
         </button>
 
     )

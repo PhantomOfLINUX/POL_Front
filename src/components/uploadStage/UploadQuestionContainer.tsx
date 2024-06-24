@@ -1,4 +1,4 @@
-"use client"
+    "use client"
 
 import React, {useState} from "react";
 import Textarea from "@/components/uploadStage/Textarea";
