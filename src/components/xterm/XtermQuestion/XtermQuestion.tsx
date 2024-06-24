@@ -80,6 +80,7 @@ const XtermQuestion: React.FC<XtermQuestionType> = ({ questionCount, accessToken
             </div>
         </div >
     );
+
 }
 
 export default XtermQuestion;

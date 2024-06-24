@@ -34,7 +34,6 @@ const XtermQuestionAnswerInput: React.FC<XtermQuestionAnswerInputType> = ({ acce
         setIsCorrect(false);
     }
 
-    
     return (
         <>
             <form className="flex flex-col items-center justify-center mx-14 h-44 overflow-hidden"> {/* 중앙 정렬을 위한 flex 설정 */}
